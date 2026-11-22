@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22T16:13:30Z",
-  "console_html_verified_at": "2026-11-22T16:13:30Z",
+  "updated_at": "2026-11-22T18:25:56Z",
+  "console_html_verified_at": "2026-11-22T18:25:56Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -24,7 +24,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "bigpickle": {
       "key": "bigpickle",
@@ -43,7 +46,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "catjamfree": {
       "key": "catjamfree",
@@ -63,7 +69,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "claude35haiku": {
       "key": "claude35haiku",
@@ -82,7 +91,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "claudefable5": {
       "key": "claudefable5",
@@ -101,7 +113,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-fable-5",
+      "info_checked": "2026-11-22"
     },
     "claudefable51": {
       "key": "claudefable51",
@@ -120,7 +135,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-fable-5-1",
+      "info_checked": "2026-11-22"
     },
     "claudefable52": {
       "key": "claudefable52",
@@ -139,7 +157,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-fable-5-2",
+      "info_checked": "2026-11-22"
     },
     "claudehaiku45": {
       "key": "claudehaiku45",
@@ -158,7 +179,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "claudehaiku55": {
       "key": "claudehaiku55",
@@ -178,7 +202,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+      "info_checked": "2026-11-22"
     },
     "claudeopus41": {
       "key": "claudeopus41",
@@ -197,7 +224,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "claudeopus45": {
       "key": "claudeopus45",
@@ -216,7 +246,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-opus-4-5",
+      "info_checked": "2026-11-22"
     },
     "claudeopus46": {
       "key": "claudeopus46",
@@ -235,7 +268,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-opus-4-6",
+      "info_checked": "2026-11-22"
     },
     "claudeopus47": {
       "key": "claudeopus47",
@@ -254,7 +290,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-opus-4-7",
+      "info_checked": "2026-11-22"
     },
     "claudeopus48": {
       "key": "claudeopus48",
@@ -273,7 +312,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-opus-4-8",
+      "info_checked": "2026-11-22"
     },
     "claudeopus5": {
       "key": "claudeopus5",
@@ -292,7 +334,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-opus-5",
+      "info_checked": "2026-11-22"
     },
     "claudeopus55": {
       "key": "claudeopus55",
@@ -311,7 +356,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+      "info_checked": "2026-11-22"
     },
     "claudesonnet4": {
       "key": "claudesonnet4",
@@ -330,7 +378,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "claudesonnet45": {
       "key": "claudesonnet45",
@@ -349,7 +400,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "claudesonnet46": {
       "key": "claudesonnet46",
@@ -368,7 +422,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-sonnet-4-6",
+      "info_checked": "2026-11-22"
     },
     "claudesonnet5": {
       "key": "claudesonnet5",
@@ -387,7 +444,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-sonnet-5",
+      "info_checked": "2026-11-22"
     },
     "claudesonnet55": {
       "key": "claudesonnet55",
@@ -406,7 +466,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+      "info_checked": "2026-11-22"
     },
     "croutonalphafree": {
       "key": "croutonalphafree",
@@ -426,7 +489,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "deepseekv41flash": {
       "key": "deepseekv41flash",
@@ -446,7 +512,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
+      "info_checked": "2026-11-22"
     },
     "deepseekv41flashfree": {
       "key": "deepseekv41flashfree",
@@ -465,7 +534,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "deepseekv4flash": {
       "key": "deepseekv4flash",
@@ -484,7 +556,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+      "info_checked": "2026-11-22"
     },
     "deepseekv4flashfree": {
       "key": "deepseekv4flashfree",
@@ -503,7 +578,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "deepseekv4flashvisionexp": {
       "key": "deepseekv4flashvisionexp",
@@ -522,7 +600,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "deepseekv4pro": {
       "key": "deepseekv4pro",
@@ -542,7 +623,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+      "info_checked": "2026-11-22"
     },
     "exofree": {
       "key": "exofree",
@@ -561,7 +645,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "fledgealphafree": {
       "key": "fledgealphafree",
@@ -580,7 +667,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "flint40bfree": {
       "key": "flint40bfree",
@@ -599,7 +689,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "gemini31pro": {
       "key": "gemini31pro",
@@ -618,7 +711,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+      "info_checked": "2026-11-22"
     },
     "gemini35flash": {
       "key": "gemini35flash",
@@ -637,7 +733,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+      "info_checked": "2026-11-22"
     },
     "gemini35flashlite": {
       "key": "gemini35flashlite",
@@ -656,7 +755,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite",
+      "info_checked": "2026-11-22"
     },
     "gemini36flash": {
       "key": "gemini36flash",
@@ -675,7 +777,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-6-flash",
+      "info_checked": "2026-11-22"
     },
     "gemini37flash": {
       "key": "gemini37flash",
@@ -694,7 +799,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-7-flash",
+      "info_checked": "2026-11-22"
     },
     "gemini38flash": {
       "key": "gemini38flash",
@@ -713,7 +821,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-8-flash",
+      "info_checked": "2026-11-22"
     },
     "gemini3flash": {
       "key": "gemini3flash",
@@ -732,7 +843,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-flash",
+      "info_checked": "2026-11-22"
     },
     "gemini3pro": {
       "key": "gemini3pro",
@@ -751,7 +865,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-3-pro",
+      "info_checked": "2026-11-22"
     },
     "gemini4argon": {
       "key": "gemini4argon",
@@ -771,7 +888,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-4-argon",
+      "info_checked": "2026-11-22"
     },
     "gemini4argoncontributor": {
       "key": "gemini4argoncontributor",
@@ -790,7 +910,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "gemini4carbon": {
       "key": "gemini4carbon",
@@ -809,7 +932,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-4-carbon",
+      "info_checked": "2026-11-22"
     },
     "gemini4hydrogen": {
       "key": "gemini4hydrogen",
@@ -828,7 +954,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
+      "info_checked": "2026-11-22"
     },
     "gemini4neon": {
       "key": "gemini4neon",
@@ -847,7 +976,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gemini-4-neon",
+      "info_checked": "2026-11-22"
     },
     "glm46": {
       "key": "glm46",
@@ -866,7 +998,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/glm-4-6",
+      "info_checked": "2026-11-22"
     },
     "glm47": {
       "key": "glm47",
@@ -885,7 +1020,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/glm-4-7",
+      "info_checked": "2026-11-22"
     },
     "glm47free": {
       "key": "glm47free",
@@ -904,7 +1042,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "glm5": {
       "key": "glm5",
@@ -923,7 +1064,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/glm-5",
+      "info_checked": "2026-11-22"
     },
     "glm51": {
       "key": "glm51",
@@ -942,7 +1086,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/glm-5-1",
+      "info_checked": "2026-11-22"
     },
     "glm52": {
       "key": "glm52",
@@ -962,7 +1109,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/glm-5-2",
+      "info_checked": "2026-11-22"
     },
     "glm53": {
       "key": "glm53",
@@ -982,7 +1132,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/glm-5-3",
+      "info_checked": "2026-11-22"
     },
     "glm53flash": {
       "key": "glm53flash",
@@ -1002,7 +1155,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "info_checked": "2026-11-22"
     },
     "glm53flashfree": {
       "key": "glm53flashfree",
@@ -1021,7 +1177,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "glm5free": {
       "key": "glm5free",
@@ -1040,7 +1199,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "gpt5": {
       "key": "gpt5",
@@ -1059,7 +1221,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5",
+      "info_checked": "2026-11-22"
     },
     "gpt51": {
       "key": "gpt51",
@@ -1078,7 +1243,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-1",
+      "info_checked": "2026-11-22"
     },
     "gpt51codex": {
       "key": "gpt51codex",
@@ -1097,7 +1265,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-1-codex",
+      "info_checked": "2026-11-22"
     },
     "gpt51codexmax": {
       "key": "gpt51codexmax",
@@ -1116,7 +1287,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "gpt51codexmini": {
       "key": "gpt51codexmini",
@@ -1135,7 +1309,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-1-codex-mini",
+      "info_checked": "2026-11-22"
     },
     "gpt52": {
       "key": "gpt52",
@@ -1154,7 +1331,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-2",
+      "info_checked": "2026-11-22"
     },
     "gpt52codex": {
       "key": "gpt52codex",
@@ -1173,7 +1353,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-2-codex",
+      "info_checked": "2026-11-22"
     },
     "gpt53codex": {
       "key": "gpt53codex",
@@ -1192,7 +1375,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
+      "info_checked": "2026-11-22"
     },
     "gpt53codexspark": {
       "key": "gpt53codexspark",
@@ -1211,7 +1397,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "gpt54": {
       "key": "gpt54",
@@ -1230,7 +1419,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-4",
+      "info_checked": "2026-11-22"
     },
     "gpt54mini": {
       "key": "gpt54mini",
@@ -1249,7 +1441,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
+      "info_checked": "2026-11-22"
     },
     "gpt54nano": {
       "key": "gpt54nano",
@@ -1268,7 +1463,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
+      "info_checked": "2026-11-22"
     },
     "gpt54pro": {
       "key": "gpt54pro",
@@ -1287,7 +1485,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-4-pro",
+      "info_checked": "2026-11-22"
     },
     "gpt55": {
       "key": "gpt55",
@@ -1306,7 +1507,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-5",
+      "info_checked": "2026-11-22"
     },
     "gpt55pro": {
       "key": "gpt55pro",
@@ -1325,7 +1529,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-5-pro",
+      "info_checked": "2026-11-22"
     },
     "gpt56luna": {
       "key": "gpt56luna",
@@ -1345,7 +1552,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-6-luna",
+      "info_checked": "2026-11-22"
     },
     "gpt56sol": {
       "key": "gpt56sol",
@@ -1364,7 +1574,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-6-sol",
+      "info_checked": "2026-11-22"
     },
     "gpt56terra": {
       "key": "gpt56terra",
@@ -1383,7 +1596,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-6-terra",
+      "info_checked": "2026-11-22"
     },
     "gpt5codex": {
       "key": "gpt5codex",
@@ -1402,7 +1618,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-codex",
+      "info_checked": "2026-11-22"
     },
     "gpt5nano": {
       "key": "gpt5nano",
@@ -1421,7 +1640,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-5-nano",
+      "info_checked": "2026-11-22"
     },
     "gpt61sol": {
       "key": "gpt61sol",
@@ -1440,7 +1662,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "info_checked": "2026-11-22"
     },
     "gpt62astra": {
       "key": "gpt62astra",
@@ -1459,7 +1684,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-6-2-astra",
+      "info_checked": "2026-11-22"
     },
     "gpt62sol": {
       "key": "gpt62sol",
@@ -1478,7 +1706,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-6-2-sol",
+      "info_checked": "2026-11-22"
     },
     "gpt6astra": {
       "key": "gpt6astra",
@@ -1497,7 +1728,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-6-astra",
+      "info_checked": "2026-11-22"
     },
     "gpt6luna": {
       "key": "gpt6luna",
@@ -1517,7 +1751,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-6-luna",
+      "info_checked": "2026-11-22"
     },
     "gpt6sol": {
       "key": "gpt6sol",
@@ -1536,7 +1773,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/gpt-6-sol",
+      "info_checked": "2026-11-22"
     },
     "grok45": {
       "key": "grok45",
@@ -1555,7 +1795,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/grok-4-5",
+      "info_checked": "2026-11-22"
     },
     "grok46": {
       "key": "grok46",
@@ -1574,7 +1817,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/grok-4-6",
+      "info_checked": "2026-11-22"
     },
     "grok47": {
       "key": "grok47",
@@ -1594,7 +1840,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/grok-4-7",
+      "info_checked": "2026-11-22"
     },
     "grokbuild01": {
       "key": "grokbuild01",
@@ -1613,7 +1862,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "grokcode": {
       "key": "grokcode",
@@ -1632,7 +1884,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/grok-code-fast-1",
+      "info_checked": "2026-11-22"
     },
     "hy3": {
       "key": "hy3",
@@ -1651,7 +1906,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/hy3",
+      "info_checked": "2026-11-22"
     },
     "hy3free": {
       "key": "hy3free",
@@ -1670,7 +1928,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "hy3previewfree": {
       "key": "hy3previewfree",
@@ -1689,7 +1950,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "hy4": {
       "key": "hy4",
@@ -1710,7 +1974,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "hy4flashfree": {
       "key": "hy4flashfree",
@@ -1733,7 +2000,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "hy4preview": {
       "key": "hy4preview",
@@ -1752,7 +2022,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "icemancontributorfree": {
       "key": "icemancontributorfree",
@@ -1773,7 +2046,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "icemanfree": {
       "key": "icemanfree",
@@ -1792,7 +2068,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "inkling2smallfree": {
       "key": "inkling2smallfree",
@@ -1811,7 +2090,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "kimik2": {
       "key": "kimik2",
@@ -1830,7 +2112,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/kimi-k2",
+      "info_checked": "2026-11-22"
     },
     "kimik25": {
       "key": "kimik25",
@@ -1849,7 +2134,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/kimi-k2-5",
+      "info_checked": "2026-11-22"
     },
     "kimik25free": {
       "key": "kimik25free",
@@ -1868,7 +2156,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "kimik26": {
       "key": "kimik26",
@@ -1887,7 +2178,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/kimi-k2-6",
+      "info_checked": "2026-11-22"
     },
     "kimik27code": {
       "key": "kimik27code",
@@ -1907,7 +2201,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+      "info_checked": "2026-11-22"
     },
     "kimik2thinking": {
       "key": "kimik2thinking",
@@ -1926,7 +2223,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/kimi-k2-thinking",
+      "info_checked": "2026-11-22"
     },
     "kimik3": {
       "key": "kimik3",
@@ -1946,7 +2246,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/kimi-k3",
+      "info_checked": "2026-11-22"
     },
     "kimik31pro": {
       "key": "kimik31pro",
@@ -1965,7 +2268,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+      "info_checked": "2026-11-22"
     },
     "lagunas21free": {
       "key": "lagunas21free",
@@ -1984,7 +2290,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "ling26flashfree": {
       "key": "ling26flashfree",
@@ -2003,7 +2312,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "ling30flashfinfree": {
       "key": "ling30flashfinfree",
@@ -2022,7 +2334,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "ling30flashfree": {
       "key": "ling30flashfree",
@@ -2041,7 +2356,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "ling30tinyfree": {
       "key": "ling30tinyfree",
@@ -2060,7 +2378,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "ling31flashfree": {
       "key": "ling31flashfree",
@@ -2079,7 +2400,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "llalphafree": {
       "key": "llalphafree",
@@ -2098,7 +2422,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "longcat20": {
       "key": "longcat20",
@@ -2117,7 +2444,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/longcat-2-0",
+      "info_checked": "2026-11-22"
     },
     "longcat20free": {
       "key": "longcat20free",
@@ -2136,7 +2466,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "longcat25": {
       "key": "longcat25",
@@ -2158,7 +2491,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "longcat25free": {
       "key": "longcat25free",
@@ -2178,7 +2514,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "longcat25previewfree": {
       "key": "longcat25previewfree",
@@ -2198,7 +2537,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "mimov25": {
       "key": "mimov25",
@@ -2217,7 +2559,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "mimov25free": {
       "key": "mimov25free",
@@ -2236,7 +2581,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "mimov25pro": {
       "key": "mimov25pro",
@@ -2255,7 +2603,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/mimo-v2-5-pro",
+      "info_checked": "2026-11-22"
     },
     "mimov26flash": {
       "key": "mimov26flash",
@@ -2274,7 +2625,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/mimo-v2-6-flash",
+      "info_checked": "2026-11-22"
     },
     "mimov26flashfree": {
       "key": "mimov26flashfree",
@@ -2293,7 +2647,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "mimov26pro": {
       "key": "mimov26pro",
@@ -2312,7 +2669,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+      "info_checked": "2026-11-22"
     },
     "mimov2flashfree": {
       "key": "mimov2flashfree",
@@ -2331,7 +2691,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "mimov2omnifree": {
       "key": "mimov2omnifree",
@@ -2350,7 +2713,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "mimov2profree": {
       "key": "mimov2profree",
@@ -2369,7 +2735,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "minimaxm21": {
       "key": "minimaxm21",
@@ -2388,7 +2757,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/minimax-m2-1",
+      "info_checked": "2026-11-22"
     },
     "minimaxm21free": {
       "key": "minimaxm21free",
@@ -2407,7 +2779,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "minimaxm25": {
       "key": "minimaxm25",
@@ -2426,7 +2801,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/minimax-m2-5",
+      "info_checked": "2026-11-22"
     },
     "minimaxm25free": {
       "key": "minimaxm25free",
@@ -2445,7 +2823,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "minimaxm27": {
       "key": "minimaxm27",
@@ -2465,7 +2846,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/minimax-m2-7",
+      "info_checked": "2026-11-22"
     },
     "minimaxm3": {
       "key": "minimaxm3",
@@ -2485,7 +2869,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/minimax-m3",
+      "info_checked": "2026-11-22"
     },
     "minimaxm31flash": {
       "key": "minimaxm31flash",
@@ -2504,7 +2891,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
+      "info_checked": "2026-11-22"
     },
     "minimaxm31flashfree": {
       "key": "minimaxm31flashfree",
@@ -2524,7 +2914,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "minimaxm3free": {
       "key": "minimaxm3free",
@@ -2543,7 +2936,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "mistrallarge4": {
       "key": "mistrallarge4",
@@ -2562,7 +2958,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/mistral-large-4",
+      "info_checked": "2026-11-22"
     },
     "museember10": {
       "key": "museember10",
@@ -2581,7 +2980,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "musespark12": {
       "key": "musespark12",
@@ -2600,7 +3002,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/muse-spark-1-2",
+      "info_checked": "2026-11-22"
     },
     "musespark12contributor": {
       "key": "musespark12contributor",
@@ -2621,7 +3026,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "musespark12contributorfree": {
       "key": "musespark12contributorfree",
@@ -2640,7 +3048,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "musespark13": {
       "key": "musespark13",
@@ -2659,7 +3070,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/muse-spark-1-3",
+      "info_checked": "2026-11-22"
     },
     "musespark13contributor": {
       "key": "musespark13contributor",
@@ -2680,7 +3094,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "musespark13contributorfree": {
       "key": "musespark13contributorfree",
@@ -2699,7 +3116,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "musewonder10": {
       "key": "musewonder10",
@@ -2718,7 +3138,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/muse-wonder",
+      "info_checked": "2026-11-22"
     },
     "nemotron35lightningfree": {
       "key": "nemotron35lightningfree",
@@ -2737,7 +3160,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "nemotron35supervlfree": {
       "key": "nemotron35supervlfree",
@@ -2756,7 +3182,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "nemotron3superfree": {
       "key": "nemotron3superfree",
@@ -2775,7 +3204,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "nemotron3ultrafree": {
       "key": "nemotron3ultrafree",
@@ -2794,7 +3226,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "northminicodefree": {
       "key": "northminicodefree",
@@ -2813,7 +3248,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "pulsealphafree": {
       "key": "pulsealphafree",
@@ -2832,7 +3270,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "qwen35plus": {
       "key": "qwen35plus",
@@ -2851,7 +3292,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "qwen36plus": {
       "key": "qwen36plus",
@@ -2870,7 +3314,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/qwen3-6-plus",
+      "info_checked": "2026-11-22"
     },
     "qwen36plusfree": {
       "key": "qwen36plusfree",
@@ -2889,7 +3336,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "qwen37plus": {
       "key": "qwen37plus",
@@ -2908,7 +3358,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+      "info_checked": "2026-11-22"
     },
     "qwen38flash": {
       "key": "qwen38flash",
@@ -2928,7 +3381,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "qwen38max": {
       "key": "qwen38max",
@@ -2948,7 +3404,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/qwen3-8-max",
+      "info_checked": "2026-11-22"
     },
     "qwen3coder": {
       "key": "qwen3coder",
@@ -2967,7 +3426,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "qwen4max": {
       "key": "qwen4max",
@@ -2988,7 +3450,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/qwen4-max",
+      "info_checked": "2026-11-22"
     },
     "ring261tfree": {
       "key": "ring261tfree",
@@ -3007,7 +3472,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "spacebunny": {
       "key": "spacebunny",
@@ -3026,7 +3494,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "spacebunnyfree": {
       "key": "spacebunnyfree",
@@ -3045,7 +3516,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "step5preview": {
       "key": "step5preview",
@@ -3064,7 +3538,10 @@
       "is_free": false,
       "first_seen": "2026-11-22",
       "allowance_since": "2026-11-22",
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": "https://artificialanalysis.ai/models/step-5-preview",
+      "info_checked": "2026-11-22"
     },
     "step5previewfree": {
       "key": "step5previewfree",
@@ -3084,7 +3561,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "tidepoolalphafree": {
       "key": "tidepoolalphafree",
@@ -3103,7 +3583,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "trinitylargepreviewfree": {
       "key": "trinitylargepreviewfree",
@@ -3122,7 +3605,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     },
     "xpreviewffree": {
       "key": "xpreviewffree",
@@ -3141,7 +3627,10 @@
       "is_free": true,
       "first_seen": "2026-11-22",
       "allowance_since": null,
-      "last_changed": "2026-11-22"
+      "last_changed": "2026-11-22",
+      "last_trend": null,
+      "info_url": null,
+      "info_checked": "2026-11-22"
     }
   }
 }
