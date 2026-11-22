@@ -1,12 +1,13 @@
 {
-  "updated_at": "2026-11-22T21:47:50Z",
-  "console_html_verified_at": "2026-11-22T21:47:50Z",
+  "updated_at": "2026-11-22T21:59:35Z",
+  "console_html_verified_at": "2026-11-22T21:59:35Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
       "key": "beamfree",
       "id": "beam-free",
       "name": "Beam Free",
+      "canonical_model_id": "reflection/beam-1.0-501b-a23b",
       "providers": [
         "opencode-go",
         "opencode"
@@ -29,12 +30,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/reflection/beam-1-0-501b-a23b",
+      "opencode_checked": "2026-11-22"
     },
     "bigpickle": {
       "key": "bigpickle",
       "id": "big-pickle",
       "name": "Big Pickle",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -53,12 +57,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "catjamfree": {
       "key": "catjamfree",
       "id": "cat-jam-free",
       "name": "Cat Jam Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode-go",
         "opencode"
@@ -78,12 +85,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "claude35haiku": {
       "key": "claude35haiku",
       "id": "claude-3-5-haiku",
       "name": "Claude Haiku 3.5",
+      "canonical_model_id": "anthropic/claude-3-5-haiku-20241022",
       "providers": [
         "opencode"
       ],
@@ -102,12 +112,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-3-5-haiku-20241022",
+      "opencode_checked": "2026-11-22"
     },
     "claudefable5": {
       "key": "claudefable5",
       "id": "claude-fable-5",
       "name": "Claude Fable 5",
+      "canonical_model_id": "anthropic/claude-fable-5",
       "providers": [
         "opencode"
       ],
@@ -126,12 +139,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-fable-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-fable-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-fable-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudefable51": {
       "key": "claudefable51",
       "id": "claude-fable-5-1",
       "name": "Claude Fable 5.1",
+      "canonical_model_id": "anthropic/claude-fable-5-1",
       "providers": [
         "opencode"
       ],
@@ -150,12 +166,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-fable-5-1",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-fable-5-1",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-fable-5-1",
+      "opencode_checked": "2026-11-22"
     },
     "claudefable52": {
       "key": "claudefable52",
       "id": "claude-fable-5-2",
       "name": "Claude Fable 5.2",
+      "canonical_model_id": "anthropic/claude-fable-5-2",
       "providers": [
         "opencode"
       ],
@@ -174,12 +193,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-fable-5-2",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-fable-5-2",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-fable-5-2",
+      "opencode_checked": "2026-11-22"
     },
     "claudehaiku45": {
       "key": "claudehaiku45",
       "id": "claude-haiku-4-5",
       "name": "Claude Haiku 4.5",
+      "canonical_model_id": "anthropic/claude-haiku-4-5",
       "providers": [
         "opencode"
       ],
@@ -198,12 +220,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-haiku-4-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-haiku-4-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudehaiku55": {
       "key": "claudehaiku55",
       "id": "claude-haiku-5-5",
       "name": "Claude Haiku 5.5",
+      "canonical_model_id": "anthropic/claude-haiku-5-5",
       "providers": [
         "opencode-go",
         "opencode"
@@ -223,12 +248,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-haiku-5-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-haiku-5-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudeopus41": {
       "key": "claudeopus41",
       "id": "claude-opus-4-1",
       "name": "Claude Opus 4.1",
+      "canonical_model_id": "anthropic/claude-opus-4-1",
       "providers": [
         "opencode"
       ],
@@ -247,12 +275,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-opus-4-1",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-opus-4-1",
+      "opencode_checked": "2026-11-22"
     },
     "claudeopus45": {
       "key": "claudeopus45",
       "id": "claude-opus-4-5",
       "name": "Claude Opus 4.5",
+      "canonical_model_id": "anthropic/claude-opus-4-5",
       "providers": [
         "opencode"
       ],
@@ -271,12 +302,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-opus-4-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-opus-4-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudeopus46": {
       "key": "claudeopus46",
       "id": "claude-opus-4-6",
       "name": "Claude Opus 4.6",
+      "canonical_model_id": "anthropic/claude-opus-4-6",
       "providers": [
         "opencode"
       ],
@@ -295,12 +329,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-6",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-opus-4-6",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-opus-4-6",
+      "opencode_checked": "2026-11-22"
     },
     "claudeopus47": {
       "key": "claudeopus47",
       "id": "claude-opus-4-7",
       "name": "Claude Opus 4.7",
+      "canonical_model_id": "anthropic/claude-opus-4-7",
       "providers": [
         "opencode"
       ],
@@ -319,12 +356,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-7",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-opus-4-7",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-opus-4-7",
+      "opencode_checked": "2026-11-22"
     },
     "claudeopus48": {
       "key": "claudeopus48",
       "id": "claude-opus-4-8",
       "name": "Claude Opus 4.8",
+      "canonical_model_id": "anthropic/claude-opus-4-8",
       "providers": [
         "opencode"
       ],
@@ -343,12 +383,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-8",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-opus-4-8",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-opus-4-8",
+      "opencode_checked": "2026-11-22"
     },
     "claudeopus5": {
       "key": "claudeopus5",
       "id": "claude-opus-5",
       "name": "Claude Opus 5",
+      "canonical_model_id": "anthropic/claude-opus-5",
       "providers": [
         "opencode"
       ],
@@ -367,12 +410,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-opus-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-opus-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-opus-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudeopus55": {
       "key": "claudeopus55",
       "id": "claude-opus-5-5",
       "name": "Claude Opus 5.5",
+      "canonical_model_id": "anthropic/claude-opus-5-5",
       "providers": [
         "opencode"
       ],
@@ -391,12 +437,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-opus-5-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-opus-5-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudesonnet4": {
       "key": "claudesonnet4",
       "id": "claude-sonnet-4",
       "name": "Claude Sonnet 4",
+      "canonical_model_id": "anthropic/claude-sonnet-4-0",
       "providers": [
         "opencode"
       ],
@@ -415,12 +464,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-sonnet-4",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-sonnet-4-0",
+      "opencode_checked": "2026-11-22"
     },
     "claudesonnet45": {
       "key": "claudesonnet45",
       "id": "claude-sonnet-4-5",
       "name": "Claude Sonnet 4.5",
+      "canonical_model_id": "anthropic/claude-sonnet-4-5",
       "providers": [
         "opencode"
       ],
@@ -439,12 +491,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-sonnet-4-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-sonnet-4-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudesonnet46": {
       "key": "claudesonnet46",
       "id": "claude-sonnet-4-6",
       "name": "Claude Sonnet 4.6",
+      "canonical_model_id": "anthropic/claude-sonnet-4-6",
       "providers": [
         "opencode"
       ],
@@ -463,12 +518,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-sonnet-4-6",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-sonnet-4-6",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-sonnet-4-6",
+      "opencode_checked": "2026-11-22"
     },
     "claudesonnet5": {
       "key": "claudesonnet5",
       "id": "claude-sonnet-5",
       "name": "Claude Sonnet 5",
+      "canonical_model_id": "anthropic/claude-sonnet-5",
       "providers": [
         "opencode"
       ],
@@ -487,12 +545,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-sonnet-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-sonnet-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-sonnet-5",
+      "opencode_checked": "2026-11-22"
     },
     "claudesonnet55": {
       "key": "claudesonnet55",
       "id": "claude-sonnet-5-5",
       "name": "Claude Sonnet 5.5",
+      "canonical_model_id": "anthropic/claude-sonnet-5-5",
       "providers": [
         "opencode"
       ],
@@ -511,12 +572,15 @@
       "info_url": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/claude-sonnet-5-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/anthropic/claude-sonnet-5-5",
+      "opencode_checked": "2026-11-22"
     },
     "croutonalphafree": {
       "key": "croutonalphafree",
       "id": "crouton-alpha-free",
       "name": "Crouton Alpha Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode-go",
         "opencode"
@@ -536,12 +600,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "deepseekv41flash": {
       "key": "deepseekv41flash",
       "id": "deepseek-v4.1-flash",
       "name": "DeepSeek V4.1 Flash 1017",
+      "canonical_model_id": "deepseek/deepseek-v4.1-flash-1017",
       "providers": [
         "opencode-go",
         "opencode"
@@ -561,12 +628,15 @@
       "info_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/deepseek-v4-1-flash-1017",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/deepseek/deepseek-v4-1-flash-1017",
+      "opencode_checked": "2026-11-22"
     },
     "deepseekv41flashfree": {
       "key": "deepseekv41flashfree",
       "id": "deepseek-v4.1-flash-free",
       "name": "DeepSeek V4.1 Flash Free",
+      "canonical_model_id": "deepseek/deepseek-v4.1-flash-1017",
       "providers": [
         "opencode"
       ],
@@ -585,12 +655,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/deepseek/deepseek-v4-1-flash-1017",
+      "opencode_checked": "2026-11-22"
     },
     "deepseekv4flash": {
       "key": "deepseekv4flash",
       "id": "deepseek-v4-flash",
       "name": "DeepSeek V4 Flash",
+      "canonical_model_id": "deepseek/deepseek-v4-flash-0731",
       "providers": [
         "opencode"
       ],
@@ -609,12 +682,15 @@
       "info_url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/deepseek-v4-flash",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/deepseek/deepseek-v4-flash-0731",
+      "opencode_checked": "2026-11-22"
     },
     "deepseekv4flashfree": {
       "key": "deepseekv4flashfree",
       "id": "deepseek-v4-flash-free",
       "name": "DeepSeek V4 Flash Free",
+      "canonical_model_id": "deepseek/deepseek-v4-flash-0731",
       "providers": [
         "opencode"
       ],
@@ -633,12 +709,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/deepseek/deepseek-v4-flash-0731",
+      "opencode_checked": "2026-11-22"
     },
     "deepseekv4flashvisionexp": {
       "key": "deepseekv4flashvisionexp",
       "id": "deepseek-v4-flash-vision-exp",
       "name": "DeepSeek V4 Flash Vision Exp",
+      "canonical_model_id": "deepseek/deepseek-v4-flash-vision-exp",
       "providers": [
         "opencode"
       ],
@@ -657,12 +736,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/deepseek/deepseek-v4-flash-vision-exp",
+      "opencode_checked": "2026-11-22"
     },
     "deepseekv4pro": {
       "key": "deepseekv4pro",
       "id": "deepseek-v4-pro",
       "name": "DeepSeek V4 Pro",
+      "canonical_model_id": "deepseek/deepseek-v4-pro",
       "providers": [
         "opencode-go",
         "opencode"
@@ -682,12 +764,15 @@
       "info_url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/deepseek-v4-pro",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/deepseek/deepseek-v4-pro",
+      "opencode_checked": "2026-11-22"
     },
     "exofree": {
       "key": "exofree",
       "id": "exo-free",
       "name": "Exo Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -706,12 +791,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "fledgealphafree": {
       "key": "fledgealphafree",
       "id": "fledge-alpha-free",
       "name": "Fledge Alpha Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -730,12 +818,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "flint40bfree": {
       "key": "flint40bfree",
       "id": "flint-40b-free",
       "name": "Flint 40B Free",
+      "canonical_model_id": "recursive/flint",
       "providers": [
         "opencode"
       ],
@@ -754,12 +845,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/recursive/flint",
+      "opencode_checked": "2026-11-22"
     },
     "gemini31pro": {
       "key": "gemini31pro",
       "id": "gemini-3.1-pro",
       "name": "Gemini 3.1 Pro Preview",
+      "canonical_model_id": "google/gemini-3.1-pro-preview",
       "providers": [
         "opencode"
       ],
@@ -778,12 +872,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-1-pro-preview",
+      "opencode_checked": "2026-11-22"
     },
     "gemini35flash": {
       "key": "gemini35flash",
       "id": "gemini-3.5-flash",
       "name": "Gemini 3.5 Flash",
+      "canonical_model_id": "google/gemini-3.5-flash",
       "providers": [
         "opencode"
       ],
@@ -802,12 +899,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-3-5-flash",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-5-flash",
+      "opencode_checked": "2026-11-22"
     },
     "gemini35flashlite": {
       "key": "gemini35flashlite",
       "id": "gemini-3.5-flash-lite",
       "name": "Gemini 3.5 Flash Lite",
+      "canonical_model_id": "google/gemini-3.5-flash-lite",
       "providers": [
         "opencode"
       ],
@@ -826,12 +926,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-3-5-flash-lite",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-5-flash-lite",
+      "opencode_checked": "2026-11-22"
     },
     "gemini36flash": {
       "key": "gemini36flash",
       "id": "gemini-3.6-flash",
       "name": "Gemini 3.6 Flash",
+      "canonical_model_id": "google/gemini-3.6-flash",
       "providers": [
         "opencode"
       ],
@@ -850,12 +953,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-6-flash",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-3-6-flash",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-6-flash",
+      "opencode_checked": "2026-11-22"
     },
     "gemini37flash": {
       "key": "gemini37flash",
       "id": "gemini-3.7-flash",
       "name": "Gemini 3.7 Flash",
+      "canonical_model_id": "google/gemini-3.7-flash",
       "providers": [
         "opencode"
       ],
@@ -874,12 +980,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-7-flash",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-3-7-flash",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-7-flash",
+      "opencode_checked": "2026-11-22"
     },
     "gemini38flash": {
       "key": "gemini38flash",
       "id": "gemini-3.8-flash",
       "name": "Gemini 3.8 Flash",
+      "canonical_model_id": "google/gemini-3.8-flash",
       "providers": [
         "opencode"
       ],
@@ -898,12 +1007,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-8-flash",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-3-8-flash",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-8-flash",
+      "opencode_checked": "2026-11-22"
     },
     "gemini3flash": {
       "key": "gemini3flash",
       "id": "gemini-3-flash",
       "name": "Gemini 3 Flash",
+      "canonical_model_id": "google/gemini-3-flash-preview",
       "providers": [
         "opencode"
       ],
@@ -922,12 +1034,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-flash",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-3-flash",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-flash-preview",
+      "opencode_checked": "2026-11-22"
     },
     "gemini3pro": {
       "key": "gemini3pro",
       "id": "gemini-3-pro",
       "name": "Gemini 3 Pro",
+      "canonical_model_id": "google/gemini-3-pro-preview",
       "providers": [
         "opencode"
       ],
@@ -946,12 +1061,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-3-pro",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-3-pro",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-3-pro-preview",
+      "opencode_checked": "2026-11-22"
     },
     "gemini4argon": {
       "key": "gemini4argon",
       "id": "gemini-4-argon",
       "name": "Gemini 4 Argon",
+      "canonical_model_id": "google/gemini-4-argon",
       "providers": [
         "opencode-go",
         "opencode"
@@ -971,12 +1089,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-4-argon",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-4-argon",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-4-argon",
+      "opencode_checked": "2026-11-22"
     },
     "gemini4argoncontributor": {
       "key": "gemini4argoncontributor",
       "id": "gemini-4-argon-contributor",
       "name": "Gemini 4 Argon Contributor",
+      "canonical_model_id": "google/gemini-4-argon",
       "providers": [
         "opencode-go"
       ],
@@ -995,12 +1116,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-4-argon",
+      "opencode_checked": "2026-11-22"
     },
     "gemini4carbon": {
       "key": "gemini4carbon",
       "id": "gemini-4-carbon",
       "name": "Gemini 4 Carbon",
+      "canonical_model_id": "google/gemini-4-carbon",
       "providers": [
         "opencode"
       ],
@@ -1019,12 +1143,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-4-carbon",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-4-carbon",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-4-carbon",
+      "opencode_checked": "2026-11-22"
     },
     "gemini4hydrogen": {
       "key": "gemini4hydrogen",
       "id": "gemini-4-hydrogen",
       "name": "Gemini 4 Hydrogen",
+      "canonical_model_id": "google/gemini-4-hydrogen",
       "providers": [
         "opencode"
       ],
@@ -1043,12 +1170,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-4-hydrogen",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-4-hydrogen",
+      "opencode_checked": "2026-11-22"
     },
     "gemini4neon": {
       "key": "gemini4neon",
       "id": "gemini-4-neon",
       "name": "Gemini 4 Neon",
+      "canonical_model_id": "google/gemini-4-neon",
       "providers": [
         "opencode"
       ],
@@ -1067,12 +1197,15 @@
       "info_url": "https://artificialanalysis.ai/models/gemini-4-neon",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gemini-4-neon",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/google/gemini-4-neon",
+      "opencode_checked": "2026-11-22"
     },
     "glm46": {
       "key": "glm46",
       "id": "glm-4.6",
       "name": "GLM-4.6",
+      "canonical_model_id": "zhipuai/glm-4.6",
       "providers": [
         "opencode"
       ],
@@ -1091,12 +1224,15 @@
       "info_url": "https://artificialanalysis.ai/models/glm-4-6",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/glm-4-6",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-4-6",
+      "opencode_checked": "2026-11-22"
     },
     "glm47": {
       "key": "glm47",
       "id": "glm-4.7",
       "name": "GLM-4.7",
+      "canonical_model_id": "zhipuai/glm-4.7",
       "providers": [
         "opencode"
       ],
@@ -1115,12 +1251,15 @@
       "info_url": "https://artificialanalysis.ai/models/glm-4-7",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/glm-4-7",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-4-7",
+      "opencode_checked": "2026-11-22"
     },
     "glm47free": {
       "key": "glm47free",
       "id": "glm-4.7-free",
       "name": "GLM-4.7 Free",
+      "canonical_model_id": "zhipuai/glm-4.7",
       "providers": [
         "opencode"
       ],
@@ -1139,12 +1278,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-4-7",
+      "opencode_checked": "2026-11-22"
     },
     "glm5": {
       "key": "glm5",
       "id": "glm-5",
       "name": "GLM-5",
+      "canonical_model_id": "zhipuai/glm-5",
       "providers": [
         "opencode"
       ],
@@ -1163,12 +1305,15 @@
       "info_url": "https://artificialanalysis.ai/models/glm-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/glm-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-5",
+      "opencode_checked": "2026-11-22"
     },
     "glm51": {
       "key": "glm51",
       "id": "glm-5.1",
       "name": "GLM-5.1",
+      "canonical_model_id": "zhipuai/glm-5.1",
       "providers": [
         "opencode"
       ],
@@ -1187,12 +1332,15 @@
       "info_url": "https://artificialanalysis.ai/models/glm-5-1",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/glm-5-1",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-5-1",
+      "opencode_checked": "2026-11-22"
     },
     "glm52": {
       "key": "glm52",
       "id": "glm-5.2",
       "name": "GLM-5.2",
+      "canonical_model_id": "zhipuai/glm-5.2",
       "providers": [
         "opencode-go",
         "opencode"
@@ -1212,12 +1360,15 @@
       "info_url": "https://artificialanalysis.ai/models/glm-5-2",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/glm-5-2",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-5-2",
+      "opencode_checked": "2026-11-22"
     },
     "glm53": {
       "key": "glm53",
       "id": "glm-5.3",
       "name": "GLM-5.3",
+      "canonical_model_id": "zhipuai/glm-5.3",
       "providers": [
         "opencode-go",
         "opencode"
@@ -1237,12 +1388,15 @@
       "info_url": "https://artificialanalysis.ai/models/glm-5-3",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/glm-5-3",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-5-3",
+      "opencode_checked": "2026-11-22"
     },
     "glm53flash": {
       "key": "glm53flash",
       "id": "glm-5.3-flash",
       "name": "GLM-5.3-Flash",
+      "canonical_model_id": "zhipuai/glm-5.3-flash",
       "providers": [
         "opencode-go",
         "opencode"
@@ -1262,12 +1416,15 @@
       "info_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/glm-5-3-flash",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-5-3-flash",
+      "opencode_checked": "2026-11-22"
     },
     "glm53flashfree": {
       "key": "glm53flashfree",
       "id": "glm-5.3-flash-free",
       "name": "GLM-5.3-Flash Free",
+      "canonical_model_id": "zhipuai/glm-5.3-flash",
       "providers": [
         "opencode"
       ],
@@ -1286,12 +1443,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-5-3-flash",
+      "opencode_checked": "2026-11-22"
     },
     "glm5free": {
       "key": "glm5free",
       "id": "glm-5-free",
       "name": "GLM-5 Free",
+      "canonical_model_id": "zhipuai/glm-5",
       "providers": [
         "opencode"
       ],
@@ -1310,12 +1470,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/zhipuai/glm-5",
+      "opencode_checked": "2026-11-22"
     },
     "gpt5": {
       "key": "gpt5",
       "id": "gpt-5",
       "name": "GPT-5",
+      "canonical_model_id": "openai/gpt-5",
       "providers": [
         "opencode"
       ],
@@ -1334,12 +1497,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5",
+      "opencode_checked": "2026-11-22"
     },
     "gpt51": {
       "key": "gpt51",
       "id": "gpt-5.1",
       "name": "GPT-5.1",
+      "canonical_model_id": "openai/gpt-5.1",
       "providers": [
         "opencode"
       ],
@@ -1358,12 +1524,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-1",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-1",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-1",
+      "opencode_checked": "2026-11-22"
     },
     "gpt51codex": {
       "key": "gpt51codex",
       "id": "gpt-5.1-codex",
       "name": "GPT-5.1 Codex",
+      "canonical_model_id": "openai/gpt-5.1-codex",
       "providers": [
         "opencode"
       ],
@@ -1382,12 +1551,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-1-codex",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-1-codex",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-1-codex",
+      "opencode_checked": "2026-11-22"
     },
     "gpt51codexmax": {
       "key": "gpt51codexmax",
       "id": "gpt-5.1-codex-max",
       "name": "GPT-5.1 Codex Max",
+      "canonical_model_id": "openai/gpt-5.1-codex-max",
       "providers": [
         "opencode"
       ],
@@ -1406,12 +1578,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-1-codex-max",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-1-codex-max",
+      "opencode_checked": "2026-11-22"
     },
     "gpt51codexmini": {
       "key": "gpt51codexmini",
       "id": "gpt-5.1-codex-mini",
       "name": "GPT-5.1 Codex Mini",
+      "canonical_model_id": "openai/gpt-5.1-codex-mini",
       "providers": [
         "opencode"
       ],
@@ -1430,12 +1605,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-1-codex-mini",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-1-codex-mini",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-1-codex-mini",
+      "opencode_checked": "2026-11-22"
     },
     "gpt52": {
       "key": "gpt52",
       "id": "gpt-5.2",
       "name": "GPT-5.2",
+      "canonical_model_id": "openai/gpt-5.2",
       "providers": [
         "opencode"
       ],
@@ -1454,12 +1632,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-2",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-2",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-2",
+      "opencode_checked": "2026-11-22"
     },
     "gpt52codex": {
       "key": "gpt52codex",
       "id": "gpt-5.2-codex",
       "name": "GPT-5.2 Codex",
+      "canonical_model_id": "openai/gpt-5.2-codex",
       "providers": [
         "opencode"
       ],
@@ -1478,12 +1659,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-2-codex",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-2-codex",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-2-codex",
+      "opencode_checked": "2026-11-22"
     },
     "gpt53codex": {
       "key": "gpt53codex",
       "id": "gpt-5.3-codex",
       "name": "GPT-5.3 Codex",
+      "canonical_model_id": "openai/gpt-5.3-codex",
       "providers": [
         "opencode"
       ],
@@ -1502,12 +1686,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-3-codex",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-3-codex",
+      "opencode_checked": "2026-11-22"
     },
     "gpt53codexspark": {
       "key": "gpt53codexspark",
       "id": "gpt-5.3-codex-spark",
       "name": "GPT-5.3 Codex Spark",
+      "canonical_model_id": "openai/gpt-5.3-codex-spark",
       "providers": [
         "opencode"
       ],
@@ -1526,12 +1713,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-3-codex-spark",
+      "opencode_checked": "2026-11-22"
     },
     "gpt54": {
       "key": "gpt54",
       "id": "gpt-5.4",
       "name": "GPT-5.4",
+      "canonical_model_id": "openai/gpt-5.4",
       "providers": [
         "opencode"
       ],
@@ -1550,12 +1740,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-4",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-4",
+      "opencode_checked": "2026-11-22"
     },
     "gpt54mini": {
       "key": "gpt54mini",
       "id": "gpt-5.4-mini",
       "name": "GPT-5.4 Mini",
+      "canonical_model_id": "openai/gpt-5.4-mini",
       "providers": [
         "opencode"
       ],
@@ -1574,12 +1767,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-4-mini",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-4-mini",
+      "opencode_checked": "2026-11-22"
     },
     "gpt54nano": {
       "key": "gpt54nano",
       "id": "gpt-5.4-nano",
       "name": "GPT-5.4 Nano",
+      "canonical_model_id": "openai/gpt-5.4-nano",
       "providers": [
         "opencode"
       ],
@@ -1598,12 +1794,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-4-nano",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-4-nano",
+      "opencode_checked": "2026-11-22"
     },
     "gpt54pro": {
       "key": "gpt54pro",
       "id": "gpt-5.4-pro",
       "name": "GPT-5.4 Pro",
+      "canonical_model_id": "openai/gpt-5.4-pro",
       "providers": [
         "opencode"
       ],
@@ -1622,12 +1821,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4-pro",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-4-pro",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-4-pro",
+      "opencode_checked": "2026-11-22"
     },
     "gpt55": {
       "key": "gpt55",
       "id": "gpt-5.5",
       "name": "GPT-5.5",
+      "canonical_model_id": "openai/gpt-5.5",
       "providers": [
         "opencode"
       ],
@@ -1646,12 +1848,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-5",
+      "opencode_checked": "2026-11-22"
     },
     "gpt55pro": {
       "key": "gpt55pro",
       "id": "gpt-5.5-pro",
       "name": "GPT-5.5 Pro",
+      "canonical_model_id": "openai/gpt-5.5-pro",
       "providers": [
         "opencode"
       ],
@@ -1670,12 +1875,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-5-pro",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-5-pro",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-5-pro",
+      "opencode_checked": "2026-11-22"
     },
     "gpt56luna": {
       "key": "gpt56luna",
       "id": "gpt-5.6-luna",
       "name": "GPT-5.6 Luna",
+      "canonical_model_id": "openai/gpt-5.6-luna",
       "providers": [
         "opencode-go",
         "opencode"
@@ -1695,12 +1903,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-6-luna",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-6-luna",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-6-luna",
+      "opencode_checked": "2026-11-22"
     },
     "gpt56sol": {
       "key": "gpt56sol",
       "id": "gpt-5.6-sol",
       "name": "GPT-5.6 Sol",
+      "canonical_model_id": "openai/gpt-5.6-sol",
       "providers": [
         "opencode"
       ],
@@ -1719,12 +1930,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-6-sol",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-6-sol",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-6-sol",
+      "opencode_checked": "2026-11-22"
     },
     "gpt56terra": {
       "key": "gpt56terra",
       "id": "gpt-5.6-terra",
       "name": "GPT-5.6 Terra",
+      "canonical_model_id": "openai/gpt-5.6-terra",
       "providers": [
         "opencode"
       ],
@@ -1743,12 +1957,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-6-terra",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-6-terra",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-6-terra",
+      "opencode_checked": "2026-11-22"
     },
     "gpt5codex": {
       "key": "gpt5codex",
       "id": "gpt-5-codex",
       "name": "GPT-5 Codex",
+      "canonical_model_id": "openai/gpt-5-codex",
       "providers": [
         "opencode"
       ],
@@ -1767,12 +1984,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-codex",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-codex",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-codex",
+      "opencode_checked": "2026-11-22"
     },
     "gpt5nano": {
       "key": "gpt5nano",
       "id": "gpt-5-nano",
       "name": "GPT-5 Nano",
+      "canonical_model_id": "openai/gpt-5-nano",
       "providers": [
         "opencode"
       ],
@@ -1791,12 +2011,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-5-nano",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-5-nano",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-5-nano",
+      "opencode_checked": "2026-11-22"
     },
     "gpt61sol": {
       "key": "gpt61sol",
       "id": "gpt-6.1-sol",
       "name": "GPT-6.1 Sol",
+      "canonical_model_id": "openai/gpt-6.1-sol",
       "providers": [
         "opencode"
       ],
@@ -1815,12 +2038,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-6-1-sol",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-6-1-sol",
+      "opencode_checked": "2026-11-22"
     },
     "gpt62astra": {
       "key": "gpt62astra",
       "id": "gpt-6.2-astra",
       "name": "GPT-6.2 Astra",
+      "canonical_model_id": "openai/gpt-6.2-astra",
       "providers": [
         "opencode"
       ],
@@ -1839,12 +2065,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-6-2-astra",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-6-2-astra",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-6-2-astra",
+      "opencode_checked": "2026-11-22"
     },
     "gpt62sol": {
       "key": "gpt62sol",
       "id": "gpt-6.2-sol",
       "name": "GPT-6.2 Sol",
+      "canonical_model_id": "openai/gpt-6.2-sol",
       "providers": [
         "opencode"
       ],
@@ -1863,12 +2092,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-6-2-sol",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-6-2-sol",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-6-2-sol",
+      "opencode_checked": "2026-11-22"
     },
     "gpt6astra": {
       "key": "gpt6astra",
       "id": "gpt-6-astra",
       "name": "GPT-6 Astra",
+      "canonical_model_id": "openai/gpt-6-astra",
       "providers": [
         "opencode"
       ],
@@ -1887,12 +2119,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-6-astra",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-6-astra",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-6-astra",
+      "opencode_checked": "2026-11-22"
     },
     "gpt6luna": {
       "key": "gpt6luna",
       "id": "gpt-6-luna",
       "name": "GPT-6 Luna",
+      "canonical_model_id": "openai/gpt-6-luna",
       "providers": [
         "opencode-go",
         "opencode"
@@ -1912,12 +2147,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-6-luna",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-6-luna",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-6-luna",
+      "opencode_checked": "2026-11-22"
     },
     "gpt6sol": {
       "key": "gpt6sol",
       "id": "gpt-6-sol",
       "name": "GPT-6 Sol",
+      "canonical_model_id": "openai/gpt-6-sol",
       "providers": [
         "opencode"
       ],
@@ -1936,12 +2174,15 @@
       "info_url": "https://artificialanalysis.ai/models/gpt-6-sol",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/gpt-6-sol",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/openai/gpt-6-sol",
+      "opencode_checked": "2026-11-22"
     },
     "grok45": {
       "key": "grok45",
       "id": "grok-4.5",
       "name": "Grok 4.5",
+      "canonical_model_id": "xai/grok-4.5",
       "providers": [
         "opencode"
       ],
@@ -1960,12 +2201,15 @@
       "info_url": "https://artificialanalysis.ai/models/grok-4-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/grok-4-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xai/grok-4-5",
+      "opencode_checked": "2026-11-22"
     },
     "grok46": {
       "key": "grok46",
       "id": "grok-4.6",
       "name": "Grok 4.6",
+      "canonical_model_id": "xai/grok-4.6",
       "providers": [
         "opencode"
       ],
@@ -1984,12 +2228,15 @@
       "info_url": "https://artificialanalysis.ai/models/grok-4-6",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/grok-4-6",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xai/grok-4-6",
+      "opencode_checked": "2026-11-22"
     },
     "grok47": {
       "key": "grok47",
       "id": "grok-4.7",
       "name": "Grok 4.7",
+      "canonical_model_id": "xai/grok-4.7",
       "providers": [
         "opencode-go",
         "opencode"
@@ -2009,12 +2256,15 @@
       "info_url": "https://artificialanalysis.ai/models/grok-4-7",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/grok-4-7",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xai/grok-4-7",
+      "opencode_checked": "2026-11-22"
     },
     "grokbuild01": {
       "key": "grokbuild01",
       "id": "grok-build-0.1",
       "name": "Grok Build 0.1",
+      "canonical_model_id": "xai/grok-build-0.1",
       "providers": [
         "opencode"
       ],
@@ -2033,12 +2283,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/grok-build-0-1",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xai/grok-build-0-1",
+      "opencode_checked": "2026-11-22"
     },
     "grokcode": {
       "key": "grokcode",
       "id": "grok-code",
       "name": "Grok Code Fast 1",
+      "canonical_model_id": "xai/grok-code-fast-1",
       "providers": [
         "opencode"
       ],
@@ -2057,12 +2310,15 @@
       "info_url": "https://artificialanalysis.ai/models/grok-code-fast-1",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xai/grok-code-fast-1",
+      "opencode_checked": "2026-11-22"
     },
     "hy3": {
       "key": "hy3",
       "id": "hy3",
       "name": "Hy3",
+      "canonical_model_id": "tencent/hy3",
       "providers": [
         "opencode-go"
       ],
@@ -2081,12 +2337,15 @@
       "info_url": "https://artificialanalysis.ai/models/hy3",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/tencent/hy3",
+      "opencode_checked": "2026-11-22"
     },
     "hy3free": {
       "key": "hy3free",
       "id": "hy3-free",
       "name": "Hy3 Free",
+      "canonical_model_id": "tencent/hy3",
       "providers": [
         "opencode"
       ],
@@ -2105,12 +2364,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/tencent/hy3",
+      "opencode_checked": "2026-11-22"
     },
     "hy3previewfree": {
       "key": "hy3previewfree",
       "id": "hy3-preview-free",
       "name": "Hy3 preview Free",
+      "canonical_model_id": "tencent/hy3-preview",
       "providers": [
         "opencode"
       ],
@@ -2129,12 +2391,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/tencent/hy3-preview",
+      "opencode_checked": "2026-11-22"
     },
     "hy4": {
       "key": "hy4",
       "id": "hy4",
       "name": "Hy4",
+      "canonical_model_id": "tencent/hy4",
       "providers": [
         "opencode-go"
       ],
@@ -2155,12 +2420,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/tencent/hy4",
+      "opencode_checked": "2026-11-22"
     },
     "hy4flashfree": {
       "key": "hy4flashfree",
       "id": "hy4-flash-free",
       "name": "Hy4 flash Free",
+      "canonical_model_id": "tencent/hy4-flash",
       "providers": [
         "opencode-go",
         "opencode"
@@ -2183,12 +2451,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/tencent/hy4-flash",
+      "opencode_checked": "2026-11-22"
     },
     "hy4preview": {
       "key": "hy4preview",
       "id": "hy4-preview",
       "name": "Hy4 preview",
+      "canonical_model_id": "tencent/hy4-preview",
       "providers": [
         "opencode-go"
       ],
@@ -2207,12 +2478,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/tencent/hy4-preview",
+      "opencode_checked": "2026-11-22"
     },
     "icemancontributorfree": {
       "key": "icemancontributorfree",
       "id": "iceman-contributor-free",
       "name": "Iceman Contributor Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode-go"
       ],
@@ -2233,12 +2507,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "icemanfree": {
       "key": "icemanfree",
       "id": "iceman-free",
       "name": "Iceman Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -2257,12 +2534,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "inkling2smallfree": {
       "key": "inkling2smallfree",
       "id": "inkling-2-small-free",
       "name": "Inkling 2 Small Free",
+      "canonical_model_id": "thinkingmachines/inkling-2-small",
       "providers": [
         "opencode"
       ],
@@ -2281,12 +2561,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/thinkingmachines/inkling-2-small",
+      "opencode_checked": "2026-11-22"
     },
     "kimik2": {
       "key": "kimik2",
       "id": "kimi-k2",
       "name": "Kimi K2",
+      "canonical_model_id": "moonshotai/kimi-k2-0905",
       "providers": [
         "opencode"
       ],
@@ -2305,12 +2588,15 @@
       "info_url": "https://artificialanalysis.ai/models/kimi-k2",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k2-0905",
+      "opencode_checked": "2026-11-22"
     },
     "kimik25": {
       "key": "kimik25",
       "id": "kimi-k2.5",
       "name": "Kimi K2.5",
+      "canonical_model_id": "moonshotai/kimi-k2.5",
       "providers": [
         "opencode"
       ],
@@ -2329,12 +2615,15 @@
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/kimi-k2-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k2-5",
+      "opencode_checked": "2026-11-22"
     },
     "kimik25free": {
       "key": "kimik25free",
       "id": "kimi-k2.5-free",
       "name": "Kimi K2.5 Free",
+      "canonical_model_id": "moonshotai/kimi-k2.5",
       "providers": [
         "opencode"
       ],
@@ -2353,12 +2642,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k2-5",
+      "opencode_checked": "2026-11-22"
     },
     "kimik26": {
       "key": "kimik26",
       "id": "kimi-k2.6",
       "name": "Kimi K2.6",
+      "canonical_model_id": "moonshotai/kimi-k2.6",
       "providers": [
         "opencode"
       ],
@@ -2377,12 +2669,15 @@
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-6",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/kimi-k2-6",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k2-6",
+      "opencode_checked": "2026-11-22"
     },
     "kimik27code": {
       "key": "kimik27code",
       "id": "kimi-k2.7-code",
       "name": "Kimi K2.7 Code",
+      "canonical_model_id": "moonshotai/kimi-k2.7-code",
       "providers": [
         "opencode-go",
         "opencode"
@@ -2402,12 +2697,15 @@
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/kimi-k2-7-code",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k2-7-code",
+      "opencode_checked": "2026-11-22"
     },
     "kimik2thinking": {
       "key": "kimik2thinking",
       "id": "kimi-k2-thinking",
       "name": "Kimi K2 Thinking",
+      "canonical_model_id": "moonshotai/kimi-k2-thinking",
       "providers": [
         "opencode"
       ],
@@ -2426,12 +2724,15 @@
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-thinking",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/kimi-k2-thinking",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k2-thinking",
+      "opencode_checked": "2026-11-22"
     },
     "kimik3": {
       "key": "kimik3",
       "id": "kimi-k3",
       "name": "Kimi K3",
+      "canonical_model_id": "moonshotai/kimi-k3",
       "providers": [
         "opencode-go",
         "opencode"
@@ -2451,12 +2752,15 @@
       "info_url": "https://artificialanalysis.ai/models/kimi-k3",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/kimi-k3",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k3",
+      "opencode_checked": "2026-11-22"
     },
     "kimik31pro": {
       "key": "kimik31pro",
       "id": "kimi-k3.1-pro",
       "name": "Kimi K3.1 Pro",
+      "canonical_model_id": "moonshotai/kimi-k3.1-pro",
       "providers": [
         "opencode-go"
       ],
@@ -2475,12 +2779,15 @@
       "info_url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/kimi-k3-1-pro",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/moonshotai/kimi-k3-1-pro",
+      "opencode_checked": "2026-11-22"
     },
     "lagunas21free": {
       "key": "lagunas21free",
       "id": "laguna-s-2.1-free",
       "name": "Laguna S 2.1 Free",
+      "canonical_model_id": "poolside/laguna-s-2.1",
       "providers": [
         "opencode"
       ],
@@ -2499,12 +2806,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/poolside/laguna-s-2-1",
+      "opencode_checked": "2026-11-22"
     },
     "ling26flashfree": {
       "key": "ling26flashfree",
       "id": "ling-2.6-flash-free",
       "name": "Ling 2.6 Flash Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -2523,12 +2833,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "ling30flashfinfree": {
       "key": "ling30flashfinfree",
       "id": "ling-3.0-flash-fin-free",
       "name": "Ling 3.0 Flash Fin Free",
+      "canonical_model_id": "inclusionai/ling-3.0-flash-fin",
       "providers": [
         "opencode"
       ],
@@ -2547,12 +2860,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/inclusionai/ling-3-0-flash-fin",
+      "opencode_checked": "2026-11-22"
     },
     "ling30flashfree": {
       "key": "ling30flashfree",
       "id": "ling-3.0-flash-free",
       "name": "Ling-3.0-flash Free",
+      "canonical_model_id": "inclusionai/ling-3.0-flash",
       "providers": [
         "opencode"
       ],
@@ -2571,12 +2887,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/inclusionai/ling-3-0-flash",
+      "opencode_checked": "2026-11-22"
     },
     "ling30tinyfree": {
       "key": "ling30tinyfree",
       "id": "ling-3.0-tiny-free",
       "name": "Ling-3.0-tiny Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -2595,12 +2914,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "ling31flashfree": {
       "key": "ling31flashfree",
       "id": "ling-3.1-flash-free",
       "name": "Ling 3.1 Flash Free",
+      "canonical_model_id": "inclusionai/ling-3.1-flash",
       "providers": [
         "opencode"
       ],
@@ -2619,12 +2941,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/inclusionai/ling-3-1-flash",
+      "opencode_checked": "2026-11-22"
     },
     "llalphafree": {
       "key": "llalphafree",
       "id": "ll-alpha-free",
       "name": "LL Alpha Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -2643,12 +2968,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "longcat20": {
       "key": "longcat20",
       "id": "longcat-2.0",
       "name": "LongCat-2.0",
+      "canonical_model_id": "meituan/longcat-2.0",
       "providers": [
         "opencode-go"
       ],
@@ -2667,12 +2995,15 @@
       "info_url": "https://artificialanalysis.ai/models/longcat-2-0",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meituan/longcat-2-0",
+      "opencode_checked": "2026-11-22"
     },
     "longcat20free": {
       "key": "longcat20free",
       "id": "longcat-2.0-free",
       "name": "LongCat-2.0 Free",
+      "canonical_model_id": "meituan/longcat-2.0",
       "providers": [
         "opencode"
       ],
@@ -2691,12 +3022,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meituan/longcat-2-0",
+      "opencode_checked": "2026-11-22"
     },
     "longcat25": {
       "key": "longcat25",
       "id": "longcat-2.5",
       "name": "LongCat-2.5",
+      "canonical_model_id": "meituan/longcat-2.5",
       "providers": [
         "opencode-go"
       ],
@@ -2718,12 +3052,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meituan/longcat-2-5",
+      "opencode_checked": "2026-11-22"
     },
     "longcat25free": {
       "key": "longcat25free",
       "id": "longcat-2.5-free",
       "name": "LongCat 2.5 Free",
+      "canonical_model_id": "meituan/longcat-2.5",
       "providers": [
         "opencode-go",
         "opencode"
@@ -2743,12 +3080,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meituan/longcat-2-5",
+      "opencode_checked": "2026-11-22"
     },
     "longcat25previewfree": {
       "key": "longcat25previewfree",
       "id": "longcat-2.5-preview-free",
       "name": "LongCat 2.5 Preview Free",
+      "canonical_model_id": "meituan/longcat-2.5-preview",
       "providers": [
         "opencode-go",
         "opencode"
@@ -2768,12 +3108,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meituan/longcat-2-5-preview",
+      "opencode_checked": "2026-11-22"
     },
     "mimov25": {
       "key": "mimov25",
       "id": "mimo-v2.5",
       "name": "MiMo V2.5",
+      "canonical_model_id": "xiaomi/mimo-v2.5",
       "providers": [
         "opencode-go"
       ],
@@ -2792,12 +3135,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/mimo-v2-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-5",
+      "opencode_checked": "2026-11-22"
     },
     "mimov25free": {
       "key": "mimov25free",
       "id": "mimo-v2.5-free",
       "name": "MiMo V2.5 Free",
+      "canonical_model_id": "xiaomi/mimo-v2.5",
       "providers": [
         "opencode"
       ],
@@ -2816,12 +3162,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-5",
+      "opencode_checked": "2026-11-22"
     },
     "mimov25pro": {
       "key": "mimov25pro",
       "id": "mimo-v2.5-pro",
       "name": "MiMo V2.5 Pro",
+      "canonical_model_id": "xiaomi/mimo-v2.5-pro",
       "providers": [
         "opencode-go"
       ],
@@ -2840,12 +3189,15 @@
       "info_url": "https://artificialanalysis.ai/models/mimo-v2-5-pro",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/mimo-v2-5-pro",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-5-pro",
+      "opencode_checked": "2026-11-22"
     },
     "mimov26flash": {
       "key": "mimov26flash",
       "id": "mimo-v2.6-flash",
       "name": "MiMo-V2.6-Flash",
+      "canonical_model_id": "xiaomi/mimo-v2.6-flash",
       "providers": [
         "opencode-go"
       ],
@@ -2864,12 +3216,15 @@
       "info_url": "https://artificialanalysis.ai/models/mimo-v2-6-flash",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-6-flash",
+      "opencode_checked": "2026-11-22"
     },
     "mimov26flashfree": {
       "key": "mimov26flashfree",
       "id": "mimo-v2.6-flash-free",
       "name": "MiMo-V2.6-Flash Free",
+      "canonical_model_id": "xiaomi/mimo-v2.6-flash",
       "providers": [
         "opencode"
       ],
@@ -2888,12 +3243,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-6-flash",
+      "opencode_checked": "2026-11-22"
     },
     "mimov26pro": {
       "key": "mimov26pro",
       "id": "mimo-v2.6-pro",
       "name": "MiMo-V2.6-Pro",
+      "canonical_model_id": "xiaomi/mimo-v2.6-pro",
       "providers": [
         "opencode-go"
       ],
@@ -2912,12 +3270,15 @@
       "info_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/mimo-v2-6-pro",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-6-pro",
+      "opencode_checked": "2026-11-22"
     },
     "mimov2flashfree": {
       "key": "mimov2flashfree",
       "id": "mimo-v2-flash-free",
       "name": "MiMo V2 Flash Free",
+      "canonical_model_id": "xiaomi/mimo-v2-flash",
       "providers": [
         "opencode"
       ],
@@ -2936,12 +3297,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-flash",
+      "opencode_checked": "2026-11-22"
     },
     "mimov2omnifree": {
       "key": "mimov2omnifree",
       "id": "mimo-v2-omni-free",
       "name": "MiMo V2 Omni Free",
+      "canonical_model_id": "xiaomi/mimo-v2-omni",
       "providers": [
         "opencode"
       ],
@@ -2960,12 +3324,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-omni",
+      "opencode_checked": "2026-11-22"
     },
     "mimov2profree": {
       "key": "mimov2profree",
       "id": "mimo-v2-pro-free",
       "name": "MiMo V2 Pro Free",
+      "canonical_model_id": "xiaomi/mimo-v2-pro",
       "providers": [
         "opencode"
       ],
@@ -2984,12 +3351,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/xiaomi/mimo-v2-pro",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm21": {
       "key": "minimaxm21",
       "id": "minimax-m2.1",
       "name": "MiniMax-M2.1",
+      "canonical_model_id": "minimax/MiniMax-M2.1",
       "providers": [
         "opencode"
       ],
@@ -3008,12 +3378,15 @@
       "info_url": "https://artificialanalysis.ai/models/minimax-m2-1",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/minimax-m2-1",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m2-1",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm21free": {
       "key": "minimaxm21free",
       "id": "minimax-m2.1-free",
       "name": "MiniMax-M2.1 Free",
+      "canonical_model_id": "minimax/MiniMax-M2.1",
       "providers": [
         "opencode"
       ],
@@ -3032,12 +3405,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m2-1",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm25": {
       "key": "minimaxm25",
       "id": "minimax-m2.5",
       "name": "MiniMax-M2.5",
+      "canonical_model_id": "minimax/MiniMax-M2.5",
       "providers": [
         "opencode"
       ],
@@ -3056,12 +3432,15 @@
       "info_url": "https://artificialanalysis.ai/models/minimax-m2-5",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/minimax-m2-5",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m2-5",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm25free": {
       "key": "minimaxm25free",
       "id": "minimax-m2.5-free",
       "name": "MiniMax-M2.5 Free",
+      "canonical_model_id": "minimax/MiniMax-M2.5",
       "providers": [
         "opencode"
       ],
@@ -3080,12 +3459,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m2-5",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm27": {
       "key": "minimaxm27",
       "id": "minimax-m2.7",
       "name": "MiniMax-M2.7",
+      "canonical_model_id": "minimax/MiniMax-M2.7",
       "providers": [
         "opencode-go",
         "opencode"
@@ -3105,12 +3487,15 @@
       "info_url": "https://artificialanalysis.ai/models/minimax-m2-7",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/minimax-m2-7",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m2-7",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm3": {
       "key": "minimaxm3",
       "id": "minimax-m3",
       "name": "MiniMax-M3",
+      "canonical_model_id": "minimax/MiniMax-M3",
       "providers": [
         "opencode-go",
         "opencode"
@@ -3130,12 +3515,15 @@
       "info_url": "https://artificialanalysis.ai/models/minimax-m3",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/minimax-m3",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m3",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm31flash": {
       "key": "minimaxm31flash",
       "id": "minimax-m3.1-flash",
       "name": "MiniMax M3.1 Flash",
+      "canonical_model_id": "minimax/MiniMax-M3.1-Flash",
       "providers": [
         "opencode-go"
       ],
@@ -3154,12 +3542,15 @@
       "info_url": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m3-1-flash",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm31flashfree": {
       "key": "minimaxm31flashfree",
       "id": "minimax-m3.1-flash-free",
       "name": "MiniMax M3.1 Flash Free",
+      "canonical_model_id": "minimax/MiniMax-M3.1-Flash",
       "providers": [
         "opencode-go",
         "opencode"
@@ -3179,12 +3570,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m3-1-flash",
+      "opencode_checked": "2026-11-22"
     },
     "minimaxm3free": {
       "key": "minimaxm3free",
       "id": "minimax-m3-free",
       "name": "MiniMax-M3 Free",
+      "canonical_model_id": "minimax/MiniMax-M3",
       "providers": [
         "opencode"
       ],
@@ -3203,12 +3597,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/minimax/minimax-m3",
+      "opencode_checked": "2026-11-22"
     },
     "mistrallarge4": {
       "key": "mistrallarge4",
       "id": "mistral-large-4",
       "name": "Mistral Large 4",
+      "canonical_model_id": "mistral/mistral-large-4",
       "providers": [
         "opencode"
       ],
@@ -3227,12 +3624,15 @@
       "info_url": "https://artificialanalysis.ai/models/mistral-large-4",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/mistral-large-4",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/mistral/mistral-large-4",
+      "opencode_checked": "2026-11-22"
     },
     "museember10": {
       "key": "museember10",
       "id": "muse-ember-1.0",
       "name": "Muse Ember 1.0",
+      "canonical_model_id": "meta/muse-ember-1.0",
       "providers": [
         "opencode"
       ],
@@ -3251,12 +3651,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-ember-1-0",
+      "opencode_checked": "2026-11-22"
     },
     "musespark12": {
       "key": "musespark12",
       "id": "muse-spark-1.2",
       "name": "Muse Spark 1.2",
+      "canonical_model_id": "meta/muse-spark-1.2",
       "providers": [
         "opencode"
       ],
@@ -3275,12 +3678,15 @@
       "info_url": "https://artificialanalysis.ai/models/muse-spark-1-2",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/muse-spark-1-2",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-spark-1-2",
+      "opencode_checked": "2026-11-22"
     },
     "musespark12contributor": {
       "key": "musespark12contributor",
       "id": "muse-spark-1.2-contributor",
       "name": "Muse Spark 1.2 Contributor",
+      "canonical_model_id": "meta/muse-spark-1.2",
       "providers": [
         "opencode-go"
       ],
@@ -3301,12 +3707,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-spark-1-2",
+      "opencode_checked": "2026-11-22"
     },
     "musespark12contributorfree": {
       "key": "musespark12contributorfree",
       "id": "muse-spark-1.2-contributor-free",
       "name": "Muse Spark 1.2 Free",
+      "canonical_model_id": "meta/muse-spark-1.2",
       "providers": [
         "opencode"
       ],
@@ -3325,12 +3734,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-spark-1-2",
+      "opencode_checked": "2026-11-22"
     },
     "musespark13": {
       "key": "musespark13",
       "id": "muse-spark-1.3",
       "name": "Muse Spark 1.3",
+      "canonical_model_id": "meta/muse-spark-1.3",
       "providers": [
         "opencode"
       ],
@@ -3349,12 +3761,15 @@
       "info_url": "https://artificialanalysis.ai/models/muse-spark-1-3",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/muse-spark-1-3",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-spark-1-3",
+      "opencode_checked": "2026-11-22"
     },
     "musespark13contributor": {
       "key": "musespark13contributor",
       "id": "muse-spark-1.3-contributor",
       "name": "Muse Spark 1.3 Contributor",
+      "canonical_model_id": "meta/muse-spark-1.3",
       "providers": [
         "opencode-go"
       ],
@@ -3375,12 +3790,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-spark-1-3",
+      "opencode_checked": "2026-11-22"
     },
     "musespark13contributorfree": {
       "key": "musespark13contributorfree",
       "id": "muse-spark-1.3-contributor-free",
       "name": "Muse Spark 1.3 Free",
+      "canonical_model_id": "meta/muse-spark-1.3",
       "providers": [
         "opencode"
       ],
@@ -3399,12 +3817,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-spark-1-3",
+      "opencode_checked": "2026-11-22"
     },
     "musewonder10": {
       "key": "musewonder10",
       "id": "muse-wonder-1.0",
       "name": "Muse Wonder",
+      "canonical_model_id": "meta/muse-wonder-1.0",
       "providers": [
         "opencode"
       ],
@@ -3423,12 +3844,15 @@
       "info_url": "https://artificialanalysis.ai/models/muse-wonder",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/muse-wonder",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/meta/muse-wonder-1-0",
+      "opencode_checked": "2026-11-22"
     },
     "nemotron35lightningfree": {
       "key": "nemotron35lightningfree",
       "id": "nemotron-3.5-lightning-free",
       "name": "Nemotron 3.5 Lightning Free",
+      "canonical_model_id": "nvidia/nemotron-3.5-lightning",
       "providers": [
         "opencode"
       ],
@@ -3447,12 +3871,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/nvidia/nemotron-3-5-lightning",
+      "opencode_checked": "2026-11-22"
     },
     "nemotron35supervlfree": {
       "key": "nemotron35supervlfree",
       "id": "nemotron-3.5-super-vl-free",
       "name": "Nemotron 3.5 Super VL Free",
+      "canonical_model_id": "nvidia/nemotron-3.5-super-vl-120b-a12b",
       "providers": [
         "opencode"
       ],
@@ -3471,12 +3898,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/nvidia/nemotron-3-5-super-vl-120b-a12b",
+      "opencode_checked": "2026-11-22"
     },
     "nemotron3superfree": {
       "key": "nemotron3superfree",
       "id": "nemotron-3-super-free",
       "name": "Nemotron 3 Super Free",
+      "canonical_model_id": "nvidia/nemotron-3-super-120b-a12b",
       "providers": [
         "opencode"
       ],
@@ -3495,12 +3925,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/nvidia/nemotron-3-super-120b-a12b",
+      "opencode_checked": "2026-11-22"
     },
     "nemotron3ultrafree": {
       "key": "nemotron3ultrafree",
       "id": "nemotron-3-ultra-free",
       "name": "Nemotron 3 Ultra Free",
+      "canonical_model_id": "nvidia/nemotron-3-ultra-550b-a55b",
       "providers": [
         "opencode"
       ],
@@ -3519,12 +3952,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/nvidia/nemotron-3-ultra-550b-a55b",
+      "opencode_checked": "2026-11-22"
     },
     "northminicodefree": {
       "key": "northminicodefree",
       "id": "north-mini-code-free",
       "name": "North Mini Code Free",
+      "canonical_model_id": "cohere/north-mini-code-1-0",
       "providers": [
         "opencode"
       ],
@@ -3543,12 +3979,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/cohere/north-mini-code-1-0",
+      "opencode_checked": "2026-11-22"
     },
     "pulsealphafree": {
       "key": "pulsealphafree",
       "id": "pulse-alpha-free",
       "name": "Pulse Alpha Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -3567,12 +4006,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "qwen35plus": {
       "key": "qwen35plus",
       "id": "qwen3.5-plus",
       "name": "Qwen3.5 Plus",
+      "canonical_model_id": "alibaba/qwen3.5-plus",
       "providers": [
         "opencode"
       ],
@@ -3591,12 +4033,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen3-5-plus",
+      "opencode_checked": "2026-11-22"
     },
     "qwen36plus": {
       "key": "qwen36plus",
       "id": "qwen3.6-plus",
       "name": "Qwen3.6 Plus",
+      "canonical_model_id": "alibaba/qwen3.6-plus",
       "providers": [
         "opencode"
       ],
@@ -3615,12 +4060,15 @@
       "info_url": "https://artificialanalysis.ai/models/qwen3-6-plus",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen3-6-plus",
+      "opencode_checked": "2026-11-22"
     },
     "qwen36plusfree": {
       "key": "qwen36plusfree",
       "id": "qwen3.6-plus-free",
       "name": "Qwen3.6 Plus Free",
+      "canonical_model_id": "alibaba/qwen3.6-plus",
       "providers": [
         "opencode"
       ],
@@ -3639,12 +4087,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen3-6-plus",
+      "opencode_checked": "2026-11-22"
     },
     "qwen37plus": {
       "key": "qwen37plus",
       "id": "qwen3.7-plus",
       "name": "Qwen3.7 Plus",
+      "canonical_model_id": "alibaba/qwen3.7-plus",
       "providers": [
         "opencode-go"
       ],
@@ -3663,12 +4114,15 @@
       "info_url": "https://artificialanalysis.ai/models/qwen3-7-plus",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/qwen3-7-plus",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen3-7-plus",
+      "opencode_checked": "2026-11-22"
     },
     "qwen38flash": {
       "key": "qwen38flash",
       "id": "qwen3.8-flash",
       "name": "Qwen3.8 Flash",
+      "canonical_model_id": "alibaba/qwen3.8-flash",
       "providers": [
         "opencode-go",
         "opencode"
@@ -3688,12 +4142,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen3-8-flash",
+      "opencode_checked": "2026-11-22"
     },
     "qwen38max": {
       "key": "qwen38max",
       "id": "qwen3.8-max",
       "name": "Qwen3.8 Max",
+      "canonical_model_id": "alibaba/qwen3.8-max",
       "providers": [
         "opencode-go",
         "opencode"
@@ -3713,12 +4170,15 @@
       "info_url": "https://artificialanalysis.ai/models/qwen3-8-max",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen3-8-max",
+      "opencode_checked": "2026-11-22"
     },
     "qwen3coder": {
       "key": "qwen3coder",
       "id": "qwen3-coder",
       "name": "Qwen3 Coder",
+      "canonical_model_id": "alibaba/qwen3-coder-480b-a35b-instruct",
       "providers": [
         "opencode"
       ],
@@ -3737,12 +4197,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen3-coder-480b-a35b-instruct",
+      "opencode_checked": "2026-11-22"
     },
     "qwen4max": {
       "key": "qwen4max",
       "id": "qwen4-max",
       "name": "Qwen4 Max",
+      "canonical_model_id": "alibaba/qwen4-max",
       "providers": [
         "opencode-go"
       ],
@@ -3763,12 +4226,15 @@
       "info_url": "https://artificialanalysis.ai/models/qwen4-max",
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen4-max",
+      "opencode_checked": "2026-11-22"
     },
     "ring261tfree": {
       "key": "ring261tfree",
       "id": "ring-2.6-1t-free",
       "name": "Ring 2.6 1T Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -3787,12 +4253,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "spacebunny": {
       "key": "spacebunny",
       "id": "space-bunny",
       "name": "Space Bunny",
+      "canonical_model_id": null,
       "providers": [
         "opencode-go"
       ],
@@ -3811,12 +4280,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "spacebunnyfree": {
       "key": "spacebunnyfree",
       "id": "space-bunny-free",
       "name": "Space Bunny Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -3835,12 +4307,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "step5preview": {
       "key": "step5preview",
       "id": "step-5-preview",
       "name": "Step 5 Preview",
+      "canonical_model_id": "stepfun/step-5-preview",
       "providers": [
         "opencode-go"
       ],
@@ -3859,12 +4334,15 @@
       "info_url": "https://artificialanalysis.ai/models/step-5-preview",
       "info_checked": "2026-11-22",
       "epoch_url": "https://epoch.ai/models/step-5-preview",
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/stepfun/step-5-preview",
+      "opencode_checked": "2026-11-22"
     },
     "step5previewfree": {
       "key": "step5previewfree",
       "id": "step-5-preview-free",
       "name": "Step 5 Preview Free",
+      "canonical_model_id": "stepfun/step-5-preview",
       "providers": [
         "opencode-go",
         "opencode"
@@ -3884,12 +4362,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/stepfun/step-5-preview",
+      "opencode_checked": "2026-11-22"
     },
     "tidepoolalphafree": {
       "key": "tidepoolalphafree",
       "id": "tidepool-alpha-free",
       "name": "Tidepool Alpha Free",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -3908,12 +4389,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     },
     "trinitylargepreviewfree": {
       "key": "trinitylargepreviewfree",
       "id": "trinity-large-preview-free",
       "name": "Trinity Large Preview",
+      "canonical_model_id": "arcee-ai/trinity-large-preview",
       "providers": [
         "opencode"
       ],
@@ -3932,12 +4416,15 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": "https://opencode.ai/data/arcee-ai/trinity-large-preview",
+      "opencode_checked": "2026-11-22"
     },
     "xpreviewffree": {
       "key": "xpreviewffree",
       "id": "x-preview-f-free",
       "name": "Ox Alpha Free (Unlimited)",
+      "canonical_model_id": null,
       "providers": [
         "opencode"
       ],
@@ -3956,7 +4443,9 @@
       "info_url": null,
       "info_checked": "2026-11-22",
       "epoch_url": null,
-      "epoch_checked": "2026-11-22"
+      "epoch_checked": "2026-11-22",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-22"
     }
   }
 }
