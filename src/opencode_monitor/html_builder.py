@@ -151,17 +151,38 @@ _STYLESHEET = """
   }
 
   .tablePanel-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
     padding: var(--space-s) var(--space-m);
     cursor: pointer;
-    list-style: revert;
+    list-style: none;
   }
 
   .tablePanel-toggle:hover { background: var(--color-surface); }
 
   .tablePanel-toggle::-webkit-details-marker { display: none; }
-  .tablePanel-toggle::before { content: "\\25B8 "; }
-  .tablePanel[open] > .tablePanel-toggle::before { content: "\\25BE "; }
+
+  /* Disclosure triangle: a CSS shape, so it never enters the accessible
+     name, sized up and coloured for a clear collapsed/open cue. */
+  .tablePanel-toggle::before {
+    content: "";
+    flex: none;
+    width: 0;
+    height: 0;
+    border-top: 0.45rem solid transparent;
+    border-bottom: 0.45rem solid transparent;
+    border-left: 0.6rem solid var(--color-accent);
+    transition: transform 120ms ease;
+  }
+
+  .tablePanel[open] > .tablePanel-toggle::before {
+    transform: rotate(90deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tablePanel-toggle::before { transition: none; }
+  }
 
   .tablePanel-title { font-size: 1.0625rem; margin: 0; }
 
