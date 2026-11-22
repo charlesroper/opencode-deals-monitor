@@ -296,29 +296,66 @@ def test_go_column_defaults_to_descending_sort() -> None:
             assert th.get("aria-sort") == expected
 
 
-def test_hot_flag_marks_top_paid_models() -> None:
+def test_heat_tiers_are_granular() -> None:
     from bs4 import BeautifulSoup
 
     settings = _settings(Path("/tmp/opencode/test-tmp17"))
-    entries = {}
-    for rank in range(12):
-        allowance = f"${500 - rank * 10}"
-        entries[f"paid{rank}"] = _entry(
-            key=f"paid{rank}", id=f"paid{rank}", name=f"Paid {rank}",
-            go_allowance=allowance,
-        )
-    entries["free1"] = _entry(
-        key="free1", id="free1", name="Free One", is_free=True, go_allowance="$∞"
+    snapshot = _snapshot(
+        unlimited=_entry(
+            key="unlimited", id="unlimited", name="Unlimited", is_free=True,
+            go_allowance="$∞",
+        ),
+        top=_entry(key="top", id="top", name="Top", go_allowance="$500"),
+        high=_entry(key="high", id="high", name="High", go_allowance="$100"),
+        mid=_entry(key="mid", id="mid", name="Mid", go_allowance="$60"),
+        low=_entry(key="low", id="low", name="Low", go_allowance="$20"),
+        basic=_entry(key="basic", id="basic", name="Basic", go_allowance="$15"),
+        unlisted=_entry(key="unlisted", id="unlisted", name="Unlisted", go_allowance=None),
     )
-    page = build_page(_snapshot(**entries), [], settings)
+    page = build_page(snapshot, [], settings)
     soup = BeautifulSoup(page, "html.parser")
-    hot_rows = soup.select(".modelsTable tbody .modelsTable-row--hot")
-    assert len(hot_rows) == 10  # the top 10 paid models, not the free one
-    assert all("Top allowance" in row.get_text() for row in hot_rows)
-    free_row = next(
-        str(row) for row in soup.select(".modelsTable tbody tr") if "Free One" in str(row)
+    by_name = {
+        th.get_text(): th.find_parent("tr") for th in soup.select(".modelsTable tbody th")
+    }
+    assert "modelsTable-row--tier1" in by_name["Unlimited"].get("class", [])
+    assert "modelsTable-row--tier2" in by_name["Top"].get("class", [])
+    assert "modelsTable-row--tier2" in by_name["High"].get("class", [])
+    assert "modelsTable-row--tier3" in by_name["Mid"].get("class", [])
+    assert "modelsTable-row--tier4" in by_name["Low"].get("class", [])
+    assert "modelsTable-row--tier5" in by_name["Basic"].get("class", [])
+    assert by_name["Unlisted"].get("class", []) == ["modelsTable-row"]
+    assert "Top allowance" not in page  # the single hot flag is gone
+
+
+def test_heat_tiers_apply_to_deal_tables_too() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp20"))
+    snapshot = _snapshot(
+        promo=_entry(badges=["New"], go_allowance="$500"),
+        freebie=_entry(key="freebie", id="freebie", name="Freebie", is_free=True),
     )
-    assert "Top allowance" not in free_row
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    promo_row = soup.select_one(".dealsTable tbody tr")
+    free_row = soup.select_one(".freeTable tbody tr")
+    assert "dealsTable-row--tier2" in promo_row.get("class", [])
+    assert "freeTable-row--tier3" in free_row.get("class", [])  # default $60
+
+
+def test_allowance_tier_thresholds() -> None:
+    from opencode_monitor.html_builder import _allowance_tier
+
+    assert _allowance_tier(_entry(go_allowance="$∞")) == 1
+    assert _allowance_tier(_entry(go_allowance="$1,000")) == 2
+    assert _allowance_tier(_entry(go_allowance="$100")) == 2
+    assert _allowance_tier(_entry(go_allowance="$99")) == 3
+    assert _allowance_tier(_entry(go_allowance="$50")) == 3
+    assert _allowance_tier(_entry(go_allowance="$49")) == 4
+    assert _allowance_tier(_entry(go_allowance="$20")) == 4
+    assert _allowance_tier(_entry(go_allowance="$19")) == 5
+    assert _allowance_tier(_entry(go_allowance="$1")) == 5
+    assert _allowance_tier(_entry(go_allowance=None)) == 0
 
 
 def test_new_and_recently_changed_flags() -> None:

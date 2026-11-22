@@ -49,7 +49,11 @@ _STYLESHEET = """
     --color-border: #767676;
     --color-accent: #0b57d0;
     --color-notice-bg: #fff4d6;
-    --color-hot-bg: #ffedd8;
+    --color-tier1-bg: #ffd9a0;
+    --color-tier2-bg: #ffe8c2;
+    --color-tier3-bg: #fff1da;
+    --color-tier4-bg: #fdf6e9;
+    --color-tier5-bg: #fbfcf7;
     --color-new-bg: #e4f3e4;
     --color-changed-bg: #e3eefc;
     --font-mono: ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo,
@@ -70,7 +74,11 @@ _STYLESHEET = """
       --color-border: #6e6e6e;
       --color-accent: #a8c7fa;
       --color-notice-bg: #2b2617;
-      --color-hot-bg: #2b2114;
+      --color-tier1-bg: #3a2c10;
+      --color-tier2-bg: #30250f;
+      --color-tier3-bg: #271e0e;
+      --color-tier4-bg: #1f180c;
+      --color-tier5-bg: #191509;
       --color-new-bg: #152318;
       --color-changed-bg: #14202e;
     }
@@ -188,7 +196,23 @@ _STYLESHEET = """
     white-space: normal;
   }
 
-  .modelsTable-row--hot { background: var(--color-hot-bg); }
+  .dealsTable-row--tier1, .freeTable-row--tier1, .modelsTable-row--tier1 {
+    background: var(--color-tier1-bg);
+  }
+  .dealsTable-row--tier2, .freeTable-row--tier2, .modelsTable-row--tier2 {
+    background: var(--color-tier2-bg);
+  }
+  .dealsTable-row--tier3, .freeTable-row--tier3, .modelsTable-row--tier3 {
+    background: var(--color-tier3-bg);
+  }
+  .dealsTable-row--tier4, .freeTable-row--tier4, .modelsTable-row--tier4 {
+    background: var(--color-tier4-bg);
+  }
+  .dealsTable-row--tier5, .freeTable-row--tier5, .modelsTable-row--tier5 {
+    background: var(--color-tier5-bg);
+  }
+
+  /* Recency marks override tier tints when both apply. */
   .modelsTable-row--new { background: var(--color-new-bg); }
   .modelsTable-row--changed { background: var(--color-changed-bg); }
 
@@ -240,6 +264,10 @@ document.querySelectorAll("table").forEach(function (table) {
   const body = table.tBodies[0];
   if (!body || !table.tHead) { return; }
   const headers = Array.from(table.tHead.rows[0].cells);
+  const goIndex = headers.findIndex(function (th) {
+    const button = th.querySelector("button");
+    return button !== null && button.textContent.trim() === "Go";
+  });
   headers.forEach(function (th, index) {
     const button = th.querySelector("button");
     if (!button) { return; }
@@ -256,7 +284,15 @@ document.querySelectorAll("table").forEach(function (table) {
         const left = sortValue(a.cells[index], type);
         const right = sortValue(b.cells[index], type);
         const order = left < right ? -1 : left > right ? 1 : 0;
-        return direction === "ascending" ? order : -order;
+        if (order !== 0) {
+          return direction === "ascending" ? order : -order;
+        }
+        // Every column falls back to the Go column: ties order by the
+        // most generous allowance first.
+        if (goIndex < 0) { return 0; }
+        const goLeft = sortValue(a.cells[goIndex], "num");
+        const goRight = sortValue(b.cells[goIndex], "num");
+        return goLeft < goRight ? 1 : goLeft > goRight ? -1 : 0;
       });
       rows.forEach(function (row) { body.appendChild(row); });
     });
@@ -309,25 +345,32 @@ def _order_by_allowance(entries: list[ModelEntry]) -> list[ModelEntry]:
     )
 
 
-def _top_allowance_keys(entries: list[ModelEntry], limit: int = 10) -> set[str]:
-    """Keys of the hottest paid models: the 10 largest Go allowances, ties kept.
+def _allowance_tier(entry: ModelEntry) -> int:
+    """Heat tier from the Go allowance: 1 (hottest) to 5, 0 for no listing.
 
-    Free tiers are excluded: the Free badge already marks them.
+    Unlimited allowances are the hottest tier; paid allowances tier at
+    $100 / $50 / $20 thresholds, with every remaining paid tier at 5.
     """
-    paid = [
-        entry
-        for entry in entries
-        if not entry["is_free"] and entry["go_allowance"] is not None
-    ]
-    if not paid:
-        return set()
-    ranked = _order_by_allowance(paid)
-    cutoff = _allowance_float(ranked[min(limit, len(ranked)) - 1]["go_allowance"])
-    return {
-        entry["key"]
-        for entry in paid
-        if _allowance_float(entry["go_allowance"]) >= cutoff
-    }
+    value = entry["go_allowance"]
+    if value is None:
+        return 0
+    if "∞" in value:
+        return 1
+    amount = _allowance_float(value)
+    if amount >= 100:
+        return 2
+    if amount >= 50:
+        return 3
+    if amount >= 20:
+        return 4
+    if amount >= 1:
+        return 5
+    return 0
+
+
+def _tier_class(entry: ModelEntry, module: str) -> str:
+    tier = _allowance_tier(entry)
+    return f" {module}-row--tier{tier}" if tier else ""
 
 
 def _days_before(today: str, date_str: str | None) -> int | None:
@@ -417,8 +460,10 @@ def _deal_row(entry: ModelEntry, module: str) -> str:
     out_value = _cost_sort_value(entry["output_cost_per_m"])
     since = _fmt_date(entry["allowance_since"])
     since_value = _date_sort_value(entry["allowance_since"])
+    row_classes = f"{module}-row" + _tier_class(entry, module)
     return (
-        f'<tr><th scope="row">{_esc(entry["name"])}</th>'
+        f'<tr class="{row_classes}">'
+        f'<th scope="row">{_esc(entry["name"])}</th>'
         f"{_td(go, value=go_value)}"
         f"{_td(go_plus, value=go_plus_value)}"
         f"{_td(_badges(entry, module), value=badges)}"
@@ -432,7 +477,6 @@ def _deal_row(entry: ModelEntry, module: str) -> str:
 def _model_row(
     entry: ModelEntry,
     today: str,
-    hot_keys: set[str],
     baseline_date: str | None,
 ) -> str:
     providers = ", ".join(entry["providers"]) or "—"
@@ -452,14 +496,13 @@ def _model_row(
     badges = [*entry["badges"], *flags]
     if entry["is_free"]:
         badges.append("Free")
-    if entry["key"] in hot_keys:
-        badges.append("Top allowance")
     badges = list(dict.fromkeys(badges))  # dedupe, preserve order
-    hot_class = " modelsTable-row--hot" if entry["key"] in hot_keys else ""
-    if "New" in flags:
-        hot_class += " modelsTable-row--new"
-    if "Recently changed" in flags:
-        hot_class += " modelsTable-row--changed"
+    row_classes = (
+        "modelsTable-row"
+        + _tier_class(entry, "modelsTable")
+        + (" modelsTable-row--new" if "New" in flags else "")
+        + (" modelsTable-row--changed" if "Recently changed" in flags else "")
+    )
     badge_spans = "".join(
         f'<span class="modelsTable-badge">{_esc(badge)}</span>' for badge in badges
     ) or "—"
@@ -469,7 +512,7 @@ def _model_row(
         else badge_spans
     )
     return (
-        f'<tr class="modelsTable-row{hot_class}">'
+        f'<tr class="{row_classes}">'
         f'<th scope="row">{_esc(entry["name"])}</th>'
         f"{_td(go, value=go_value)}"
         f"{_td(go_plus, value=go_plus_value)}"
@@ -536,18 +579,18 @@ def _all_models_table(
         f'{_th("Last changed", "modelsTable", "text")}</tr>'
     )
     ordered = _order_by_allowance(entries)
-    hot_keys = _top_allowance_keys(entries)
-    rows = "".join(
-        _model_row(entry, today, hot_keys, baseline_date) for entry in ordered
-    )
+    rows = "".join(_model_row(entry, today, baseline_date) for entry in ordered)
     return (
         f'<div class="tableScroll" tabindex="0" role="region" '
         f'aria-labelledby="all-models-heading">'
         f'<table class="modelsTable">'
         f"<caption>All tracked models from models.dev and the Go console. "
-        f"Top allowance marks the 10 paid models with the largest Go monthly "
-        f"allowance. New and Recently changed mark models from the last "
-        f"{RECENT_WINDOW_DAYS} days. Rows start sorted by Go allowance.</caption>"
+        f"Rows are tinted in five tiers by Go monthly allowance: unlimited, "
+        f"$100 and up, $50 and up, $20 and up, then lower paid tiers; models "
+        f"with no Go listing are untinted. New and Recently changed mark "
+        f"models from the last {RECENT_WINDOW_DAYS} days. Rows start sorted "
+        f"by Go allowance, and sorting any column falls back to Go order "
+        f"when values tie.</caption>"
         f"<thead>{head}</thead>"
         f"<tbody>{rows}</tbody>"
         f"</table></div>"
@@ -622,14 +665,14 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
         promo_entries,
         "promos-heading",
         "dealsTable",
-        "Models with an active promotion",
+        "Models with an active promotion, tinted by Go allowance tier",
         "No active promotions right now.",
     )
     frees = _deal_table(
         free_entries,
         "free-heading",
         "freeTable",
-        "Models with a free tier",
+        "Models with a free tier, tinted by Go allowance tier",
         "No free models right now.",
     )
     all_models = _all_models_table(list(models.values()), today, baseline_date)
