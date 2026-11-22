@@ -62,6 +62,7 @@ class ModelEntry(TypedDict):
     is_free: bool
     first_seen: str
     allowance_since: str | None
+    last_changed: str | None
 
 
 class Snapshot(TypedDict):

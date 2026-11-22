@@ -89,6 +89,7 @@ def test_first_seen_preserved_and_allowance_since_resets() -> None:
                 "is_free": False,
                 "first_seen": "2026-11-01",
                 "allowance_since": "2026-11-02",
+                "last_changed": "2026-11-02",
             }
         }
     )
@@ -125,6 +126,7 @@ def test_degraded_scrape_carries_fields_forward() -> None:
                 "is_free": False,
                 "first_seen": "2026-11-01",
                 "allowance_since": "2026-11-02",
+                "last_changed": "2026-11-02",
             }
         }
     )
@@ -158,6 +160,7 @@ def test_recovery_clears_degraded_flag() -> None:
                 "is_free": False,
                 "first_seen": "2026-11-01",
                 "allowance_since": "2026-11-02",
+                "last_changed": "2026-11-02",
             }
         }
     )
@@ -186,6 +189,7 @@ def test_drop_over_half_is_degraded() -> None:
             "is_free": False,
             "first_seen": "2026-11-01",
             "allowance_since": "2026-11-01",
+            "last_changed": "2026-11-01",
         }
         for i in range(10)
     }
@@ -194,6 +198,34 @@ def test_drop_over_half_is_degraded() -> None:
     assert is_console_degraded(surviving, previous, html_fetch_failed=False) is True
     healthy = {f"m{i}": _console(f"m{i}") for i in range(6)}
     assert is_console_degraded(healthy, previous, html_fetch_failed=False) is False
+
+
+def test_last_changed_backfilled_from_known_dates() -> None:
+    previous_models = {
+        "alpha": {
+            "key": "alpha",
+            "id": "alpha",
+            "name": "ALPHA",
+            "providers": ["opencode-go"],
+            "context_limit": 1000,
+            "output_limit": 100,
+            "input_cost_per_m": 1.0,
+            "output_cost_per_m": 2.0,
+            "go_allowance": "$60",
+            "go_plus_allowance": "$120",
+            "badges": [],
+            "is_free": False,
+            "first_seen": "2026-11-01",
+            "allowance_since": "2026-11-10",
+            # No last_changed key: state predates the field.
+        }
+    }
+    previous = _snapshot(previous_models)
+    snapshot = merge_snapshot(
+        {"alpha": _api("alpha")}, {"alpha": _console("alpha")}, previous, now=NOW
+    )
+    # Falls back to the later of first_seen and allowance_since.
+    assert snapshot["models"]["alpha"]["last_changed"] == "2026-11-10"
 
 
 def test_models_sorted_deterministically() -> None:

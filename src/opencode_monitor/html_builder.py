@@ -1,12 +1,17 @@
 """Self-contained, accessible static HTML page generation.
 
 Design notes:
-- Single file, inline ``<style>`` only: no JavaScript, web fonts, or external
-  requests of any kind.
+- Single file: inline ``<style>`` and one inline vanilla-JS table sorter.
+  No external requests, web fonts, scripts, or frameworks.
+- Monospace design: the system mono stack is the page font.
 - MaintainableCSS: semantic lowerCamelCase module classes
   (``.module-component``), flat single-class selectors, ``@media`` co-located
   with the owning module.
 - Cascade layers: ``reset, tokens, base, layout, components``.
+- Collapsible tables: every table ships inside a closed ``<details>``
+  panel; opening needs no JavaScript.
+- Sortable tables: each column header holds a ``<button>`` and the ``<th>``
+  carries ``aria-sort``; the inline script sorts rows by ``data-value``.
 - WCAG 2.2 AA: skip link, landmarks, table captions, ``th scope``, scrollable
   regions with ``role="region"``, ``<time>`` stamps, text labels for badges
   (never colour alone), and contrast-checked light/dark tokens.
@@ -40,8 +45,8 @@ _STYLESHEET = """
     --color-border: #767676;
     --color-accent: #0b57d0;
     --color-notice-bg: #fff4d6;
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --font-mono: ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo,
+                 Consolas, "DejaVu Sans Mono", monospace;
     --space-s: 0.5rem;
     --space-m: 0.75rem;
     --space-l: 1.25rem;
@@ -64,8 +69,8 @@ _STYLESHEET = """
 
 @layer base {
   body {
-    font-family: var(--font-sans);
-    font-size: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
     line-height: 1.5;
     background: var(--color-bg);
     color: var(--color-text);
@@ -85,7 +90,7 @@ _STYLESHEET = """
 
 @layer layout {
   .page {
-    max-width: 64rem;
+    max-width: 72rem;
     margin: 0 auto;
     padding: var(--space-l);
   }
@@ -115,53 +120,75 @@ _STYLESHEET = """
     border-radius: var(--radius-s);
   }
 
-  .tableScroll {
-    overflow-x: auto;
+  .tablePanel {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-s);
   }
 
-  .dealsTable, .modelsTable { width: 100%; }
-
-  .dealsTable caption, .modelsTable caption {
+  .tablePanel-toggle {
+    display: block;
     padding: var(--space-m);
+    cursor: pointer;
+    list-style: revert;
+  }
+
+  .tablePanel-toggle::-webkit-details-marker { display: none; }
+  .tablePanel-toggle::before { content: "\\25B8 "; }
+  .tablePanel[open] > .tablePanel-toggle::before { content: "\\25BE "; }
+
+  .tableScroll {
+    overflow-x: auto;
+  }
+
+  .dealsTable, .freeTable, .modelsTable { width: 100%; }
+
+  .dealsTable caption, .freeTable caption, .modelsTable caption {
+    padding: 0 var(--space-m) var(--space-m);
     text-align: left;
     color: var(--color-text-muted);
   }
 
-  .dealsTable th, .dealsTable td, .modelsTable th, .modelsTable td {
+  .dealsTable th, .dealsTable td,
+  .freeTable th, .freeTable td,
+  .modelsTable th, .modelsTable td {
     padding: var(--space-s) var(--space-m);
-    border-bottom: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
     text-align: left;
     vertical-align: top;
-  }
-
-  .dealsTable thead th, .modelsTable thead th {
-    background: var(--color-surface);
-  }
-
-  .dealsTable-badges, .modelsTable-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-s);
-  }
-
-  .dealsTable-badge, .modelsTable-badge {
-    padding: 0.125rem var(--space-s);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-s);
-    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
 
-  .dealsTable-num, .modelsTable-num {
-    font-family: var(--font-mono);
-    font-variant-numeric: tabular-nums;
+  .dealsTable-sort, .freeTable-sort, .modelsTable-sort {
+    all: unset;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .dealsTable-sort:hover, .freeTable-sort:hover, .modelsTable-sort:hover,
+  .dealsTable-sort:focus-visible, .freeTable-sort:focus-visible,
+  .modelsTable-sort:focus-visible {
+    text-decoration: underline;
+  }
+
+  .dealsTable-badges, .freeTable-badges, .modelsTable-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    white-space: normal;
+  }
+
+  .dealsTable-badge, .freeTable-badge, .modelsTable-badge {
+    padding: 0.125rem var(--space-s);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-s);
+    font-size: 0.8125rem;
     white-space: nowrap;
   }
 
   .emptyState {
     padding: var(--space-m);
+    border-top: 1px solid var(--color-border);
     color: var(--color-text-muted);
   }
 
@@ -184,6 +211,45 @@ _STYLESHEET = """
 }
 """
 
+_SCRIPT = """
+"use strict";
+function sortValue(cell, type) {
+  const raw = cell.dataset.value !== undefined ? cell.dataset.value
+    : cell.textContent.trim();
+  if (type === "num") {
+    const number = Number.parseFloat(raw);
+    return Number.isFinite(number) ? number : -Infinity;
+  }
+  return raw.toLowerCase();
+}
+document.querySelectorAll("table").forEach(function (table) {
+  const body = table.tBodies[0];
+  if (!body || !table.tHead) { return; }
+  const headers = Array.from(table.tHead.rows[0].cells);
+  headers.forEach(function (th, index) {
+    const button = th.querySelector("button");
+    if (!button) { return; }
+    button.addEventListener("click", function () {
+      const direction = th.getAttribute("aria-sort") === "ascending"
+        ? "descending" : "ascending";
+      headers.forEach(function (other) {
+        other.setAttribute("aria-sort", "none");
+      });
+      th.setAttribute("aria-sort", direction);
+      const type = button.dataset.sortType || "text";
+      const rows = Array.from(body.rows);
+      rows.sort(function (a, b) {
+        const left = sortValue(a.cells[index], type);
+        const right = sortValue(b.cells[index], type);
+        const order = left < right ? -1 : left > right ? 1 : 0;
+        return direction === "ascending" ? order : -order;
+      });
+      rows.forEach(function (row) { body.appendChild(row); });
+    });
+  });
+});
+"""
+
 
 def _esc(value: Any) -> str:
     return html.escape(str(value), quote=True)
@@ -193,14 +259,35 @@ def _fmt_cost(value: float | None) -> str:
     return "—" if value is None else f"${value:.2f}"
 
 
+def _cost_sort_value(value: float | None) -> str:
+    return "-Infinity" if value is None else str(value)
+
+
 def _fmt_int(value: int | None) -> str:
     return "—" if value is None else f"{value:,}"
+
+
+def _int_sort_value(value: int | None) -> str:
+    return "-Infinity" if value is None else str(value)
+
+
+def _allowance_sort_value(value: str | None) -> str:
+    if value is None:
+        return "-Infinity"
+    if "∞" in value:
+        return "Infinity"
+    digits = value.replace("$", "").replace(",", "")
+    return digits or "-Infinity"
 
 
 def _fmt_date(value: str | None) -> str:
     if not value:
         return "—"
     return f'<time datetime="{_esc(value)}">{_esc(value)}</time>'
+
+
+def _date_sort_value(value: str | None) -> str:
+    return value or ""
 
 
 def _badges(entry: ModelEntry, module: str) -> str:
@@ -215,79 +302,145 @@ def _badges(entry: ModelEntry, module: str) -> str:
     return f'<span class="{module}-badges">{spans}</span>'
 
 
-def _is_promo(entry: ModelEntry) -> bool:
-    return bool(entry["badges"]) or entry["is_free"]
-
-
-def _table(rows: str, caption: str, table_id: str, module: str) -> str:
+def _th(label: str, module: str, sort_type: str) -> str:
     return (
-        f'<div class="tableScroll" tabindex="0" role="region" '
-        f'aria-labelledby="{table_id}">'
-        f'<table class="{module}Table">'
-        f"<caption>{caption}</caption>"
-        f"<thead><tr>"
-        f'<th scope="col">Model</th>'
-        f'<th scope="col">Go</th>'
-        f'<th scope="col">Go Plus</th>'
-        f'<th scope="col">Badges</th>'
-        f'<th scope="col">In $/M</th>'
-        f'<th scope="col">Out $/M</th>'
-        f'<th scope="col">Active since</th>'
-        f"</tr></thead>"
-        f"<tbody>{rows}</tbody>"
-        f"</table></div>"
+        f'<th scope="col" aria-sort="none">'
+        f'<button type="button" class="{module}-sort" '
+        f'data-sort-type="{sort_type}">{_esc(label)}</button></th>'
     )
 
 
-def _promo_row(entry: ModelEntry) -> str:
+def _td(content: str, *, value: str | None = None) -> str:
+    data = f' data-value="{_esc(value)}"' if value is not None else ""
+    return f"<td{data}>{content}</td>"
+
+
+def _is_promo(entry: ModelEntry) -> bool:
+    return bool(entry["badges"]) and not entry["is_free"]
+
+
+def _deal_row(entry: ModelEntry, module: str) -> str:
+    go = _esc(entry["go_allowance"] or "—")
+    go_plus = _esc(entry["go_plus_allowance"] or "—")
+    go_value = _allowance_sort_value(entry["go_allowance"])
+    go_plus_value = _allowance_sort_value(entry["go_plus_allowance"])
+    badges = " ".join(entry["badges"])
+    in_cost = _fmt_cost(entry["input_cost_per_m"])
+    out_cost = _fmt_cost(entry["output_cost_per_m"])
+    in_value = _cost_sort_value(entry["input_cost_per_m"])
+    out_value = _cost_sort_value(entry["output_cost_per_m"])
+    since = _fmt_date(entry["allowance_since"])
+    since_value = _date_sort_value(entry["allowance_since"])
     return (
         f'<tr><th scope="row">{_esc(entry["name"])}</th>'
-        f'<td class="dealsTable-num">{_esc(entry["go_allowance"] or "—")}</td>'
-        f'<td class="dealsTable-num">{_esc(entry["go_plus_allowance"] or "—")}</td>'
-        f"<td>{_badges(entry, 'dealsTable')}</td>"
-        f'<td class="dealsTable-num">{_fmt_cost(entry["input_cost_per_m"])}</td>'
-        f'<td class="dealsTable-num">{_fmt_cost(entry["output_cost_per_m"])}</td>'
-        f"<td>{_fmt_date(entry['allowance_since'])}</td></tr>"
+        f"{_td(go, value=go_value)}"
+        f"{_td(go_plus, value=go_plus_value)}"
+        f"{_td(_badges(entry, module), value=badges)}"
+        f"{_td(in_cost, value=in_value)}"
+        f"{_td(out_cost, value=out_value)}"
+        f"{_td(since, value=since_value)}"
+        f"</tr>"
     )
 
 
 def _model_row(entry: ModelEntry) -> str:
+    providers = ", ".join(entry["providers"]) or "—"
+    badges = " ".join(entry["badges"])
+    go = _esc(entry["go_allowance"] or "—")
+    go_plus = _esc(entry["go_plus_allowance"] or "—")
+    go_value = _allowance_sort_value(entry["go_allowance"])
+    go_plus_value = _allowance_sort_value(entry["go_plus_allowance"])
+    context = _fmt_int(entry["context_limit"])
+    output = _fmt_int(entry["output_limit"])
+    context_value = _int_sort_value(entry["context_limit"])
+    output_value = _int_sort_value(entry["output_limit"])
+    in_cost = _fmt_cost(entry["input_cost_per_m"])
+    out_cost = _fmt_cost(entry["output_cost_per_m"])
+    in_value = _cost_sort_value(entry["input_cost_per_m"])
+    out_value = _cost_sort_value(entry["output_cost_per_m"])
     return (
         f'<tr><th scope="row">{_esc(entry["name"])}</th>'
-        f'<td class="modelsTable-num">{_esc(entry["id"])}</td>'
-        f'<td class="modelsTable-num">{_esc(", ".join(entry["providers"]) or "—")}</td>'
-        f'<td class="modelsTable-num">{_fmt_int(entry["context_limit"])}</td>'
-        f'<td class="modelsTable-num">{_fmt_int(entry["output_limit"])}</td>'
-        f'<td class="modelsTable-num">{_fmt_cost(entry["input_cost_per_m"])}</td>'
-        f'<td class="modelsTable-num">{_fmt_cost(entry["output_cost_per_m"])}</td>'
-        f'<td class="modelsTable-num">{_esc(entry["go_allowance"] or "—")}</td>'
-        f'<td class="modelsTable-num">{_esc(entry["go_plus_allowance"] or "—")}</td>'
-        f"<td>{_badges(entry, 'modelsTable')}</td>"
-        f"<td>{_fmt_date(entry['first_seen'])}</td></tr>"
+        f'{_td(_esc(entry["id"]))}'
+        f"{_td(_esc(providers), value=providers)}"
+        f"{_td(context, value=context_value)}"
+        f"{_td(output, value=output_value)}"
+        f"{_td(in_cost, value=in_value)}"
+        f"{_td(out_cost, value=out_value)}"
+        f"{_td(go, value=go_value)}"
+        f"{_td(go_plus, value=go_plus_value)}"
+        f'{_td(_badges(entry, "modelsTable"), value=badges)}'
+        f'{_td(_fmt_date(entry["first_seen"]), value=_date_sort_value(entry["first_seen"]))}'
+        f'{_td(_fmt_date(entry["last_changed"]), value=_date_sort_value(entry["last_changed"]))}'
+        f"</tr>"
     )
 
 
-def _all_models_table(rows: str) -> str:
+def _deal_table(
+    entries: list[ModelEntry],
+    heading_id: str,
+    module: str,
+    caption: str,
+    empty_text: str,
+) -> str:
+    if not entries:
+        return f'<p class="emptyState">{_esc(empty_text)}</p>'
+    head = (
+        f'<tr>{_th("Model", module, "text")}'
+        f"{_th('Go', module, 'num')}"
+        f"{_th('Go Plus', module, 'num')}"
+        f"{_th('Badges', module, 'text')}"
+        f"{_th('In $/M', module, 'num')}"
+        f"{_th('Out $/M', module, 'num')}"
+        f"{_th('Active since', module, 'text')}</tr>"
+    )
+    rows = "".join(_deal_row(entry, module) for entry in entries)
+    table = (
+        f'<table class="{module}">'
+        f"<caption>{_esc(caption)}</caption>"
+        f"<thead>{head}</thead>"
+        f"<tbody>{rows}</tbody>"
+        f"</table>"
+    )
+    return (
+        f'<div class="tableScroll" tabindex="0" role="region" '
+        f'aria-labelledby="{heading_id}">{table}</div>'
+    )
+
+
+def _all_models_table(entries: list[ModelEntry]) -> str:
+    head = (
+        f'<tr>{_th("Model", "modelsTable", "text")}'
+        f'{_th("ID", "modelsTable", "text")}'
+        f'{_th("Providers", "modelsTable", "text")}'
+        f'{_th("Context", "modelsTable", "num")}'
+        f'{_th("Output cap", "modelsTable", "num")}'
+        f'{_th("In $/M", "modelsTable", "num")}'
+        f'{_th("Out $/M", "modelsTable", "num")}'
+        f'{_th("Go", "modelsTable", "num")}'
+        f'{_th("Go Plus", "modelsTable", "num")}'
+        f'{_th("Badges", "modelsTable", "text")}'
+        f'{_th("First seen", "modelsTable", "text")}'
+        f'{_th("Last changed", "modelsTable", "text")}</tr>'
+    )
+    rows = "".join(_model_row(entry) for entry in entries)
     return (
         f'<div class="tableScroll" tabindex="0" role="region" '
         f'aria-labelledby="all-models-heading">'
         f'<table class="modelsTable">'
         f"<caption>All tracked models from models.dev and the Go console</caption>"
-        f"<thead><tr>"
-        f'<th scope="col">Model</th>'
-        f'<th scope="col">ID</th>'
-        f'<th scope="col">Providers</th>'
-        f'<th scope="col">Context</th>'
-        f'<th scope="col">Output cap</th>'
-        f'<th scope="col">In $/M</th>'
-        f'<th scope="col">Out $/M</th>'
-        f'<th scope="col">Go</th>'
-        f'<th scope="col">Go Plus</th>'
-        f'<th scope="col">Badges</th>'
-        f'<th scope="col">First seen</th>'
-        f"</tr></thead>"
+        f"<thead>{head}</thead>"
         f"<tbody>{rows}</tbody>"
         f"</table></div>"
+    )
+
+
+def _panel(heading_id: str, title: str, inner: str) -> str:
+    # Tables ship collapsed: no `open` attribute, so the page opens small.
+    return (
+        f'<details class="tablePanel">'
+        f'<summary class="tablePanel-toggle">'
+        f'<h2 id="{heading_id}">{_esc(title)}</h2></summary>'
+        f"{inner}</details>"
     )
 
 
@@ -327,8 +480,8 @@ def _changes_log(history: list[HistoryEntry]) -> str:
         timestamp = entry["timestamp"]
         items.append(
             f'<li class="changesLog-entry">'
-            f'<h3 class="changesLog-entryTitle">{_esc(entry["title"])} '
-            f'— <time datetime="{_esc(timestamp)}">{_esc(timestamp)}</time></h3>'
+            f'<h3 class="changesLog-entryTitle">{_esc(entry["title"])}: '
+            f'<time datetime="{_esc(timestamp)}">{_esc(timestamp)}</time></h3>'
             f'<div class="changesLog-detail">{"".join(details)}</div>'
             f"</li>"
         )
@@ -340,20 +493,23 @@ def _changes_log(history: list[HistoryEntry]) -> str:
 def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settings) -> str:
     """Render the full self-contained status page."""
     models = snapshot["models"]
-    promo_rows = "".join(_promo_row(entry) for entry in models.values() if _is_promo(entry))
-    promo_section = (
-        _table(
-            promo_rows,
-            "Models with an active promotion or free tier",
-            "promos-heading",
-            "deals",
-        )
-        if promo_rows
-        else '<p class="emptyState">No active promotions or free models right now.</p>'
-    )
-
-    model_rows = "".join(_model_row(entry) for entry in models.values())
+    promo_entries = [entry for entry in models.values() if _is_promo(entry)]
+    free_entries = [entry for entry in models.values() if entry["is_free"]]
     updated = snapshot["updated_at"]
+    promos = _deal_table(
+        promo_entries,
+        "promos-heading",
+        "dealsTable",
+        "Models with an active promotion",
+        "No active promotions right now.",
+    )
+    frees = _deal_table(
+        free_entries,
+        "free-heading",
+        "freeTable",
+        "Models with a free tier",
+        "No free models right now.",
+    )
 
     return f"""<!doctype html>
 <html lang="en">
@@ -374,14 +530,9 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 </header>
 <main id="main-content">
 {_banner(snapshot)}
-<section aria-labelledby="promos-heading">
-<h2 id="promos-heading">Promos and free models</h2>
-{promo_section}
-</section>
-<section aria-labelledby="all-models-heading">
-<h2 id="all-models-heading">All tracked models</h2>
-{_all_models_table(model_rows)}
-</section>
+{_panel("promos-heading", "Promos", promos)}
+{_panel("free-heading", "Free models", frees)}
+{_panel("all-models-heading", "All tracked models", _all_models_table(list(models.values())))}
 <section aria-labelledby="changes-heading">
 <h2 id="changes-heading">Recent changes</h2>
 {_changes_log(history)}
@@ -392,6 +543,7 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 &middot; sources: models.dev and the OpenCode Go console.</p>
 </footer>
 </div>
+<script>{_SCRIPT}</script>
 </body>
 </html>
 """

@@ -58,6 +58,20 @@ def _carry_forward(entry: ModelEntry, previous_entry: ModelEntry | None) -> None
     # degraded day would hide a genuine deal signal.
 
 
+def _backfill_last_changed(previous_entry: ModelEntry | None) -> str | None:
+    """Best-known change date for models tracked before last_changed existed."""
+    if previous_entry is None:
+        return None
+    explicit = previous_entry.get("last_changed")
+    if explicit:
+        return explicit
+    candidates = [previous_entry["first_seen"]]
+    allowance_since = previous_entry.get("allowance_since")
+    if allowance_since:
+        candidates.append(allowance_since)
+    return max(candidates)
+
+
 def merge_snapshot(
     api_models: dict[str, ApiModel],
     console_models: dict[str, ConsoleModel],
@@ -96,6 +110,7 @@ def merge_snapshot(
             is_free=api.is_free,
             first_seen=previous_entry["first_seen"] if previous_entry else today,
             allowance_since=None,
+            last_changed=_backfill_last_changed(previous_entry) or today,
         )
         console = console_models.get(key)
         if console is not None:
@@ -123,6 +138,7 @@ def merge_snapshot(
             is_free=console.is_free,
             first_seen=previous_entry["first_seen"] if previous_entry else today,
             allowance_since=today,
+            last_changed=_backfill_last_changed(previous_entry) or today,
         )
         entries[key] = entry
 

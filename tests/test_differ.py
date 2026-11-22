@@ -22,6 +22,7 @@ def _entry(**overrides) -> dict:
         "is_free": False,
         "first_seen": "2026-11-01",
         "allowance_since": "2026-11-01",
+        "last_changed": "2026-11-01",
     }
     base.update(overrides)
     return base
@@ -91,5 +92,7 @@ def test_badge_reorder_is_not_a_change() -> None:
 
 def test_untracked_fields_ignored() -> None:
     previous = _snapshot({"alpha": _entry()})
-    current = _snapshot({"alpha": _entry(first_seen="2026-11-23", name="Alpha 2")})
+    current = _snapshot(
+        {"alpha": _entry(first_seen="2026-11-23", name="Alpha 2", last_changed="2026-11-23")}
+    )
     assert diff_snapshots(previous, current).is_empty()

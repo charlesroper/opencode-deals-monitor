@@ -225,6 +225,13 @@ def main(argv: list[str] | None = None) -> int:
 
     diff = DiffResult() if first_run else diff_snapshots(previous, snapshot)
 
+    # A tracked-field change stamps the model's last_changed date.
+    today = now.strftime("%Y-%m-%d")
+    for change in diff.changed:
+        changed_entry = snapshot["models"].get(change.key)
+        if changed_entry is not None:
+            changed_entry["last_changed"] = today
+
     # A run that flips the degradation flag must publish even with no diff:
     # the state file records the flag, and recovery must clear it on disk.
     degraded_flip = (

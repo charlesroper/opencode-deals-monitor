@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import xml.etree.ElementTree as ET
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -47,6 +48,7 @@ def _entry(**overrides) -> ModelEntry:
         is_free=False,
         first_seen="2026-11-01",
         allowance_since="2026-11-01",
+        last_changed="2026-11-01",
     )
     base.update(overrides)  # type: ignore[union-attr]
     return base
@@ -147,24 +149,114 @@ def test_page_structure_and_accessibility() -> None:
     assert '<main id="main-content">' in page
     assert 'role="status"' not in page  # not degraded
     assert "<caption>" in page
-    assert '<th scope="col">Model</th>' in page
+    assert '<th scope="col" aria-sort="none">' in page
     assert '<th scope="row">Alpha</th>' in page
     assert '<time datetime="2026-11-23T08:23:00Z">' in page
     assert 'tabindex="0" role="region"' in page
     assert "Last updated" in page
-    # MaintainableCSS layers and tokens.
+    # MaintainableCSS layers and tokens, monospace design.
     assert "@layer reset, tokens, base, layout, components;" in page
     assert "--color-text-muted" in page
     assert "prefers-color-scheme: dark" in page
+    assert "--font-mono" in page
     assert "tabular-nums" in page
+
+
+def test_tables_are_collapsible_and_closed() -> None:
+    settings = _settings(Path("/tmp/opencode/test-tmp9"))
+    page = build_page(_snapshot(alpha=_entry()), [], settings)
+    assert page.count("<details") == 3  # promos, free, all models
+    assert page.count("<summary") == 3
+    assert "<details open" not in page  # collapsed by default
+    assert '<details class="tablePanel">' in page
+    assert '<summary class="tablePanel-toggle">' in page
+    assert '<h2 id="promos-heading">Promos</h2>' in page
+    assert '<h2 id="free-heading">Free models</h2>' in page
+    assert '<h2 id="all-models-heading">All tracked models</h2>' in page
+
+
+def test_every_column_is_sortable() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp10"))
+    page = build_page(_snapshot(alpha=_entry()), [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    tables = soup.find_all("table")
+    assert tables, "page should render tables"
+    for table in tables:
+        headers = table.thead.find_all("th")
+        assert headers
+        for th in headers:
+            assert th.get("aria-sort") == "none"
+            button = th.find("button")
+            assert button is not None, "every column needs a sort button"
+            assert button.get("data-sort-type") in {"text", "num"}
+            assert button.get("type") == "button"
+
+
+def test_promos_and_free_models_are_separate() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp11"))
+    snapshot = _snapshot(
+        alpha=_entry(badges=["New"]),  # promo only
+        beta=_entry(key="beta", id="beta", name="Beta", is_free=True),  # free only
+        gamma=_entry(key="gamma", id="gamma", name="Gamma", is_free=True, badges=["Limited time"]),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    promos = soup.select_one("#promos-heading").find_parent("details")
+    frees = soup.select_one("#free-heading").find_parent("details")
+    promo_names = [th.get_text() for th in promos.select(".dealsTable tbody th")]
+    free_names = [th.get_text() for th in frees.select(".freeTable tbody th")]
+    assert promo_names == ["Alpha"]  # free models never appear in promos
+    assert free_names == ["Beta", "Gamma"]
+
+
+def test_models_table_has_last_changed_column() -> None:
+    settings = _settings(Path("/tmp/opencode/test-tmp12"))
+    page = build_page(_snapshot(alpha=_entry(last_changed="2026-11-20")), [], settings)
+    assert "Last changed" in page
+    assert '<time datetime="2026-11-20">2026-11-20</time>' in page
+
+
+def test_sort_values_are_machine_readable() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp13"))
+    page = build_page(_snapshot(alpha=_entry()), [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    row = soup.select_one(".modelsTable tbody tr")
+    cells = row.find_all("td")
+    # Go / Go Plus / costs / limits carry numeric data-value attributes.
+    assert cells[6]["data-value"] == "60"  # $60
+    assert cells[7]["data-value"] == "120"  # $120
+    assert cells[4]["data-value"] == "1.0"  # In $/M
+    assert cells[5]["data-value"] == "2.0"  # Out $/M
+    assert cells[2]["data-value"] == "1000"  # context
+    assert cells[3]["data-value"] == "100"  # output cap
+    # Dates fall back to their ISO text; IDs sort as plain text.
+    assert cells[9]["data-value"] == "2026-11-01"  # first seen
+    assert cells[10]["data-value"] == "2026-11-01"  # last changed
+    assert cells[0].get("data-value") is None
+
+
+def test_allowance_sort_values_handle_edge_cases() -> None:
+    from opencode_monitor.html_builder import _allowance_sort_value
+
+    assert _allowance_sort_value("$1,000") == "1000"
+    assert _allowance_sort_value("$∞") == "Infinity"
+    assert _allowance_sort_value(None) == "-Infinity"
 
 
 def test_page_has_no_external_assets() -> None:
     settings = _settings(Path("/tmp/opencode/test-tmp5"))
     page = build_page(_snapshot(alpha=_entry()), [], settings)
+    assert "<script>" in page  # inline sorter only
+    assert "<script src" not in page
+    assert "src=" not in page
     assert "http://" not in page
     assert "https://" not in page
-    assert "<script" not in page
     assert "@import" not in page
 
 
@@ -187,7 +279,8 @@ def test_page_escapes_html() -> None:
 
 def test_empty_states_render_copy() -> None:
     page = build_page(_snapshot(), [], _settings(Path("/tmp/opencode/test-tmp8")))
-    assert "No active promotions or free models right now." in page
+    assert "No active promotions right now." in page
+    assert "No free models right now." in page
     assert "No changes recorded yet." in page
 
 
@@ -345,6 +438,37 @@ def test_history_appends_and_caps(
     history = json.loads(settings.history_path.read_text(encoding="utf-8"))
     assert len(history) == 2
     assert history[-1]["removed"] == [candidate]
+
+
+def test_change_stamps_last_changed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    settings = _settings(tmp_path)
+    monkeypatch.setenv("DATA_DIR", str(settings.data_dir))
+    monkeypatch.setenv("PUBLIC_DIR", str(settings.public_dir))
+    assert main(["--json-fixture", JSON_FIXTURE, "--html-fixture", HTML_FIXTURE]) == 0
+    state = json.loads(settings.state_path.read_text(encoding="utf-8"))
+    glm = state["models"]["glm53"]
+    baseline = glm["last_changed"]
+    assert baseline is not None
+
+    # Change GLM-5.3's input price and give it an older last_changed date,
+    # as it would have after days of quiet runs.
+    state = json.loads(settings.state_path.read_text(encoding="utf-8"))
+    state["models"]["glm53"]["last_changed"] = "2026-11-01"
+    settings.state_path.write_text(json.dumps(state), encoding="utf-8")
+    payload = json.loads(Path(JSON_FIXTURE).read_text(encoding="utf-8"))
+    payload["opencode-go"]["models"]["glm-5.3"]["cost"]["input"] = 2.75
+    bumped = tmp_path / "bumped.json"
+    bumped.write_text(json.dumps(payload), encoding="utf-8")
+    assert main(["--json-fixture", str(bumped), "--html-fixture", HTML_FIXTURE]) == 0
+
+    state = json.loads(settings.state_path.read_text(encoding="utf-8"))
+    glm = state["models"]["glm53"]
+    today = datetime.now(UTC).strftime("%Y-%m-%d")
+    assert glm["input_cost_per_m"] == 2.75
+    assert glm["last_changed"] == today  # stamped by the diff pass
+    assert glm["first_seen"] <= glm["last_changed"]
 
 
 def test_step_summary_written(
