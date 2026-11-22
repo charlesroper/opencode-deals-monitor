@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from typing import Any, TypedDict
+from urllib.parse import quote_plus
 
 
 def normalise_key(value: str) -> str:
@@ -29,6 +30,19 @@ def allowance_value(value: str | None) -> float:
         return float(digits)
     except ValueError:
         return float("-inf")
+
+
+def duckduckgo_ai_url(name: str) -> str:
+    """DuckDuckGo AI search for a model without a verified review page.
+
+    Lands on the AI chat tab with a prompt that asks for a sourced summary,
+    so the answer is grounded in search results.
+    """
+    prompt = (
+        f"What is {name}? Summarise its context window, price and coding "
+        "benchmarks, with sources."
+    )
+    return "https://duckduckgo.com/?q=" + quote_plus(prompt) + "&ia=chat"
 
 
 def artificial_analysis_url(name: str) -> str:

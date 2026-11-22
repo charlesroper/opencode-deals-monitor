@@ -26,10 +26,84 @@ from typing import Any
 from .atom_builder import entry_anchor, field_label, format_timestamp, format_value
 from .config import Settings
 from .differ import change_direction
-from .models import HistoryEntry, ModelEntry, Snapshot
+from .models import HistoryEntry, ModelEntry, Snapshot, duckduckgo_ai_url
 
 # Days a model stays flagged New, or a change stays flagged Recently changed.
 RECENT_WINDOW_DAYS = 7
+
+# Inline destination icons (Artificial Analysis, DuckDuckGo). Embedded as
+# data URIs so the page keeps making no external asset requests.
+_FAVICON_AA = (
+    "data:image/png;base64,"
+    "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"
+)
+
+_FAVICON_DDG = (
+    "data:image/png;base64,"
+    "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"
+)
+
 
 _STYLESHEET = """
 @layer reset, tokens, base, layout, components;
@@ -245,6 +319,20 @@ _STYLESHEET = """
     color: var(--color-down);
   }
 
+  .linkIcon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: var(--space-xs);
+    vertical-align: -1px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .linkIcon--aa { background-image: url("__FAVICON_AA__"); }
+
+  .linkIcon--ddg { background-image: url("__FAVICON_DDG__"); }
+
   .changesLog-marker { color: var(--color-up); }
 
   .changesLog-marker--down { color: var(--color-down); }
@@ -347,6 +435,10 @@ _STYLESHEET = """
   .pageFooter-links { margin-top: var(--space-s); }
 }
 """
+
+_STYLESHEET = _STYLESHEET.replace("__FAVICON_AA__", _FAVICON_AA).replace(
+    "__FAVICON_DDG__", _FAVICON_DDG
+)
 
 _SCRIPT = """
 "use strict";
@@ -547,8 +639,13 @@ def _model_heading_cell(entry: ModelEntry) -> str:
     name = _esc(entry["name"])
     url = entry.get("info_url")
     if url:
-        name = f'<a href="{_esc(url)}">{name}</a>'
-    return f'<th scope="row">{name}</th>'
+        icon_variant, href = "aa", url
+    else:
+        icon_variant, href = "ddg", duckduckgo_ai_url(entry["name"])
+    icon_tag = (
+        f'<span class="linkIcon linkIcon--{icon_variant}" aria-hidden="true"></span>'
+    )
+    return f'<th scope="row">{icon_tag}<a href="{_esc(href)}">{name}</a></th>'
 
 
 def _trend_cell(entry: ModelEntry, module: str) -> str:
@@ -910,7 +1007,8 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 <footer class="pageFooter">
 <p>Data: <a href="deals.json">deals.json</a>
 &middot; sources: models.dev and the OpenCode Go console.</p>
-<p>Model names link to Artificial Analysis where the model is covered.</p>
+<p>Model names link to Artificial Analysis where covered,
+and to a DuckDuckGo AI search otherwise.</p>
 </footer>
 </div>
 <script>{_SCRIPT}</script>

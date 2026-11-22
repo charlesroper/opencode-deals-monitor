@@ -163,7 +163,8 @@ def test_page_structure_and_accessibility() -> None:
     assert 'role="status"' not in page  # not degraded
     assert "<caption>" in page
     assert '<th scope="col" aria-sort="none">' in page
-    assert '<th scope="row">Alpha</th>' in page
+    assert '<th scope="row">' in page
+    assert ">Alpha</a></th>" in page
     assert '<time datetime="2026-11-23T08:23:00Z">' in page
     assert 'tabindex="0" role="region"' in page
     assert "Last updated" in page
@@ -449,10 +450,11 @@ def test_page_has_no_external_assets() -> None:
     page = build_page(_snapshot(alpha=_entry()), [], settings)
     assert "<script>" in page  # inline sorter only
     assert "<script src" not in page
-    assert "src=" not in page
-    assert "http://" not in page
-    assert "https://" not in page
+    assert 'src="http' not in page  # no external assets
+    assert 'background-image: url("data:image/png;base64,' in page
     assert "@import" not in page
+    # External destinations exist only as user-facing links.
+    assert 'href="https://duckduckgo.com/?q=' in page
 
 
 def test_degraded_page_shows_status_banner() -> None:
@@ -902,9 +904,35 @@ def test_model_names_link_when_verified() -> None:
     link = soup.select_one('a[href="https://artificialanalysis.ai/models/linked"]')
     assert link is not None
     assert link.get_text() == "Linked"
-    assert "Model names link to Artificial Analysis" in page
-    # Unverified models stay plain text.
-    assert soup.find("a", string="Plain") is None
+    icon = link.find_previous_sibling("span")
+    assert icon is not None
+    assert "linkIcon--aa" in icon.get("class", [])
+    assert icon.get("aria-hidden") == "true"
+    assert "DuckDuckGo AI search" in page
+
+
+def test_uncovered_models_link_to_duckduckgo_ai() -> None:
+    from urllib.parse import quote_plus
+
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp29"))
+    snapshot = _snapshot(plain=_entry(key="plain", id="plain", name="Plain Model"))
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    link = soup.find("a", string="Plain Model")
+    assert link is not None
+    href = link["href"]
+    assert href.startswith("https://duckduckgo.com/?q=")
+    expected_prompt = (
+        "What is Plain Model? Summarise its context window, price and coding "
+        "benchmarks, with sources."
+    )
+    assert quote_plus(expected_prompt) in href
+    assert href.endswith("&ia=chat")
+    icon = link.find_previous_sibling("span")
+    assert icon is not None
+    assert "linkIcon--ddg" in icon.get("class", [])
 
 
 def test_section_spacing_is_consistent() -> None:

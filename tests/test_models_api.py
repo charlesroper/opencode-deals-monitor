@@ -116,3 +116,13 @@ def test_allowance_value() -> None:
     assert allowance_value(None) == float("-inf")
     assert allowance_value("$∞") == float("inf")
     assert allowance_value("$15") < allowance_value("$60") < allowance_value("$∞")
+
+
+def test_duckduckgo_ai_url() -> None:
+    from opencode_monitor.models import duckduckgo_ai_url
+
+    url = duckduckgo_ai_url("Icy Model")
+    assert url.startswith("https://duckduckgo.com/?q=")
+    assert url.endswith("&ia=chat")
+    assert "What+is+Icy+Model%3F" in url
+    assert "with+sources" in url

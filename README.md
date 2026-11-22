@@ -25,10 +25,12 @@ them to GitHub Pages:
   $50 and up, $20 and up, then lower paid tiers. New marks models that
   arrived after monitoring began, and Recently changed marks models updated
   in the last 7 days. Model names link to Artificial Analysis where that
-  model is covered. Recent changes lists each deal event newest first; every
-  entry has a permalink, and each Atom entry links straight to its changelog
-  entry. A few lines of inline JavaScript handle sorting, and the page loads
-  no external scripts, fonts or other assets.
+  model is covered, and otherwise to a DuckDuckGo AI search that asks for a
+  sourced summary. A small favicon marks the destination. Recent changes
+  lists each deal event newest first; every entry has a permalink, and each
+  Atom entry links straight to its changelog entry. A few lines of inline
+  JavaScript handle sorting, and the page loads no external scripts, fonts
+  or other assets.
 - `deals.json`, a JSON snapshot for scripts and dashboards.
 
 Quiet days write nothing and exit with code `0`, so the live site stays as it
