@@ -1,0 +1,46 @@
+[project]
+name = "opencode-deals-monitor"
+version = "0.1.0"
+description = "Daily monitor of OpenCode Go model deals, published to GitHub Pages"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "httpx>=0.28",
+    "beautifulsoup4>=4.13",
+]
+
+[project.scripts]
+opencode-monitor = "opencode_monitor.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.9",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opencode_monitor"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # bugbear
+    "SIM", # simplify
+    "RUF", # ruff-specific
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

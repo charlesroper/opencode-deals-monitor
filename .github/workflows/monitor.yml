@@ -1,0 +1,111 @@
+name: Monitor
+
+on:
+  schedule:
+    # Daily at 08:23 UTC, off the top of the hour to dodge cron jitter.
+    - cron: "23 8 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild the public outputs even when nothing changed
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: opencode-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v5
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: "3.14"
+
+      - name: Run the monitor
+        id: monitor
+        env:
+          PUBLIC_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          FORCE_FLAG: ${{ inputs.force == true && '--force' || '' }}
+        run: |
+          set +e
+          if [ "$FORCE_FLAG" = "--force" ]; then
+            uv run opencode-monitor --force
+          else
+            uv run opencode-monitor
+          fi
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit state changes
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data/)" ]; then
+            git add data/
+            git commit -m "chore: update monitor state"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # GitHub disables scheduled workflows after 60 days without repo
+      # activity; push an empty commit well before that can happen.
+      - name: Keepalive
+        if: steps.commit.outputs.pushed != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          last=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          age_days=$(( (now - last) / 86400 ))
+          if [ "$age_days" -ge 45 ]; then
+            git commit --allow-empty -m "chore: keepalive scheduled monitor"
+            git push
+          fi
+
+      - name: Check for publishable output
+        id: publish
+        run: |
+          if [ -f public/index.html ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Pages
+        if: steps.publish.outputs.deploy == 'true'
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: steps.publish.outputs.deploy == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy Pages
+        if: steps.publish.outputs.deploy == 'true'
+        uses: actions/deploy-pages@v4
+
+      # Exit codes 1 (models.dev failure) and 2 (degraded console scrape)
+      # fail the job so GitHub sends its native failure notification email.
+      - name: Propagate monitor exit code
+        if: always() && steps.monitor.outputs.exit_code != ''
+        run: |
+          code="${{ steps.monitor.outputs.exit_code }}"
+          exit "$code"

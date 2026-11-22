@@ -1,0 +1,13 @@
+# Build output deployed to GitHub Pages
+public/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.uv-cache/
