@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22T15:56:59Z",
-  "console_html_verified_at": "2026-11-22T15:56:59Z",
+  "updated_at": "2026-11-22T16:13:30Z",
+  "console_html_verified_at": "2026-11-22T16:13:30Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -976,8 +976,8 @@
       "output_limit": 131072,
       "input_cost_per_m": 1.4,
       "output_cost_per_m": 4.4,
-      "go_allowance": "$500",
-      "go_plus_allowance": "$1,000",
+      "go_allowance": "$200",
+      "go_plus_allowance": "$400",
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",

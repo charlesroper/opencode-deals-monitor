@@ -84,5 +84,28 @@
     "removed": [],
     "degraded": false,
     "note": ""
+  },
+  {
+    "id": "urn:opencode-deals:2026-11-22:f19b36ddfe",
+    "timestamp": "2026-11-22T16:13:30Z",
+    "title": "2 changes",
+    "added": [],
+    "changed": [
+      {
+        "key": "glm53",
+        "field": "go_allowance",
+        "old": "$500",
+        "new": "$200"
+      },
+      {
+        "key": "glm53",
+        "field": "go_plus_allowance",
+        "old": "$1,000",
+        "new": "$400"
+      }
+    ],
+    "removed": [],
+    "degraded": false,
+    "note": ""
   }
 ]
