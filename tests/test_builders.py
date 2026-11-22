@@ -187,7 +187,7 @@ def test_every_column_is_sortable() -> None:
         headers = table.thead.find_all("th")
         assert headers
         for th in headers:
-            assert th.get("aria-sort") == "none"
+            assert th.get("aria-sort") is not None
             button = th.find("button")
             assert button is not None, "every column needs a sort button"
             assert button.get("data-sort-type") in {"text", "num"}
@@ -201,7 +201,10 @@ def test_promos_and_free_models_are_separate() -> None:
     snapshot = _snapshot(
         alpha=_entry(badges=["New"]),  # promo only
         beta=_entry(key="beta", id="beta", name="Beta", is_free=True),  # free only
-        gamma=_entry(key="gamma", id="gamma", name="Gamma", is_free=True, badges=["Limited time"]),
+        gamma=_entry(
+            key="gamma", id="gamma", name="Gamma", is_free=True,
+            badges=["Limited time"], go_allowance="$120",
+        ),
     )
     page = build_page(snapshot, [], settings)
     soup = BeautifulSoup(page, "html.parser")
@@ -210,7 +213,8 @@ def test_promos_and_free_models_are_separate() -> None:
     promo_names = [th.get_text() for th in promos.select(".dealsTable tbody th")]
     free_names = [th.get_text() for th in frees.select(".freeTable tbody th")]
     assert promo_names == ["Alpha"]  # free models never appear in promos
-    assert free_names == ["Beta", "Gamma"]
+    # Deal tables default to the most generous Go allowance first.
+    assert free_names == ["Gamma", "Beta"]
 
 
 def test_models_table_has_last_changed_column() -> None:
@@ -228,17 +232,157 @@ def test_sort_values_are_machine_readable() -> None:
     soup = BeautifulSoup(page, "html.parser")
     row = soup.select_one(".modelsTable tbody tr")
     cells = row.find_all("td")
-    # Go / Go Plus / costs / limits carry numeric data-value attributes.
-    assert cells[6]["data-value"] == "60"  # $60
-    assert cells[7]["data-value"] == "120"  # $120
-    assert cells[4]["data-value"] == "1.0"  # In $/M
-    assert cells[5]["data-value"] == "2.0"  # Out $/M
-    assert cells[2]["data-value"] == "1000"  # context
-    assert cells[3]["data-value"] == "100"  # output cap
-    # Dates fall back to their ISO text; IDs sort as plain text.
+    # Column order matches the deal tables, then the models-only columns.
+    assert cells[0]["data-value"] == "60"  # Go: $60
+    assert cells[1]["data-value"] == "120"  # Go Plus: $120
+    assert cells[2]["data-value"] == "New"  # badges sort as text
+    assert cells[3]["data-value"] == "1.0"  # In $/M
+    assert cells[4]["data-value"] == "2.0"  # Out $/M
+    assert cells[5].get("data-value") is None  # ID: plain text
+    assert cells[6]["data-value"] == "opencode-go"  # providers
+    assert cells[7]["data-value"] == "1000"  # context
+    assert cells[8]["data-value"] == "100"  # output cap
     assert cells[9]["data-value"] == "2026-11-01"  # first seen
     assert cells[10]["data-value"] == "2026-11-01"  # last changed
-    assert cells[0].get("data-value") is None
+
+
+def test_all_models_columns_match_deal_table_order() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp14"))
+    page = build_page(_snapshot(alpha=_entry()), [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    deals_head = [th.find("button").get_text() for th in soup.select(".dealsTable thead th")]
+    models_head = [
+        th.find("button").get_text() for th in soup.select(".modelsTable thead th")
+    ]
+    # The shared columns keep the same relative order in both tables.
+    shared = ["Model", "Go", "Go Plus", "Badges", "In $/M", "Out $/M"]
+    assert models_head[: len(shared)] == shared
+    assert deals_head[: len(shared)] == shared
+
+
+def test_all_models_default_sorted_by_go_descending() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp15"))
+    snapshot = _snapshot(
+        paid60=_entry(key="paid60", id="paid60", name="Paid 60", go_allowance="$60"),
+        paid500=_entry(key="paid500", id="paid500", name="Paid 500", go_allowance="$500"),
+        unlimited=_entry(
+            key="unlimited", id="unlimited", name="Unlimited", is_free=True,
+            go_allowance="$∞",
+        ),
+        noallowance=_entry(
+            key="noallowance", id="noallowance", name="No allowance", go_allowance=None
+        ),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    names = [th.get_text() for th in soup.select(".modelsTable tbody th")]
+    assert names == ["Unlimited", "Paid 500", "Paid 60", "No allowance"]
+
+
+def test_go_column_defaults_to_descending_sort() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp16"))
+    page = build_page(_snapshot(alpha=_entry()), [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    for table in soup.find_all("table"):
+        headers = table.thead.find_all("th")
+        for th in headers:
+            expected = "descending" if th.find("button").get_text() == "Go" else "none"
+            assert th.get("aria-sort") == expected
+
+
+def test_hot_flag_marks_top_paid_models() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp17"))
+    entries = {}
+    for rank in range(12):
+        allowance = f"${500 - rank * 10}"
+        entries[f"paid{rank}"] = _entry(
+            key=f"paid{rank}", id=f"paid{rank}", name=f"Paid {rank}",
+            go_allowance=allowance,
+        )
+    entries["free1"] = _entry(
+        key="free1", id="free1", name="Free One", is_free=True, go_allowance="$∞"
+    )
+    page = build_page(_snapshot(**entries), [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    hot_rows = soup.select(".modelsTable tbody .modelsTable-row--hot")
+    assert len(hot_rows) == 10  # the top 10 paid models, not the free one
+    assert all("Top allowance" in row.get_text() for row in hot_rows)
+    free_row = next(
+        str(row) for row in soup.select(".modelsTable tbody tr") if "Free One" in str(row)
+    )
+    assert "Top allowance" not in free_row
+
+
+def test_new_and_recently_changed_flags() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp18"))
+    snapshot = _snapshot(
+        fresh=_entry(
+            key="fresh", id="fresh", name="Fresh", first_seen="2026-11-23",
+            last_changed="2026-11-23",
+        ),
+        updated=_entry(
+            key="updated", id="updated", name="Updated", first_seen="2026-11-01",
+            last_changed="2026-11-22",
+        ),
+        stale=_entry(
+            key="stale", id="stale", name="Stale", first_seen="2026-11-01",
+            last_changed="2026-11-01",
+        ),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    by_name = {
+        th.get_text(): th.find_parent("tr") for th in soup.select(".modelsTable tbody th")
+    }
+    fresh = by_name["Fresh"]
+    assert "modelsTable-row--new" in fresh.get("class", [])
+    assert "New" in fresh.get_text()
+    updated = by_name["Updated"]
+    assert "modelsTable-row--changed" in updated.get("class", [])
+    assert "Recently changed" in updated.get_text()
+    stale = by_name["Stale"]
+    assert "modelsTable-row--new" not in (stale.get("class", []))
+    assert "modelsTable-row--changed" not in (stale.get("class", []))
+
+
+def test_baseline_inventory_is_not_flagged_new() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp19"))
+    # Monitoring began today: everything first seen today is baseline stock.
+    history = [
+        _history(timestamp="2026-11-23T08:23:00Z", title="Monitoring started")
+    ]
+    snapshot = _snapshot(
+        launchday=_entry(
+            key="launchday", id="launchday", name="Launchday",
+            first_seen="2026-11-23", last_changed="2026-11-23",
+        ),
+        postlaunch=_entry(
+            key="postlaunch", id="postlaunch", name="Postlaunch",
+            first_seen="2026-11-23", last_changed="2026-11-23",
+        ),
+    )
+    page = build_page(snapshot, history, settings)
+    soup = BeautifulSoup(page, "html.parser")
+    assert soup.select(".modelsTable-row--new") == []
+
+    # Monitoring began earlier: models first seen after that date get flagged.
+    history = [_history(timestamp="2026-11-20T08:23:00Z", title="Monitoring started")]
+    page = build_page(snapshot, history, settings)
+    soup = BeautifulSoup(page, "html.parser")
+    flagged = [th.get_text() for th in soup.select(".modelsTable-row--new th")]
+    assert flagged == ["Launchday", "Postlaunch"]
 
 
 def test_allowance_sort_values_handle_edge_cases() -> None:

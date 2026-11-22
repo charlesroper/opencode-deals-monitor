@@ -16,9 +16,13 @@ them to GitHub Pages:
 
 - `feed.xml`, an Atom 1.0 feed for feed readers and RSS-to-email services.
 - `index.html`, a static status page in a monospace design. Promos, free
-  models and the full model list each sit in a collapsed panel; open one and
-  click any column to sort it. A few lines of inline JavaScript handle
-  sorting, and the page loads no external scripts, fonts or other assets.
+  models and the full model list each sit in a collapsed panel, and every
+  table opens sorted by Go allowance, largest first. Top allowance marks the
+  10 most generous paid models, New marks models that arrived after
+  monitoring began, and Recently changed marks models updated in the last
+  7 days. Click any column to re-sort. A few lines of inline JavaScript
+  handle sorting, and the page loads no external scripts, fonts or other
+  assets.
 - `deals.json`, a JSON snapshot for scripts and dashboards.
 
 Quiet days write nothing and exit with code `0`, so the live site stays as it

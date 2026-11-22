@@ -20,10 +20,14 @@ Design notes:
 from __future__ import annotations
 
 import html
+from datetime import date
 from typing import Any
 
 from .config import Settings
 from .models import HistoryEntry, ModelEntry, Snapshot
+
+# Days a model stays flagged New, or a change stays flagged Recently changed.
+RECENT_WINDOW_DAYS = 7
 
 _STYLESHEET = """
 @layer reset, tokens, base, layout, components;
@@ -45,6 +49,9 @@ _STYLESHEET = """
     --color-border: #767676;
     --color-accent: #0b57d0;
     --color-notice-bg: #fff4d6;
+    --color-hot-bg: #ffedd8;
+    --color-new-bg: #e4f3e4;
+    --color-changed-bg: #e3eefc;
     --font-mono: ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo,
                  Consolas, "DejaVu Sans Mono", monospace;
     --space-s: 0.5rem;
@@ -63,6 +70,9 @@ _STYLESHEET = """
       --color-border: #6e6e6e;
       --color-accent: #a8c7fa;
       --color-notice-bg: #2b2617;
+      --color-hot-bg: #2b2114;
+      --color-new-bg: #152318;
+      --color-changed-bg: #14202e;
     }
   }
 }
@@ -178,6 +188,10 @@ _STYLESHEET = """
     white-space: normal;
   }
 
+  .modelsTable-row--hot { background: var(--color-hot-bg); }
+  .modelsTable-row--new { background: var(--color-new-bg); }
+  .modelsTable-row--changed { background: var(--color-changed-bg); }
+
   .dealsTable-badge, .freeTable-badge, .modelsTable-badge {
     padding: 0.125rem var(--space-s);
     border: 1px solid var(--color-border);
@@ -280,6 +294,78 @@ def _allowance_sort_value(value: str | None) -> str:
     return digits or "-Infinity"
 
 
+def _allowance_float(value: str | None) -> float:
+    return float(_allowance_sort_value(value))
+
+
+def _order_by_allowance(entries: list[ModelEntry]) -> list[ModelEntry]:
+    """Default order: the most generous Go allowances rise to the top."""
+    return sorted(
+        entries,
+        key=lambda entry: (
+            -_allowance_float(entry["go_allowance"]),
+            entry["name"].casefold(),
+        ),
+    )
+
+
+def _top_allowance_keys(entries: list[ModelEntry], limit: int = 10) -> set[str]:
+    """Keys of the hottest paid models: the 10 largest Go allowances, ties kept.
+
+    Free tiers are excluded: the Free badge already marks them.
+    """
+    paid = [
+        entry
+        for entry in entries
+        if not entry["is_free"] and entry["go_allowance"] is not None
+    ]
+    if not paid:
+        return set()
+    ranked = _order_by_allowance(paid)
+    cutoff = _allowance_float(ranked[min(limit, len(ranked)) - 1]["go_allowance"])
+    return {
+        entry["key"]
+        for entry in paid
+        if _allowance_float(entry["go_allowance"]) >= cutoff
+    }
+
+
+def _days_before(today: str, date_str: str | None) -> int | None:
+    if not date_str:
+        return None
+    try:
+        parsed_today = date.fromisoformat(today)
+        parsed = date.fromisoformat(date_str)
+    except ValueError:
+        return None
+    return (parsed_today - parsed).days
+
+
+def _is_within_window(today: str, date_str: str | None) -> bool:
+    days = _days_before(today, date_str)
+    return days is not None and days <= RECENT_WINDOW_DAYS
+
+
+def _computed_flags(
+    entry: ModelEntry, today: str, baseline_date: str | None
+) -> list[str]:
+    """New and Recently changed labels for the All tracked models table.
+
+    ``New`` marks models that first appeared after monitoring began (the
+    baseline date), so the starting inventory never lights up. The label
+    holds for ``RECENT_WINDOW_DAYS`` days.
+    """
+    flags: list[str] = []
+    seen_after_baseline = baseline_date is None or entry["first_seen"] > baseline_date
+    if seen_after_baseline and _is_within_window(today, entry["first_seen"]):
+        flags.append("New")
+    last_changed = entry.get("last_changed")
+    changed_after_first_seen = last_changed and last_changed > entry["first_seen"]
+    if changed_after_first_seen and _is_within_window(today, last_changed):
+        flags.append("Recently changed")
+    return flags
+
+
 def _fmt_date(value: str | None) -> str:
     if not value:
         return "—"
@@ -302,9 +388,9 @@ def _badges(entry: ModelEntry, module: str) -> str:
     return f'<span class="{module}-badges">{spans}</span>'
 
 
-def _th(label: str, module: str, sort_type: str) -> str:
+def _th(label: str, module: str, sort_type: str, *, default: str = "none") -> str:
     return (
-        f'<th scope="col" aria-sort="none">'
+        f'<th scope="col" aria-sort="{default}">'
         f'<button type="button" class="{module}-sort" '
         f'data-sort-type="{sort_type}">{_esc(label)}</button></th>'
     )
@@ -343,9 +429,13 @@ def _deal_row(entry: ModelEntry, module: str) -> str:
     )
 
 
-def _model_row(entry: ModelEntry) -> str:
+def _model_row(
+    entry: ModelEntry,
+    today: str,
+    hot_keys: set[str],
+    baseline_date: str | None,
+) -> str:
     providers = ", ".join(entry["providers"]) or "—"
-    badges = " ".join(entry["badges"])
     go = _esc(entry["go_allowance"] or "—")
     go_plus = _esc(entry["go_plus_allowance"] or "—")
     go_value = _allowance_sort_value(entry["go_allowance"])
@@ -358,17 +448,38 @@ def _model_row(entry: ModelEntry) -> str:
     out_cost = _fmt_cost(entry["output_cost_per_m"])
     in_value = _cost_sort_value(entry["input_cost_per_m"])
     out_value = _cost_sort_value(entry["output_cost_per_m"])
+    flags = _computed_flags(entry, today, baseline_date)
+    badges = [*entry["badges"], *flags]
+    if entry["is_free"]:
+        badges.append("Free")
+    if entry["key"] in hot_keys:
+        badges.append("Top allowance")
+    badges = list(dict.fromkeys(badges))  # dedupe, preserve order
+    hot_class = " modelsTable-row--hot" if entry["key"] in hot_keys else ""
+    if "New" in flags:
+        hot_class += " modelsTable-row--new"
+    if "Recently changed" in flags:
+        hot_class += " modelsTable-row--changed"
+    badge_spans = "".join(
+        f'<span class="modelsTable-badge">{_esc(badge)}</span>' for badge in badges
+    ) or "—"
+    badge_block = (
+        f'<span class="modelsTable-badges">{badge_spans}</span>'
+        if badge_spans != "—"
+        else badge_spans
+    )
     return (
-        f'<tr><th scope="row">{_esc(entry["name"])}</th>'
+        f'<tr class="modelsTable-row{hot_class}">'
+        f'<th scope="row">{_esc(entry["name"])}</th>'
+        f"{_td(go, value=go_value)}"
+        f"{_td(go_plus, value=go_plus_value)}"
+        f"{_td(badge_block, value=' '.join(entry['badges']))}"
+        f"{_td(in_cost, value=in_value)}"
+        f"{_td(out_cost, value=out_value)}"
         f'{_td(_esc(entry["id"]))}'
         f"{_td(_esc(providers), value=providers)}"
         f"{_td(context, value=context_value)}"
         f"{_td(output, value=output_value)}"
-        f"{_td(in_cost, value=in_value)}"
-        f"{_td(out_cost, value=out_value)}"
-        f"{_td(go, value=go_value)}"
-        f"{_td(go_plus, value=go_plus_value)}"
-        f'{_td(_badges(entry, "modelsTable"), value=badges)}'
         f'{_td(_fmt_date(entry["first_seen"]), value=_date_sort_value(entry["first_seen"]))}'
         f'{_td(_fmt_date(entry["last_changed"]), value=_date_sort_value(entry["last_changed"]))}'
         f"</tr>"
@@ -386,14 +497,14 @@ def _deal_table(
         return f'<p class="emptyState">{_esc(empty_text)}</p>'
     head = (
         f'<tr>{_th("Model", module, "text")}'
-        f"{_th('Go', module, 'num')}"
+        f"{_th('Go', module, 'num', default='descending')}"
         f"{_th('Go Plus', module, 'num')}"
         f"{_th('Badges', module, 'text')}"
         f"{_th('In $/M', module, 'num')}"
         f"{_th('Out $/M', module, 'num')}"
         f"{_th('Active since', module, 'text')}</tr>"
     )
-    rows = "".join(_deal_row(entry, module) for entry in entries)
+    rows = "".join(_deal_row(entry, module) for entry in _order_by_allowance(entries))
     table = (
         f'<table class="{module}">'
         f"<caption>{_esc(caption)}</caption>"
@@ -407,27 +518,36 @@ def _deal_table(
     )
 
 
-def _all_models_table(entries: list[ModelEntry]) -> str:
+def _all_models_table(
+    entries: list[ModelEntry], today: str, baseline_date: str | None
+) -> str:
     head = (
         f'<tr>{_th("Model", "modelsTable", "text")}'
+        f'{_th("Go", "modelsTable", "num", default="descending")}'
+        f'{_th("Go Plus", "modelsTable", "num")}'
+        f'{_th("Badges", "modelsTable", "text")}'
+        f'{_th("In $/M", "modelsTable", "num")}'
+        f'{_th("Out $/M", "modelsTable", "num")}'
         f'{_th("ID", "modelsTable", "text")}'
         f'{_th("Providers", "modelsTable", "text")}'
         f'{_th("Context", "modelsTable", "num")}'
         f'{_th("Output cap", "modelsTable", "num")}'
-        f'{_th("In $/M", "modelsTable", "num")}'
-        f'{_th("Out $/M", "modelsTable", "num")}'
-        f'{_th("Go", "modelsTable", "num")}'
-        f'{_th("Go Plus", "modelsTable", "num")}'
-        f'{_th("Badges", "modelsTable", "text")}'
         f'{_th("First seen", "modelsTable", "text")}'
         f'{_th("Last changed", "modelsTable", "text")}</tr>'
     )
-    rows = "".join(_model_row(entry) for entry in entries)
+    ordered = _order_by_allowance(entries)
+    hot_keys = _top_allowance_keys(entries)
+    rows = "".join(
+        _model_row(entry, today, hot_keys, baseline_date) for entry in ordered
+    )
     return (
         f'<div class="tableScroll" tabindex="0" role="region" '
         f'aria-labelledby="all-models-heading">'
         f'<table class="modelsTable">'
-        f"<caption>All tracked models from models.dev and the Go console</caption>"
+        f"<caption>All tracked models from models.dev and the Go console. "
+        f"Top allowance marks the 10 paid models with the largest Go monthly "
+        f"allowance. New and Recently changed mark models from the last "
+        f"{RECENT_WINDOW_DAYS} days. Rows start sorted by Go allowance.</caption>"
         f"<thead>{head}</thead>"
         f"<tbody>{rows}</tbody>"
         f"</table></div>"
@@ -496,6 +616,8 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
     promo_entries = [entry for entry in models.values() if _is_promo(entry)]
     free_entries = [entry for entry in models.values() if entry["is_free"]]
     updated = snapshot["updated_at"]
+    today = updated.split("T")[0]
+    baseline_date = history[0]["timestamp"].split("T")[0] if history else None
     promos = _deal_table(
         promo_entries,
         "promos-heading",
@@ -510,6 +632,7 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
         "Models with a free tier",
         "No free models right now.",
     )
+    all_models = _all_models_table(list(models.values()), today, baseline_date)
 
     return f"""<!doctype html>
 <html lang="en">
@@ -532,7 +655,7 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 {_banner(snapshot)}
 {_panel("promos-heading", "Promos", promos)}
 {_panel("free-heading", "Free models", frees)}
-{_panel("all-models-heading", "All tracked models", _all_models_table(list(models.values())))}
+{_panel("all-models-heading", "All tracked models", all_models)}
 <section aria-labelledby="changes-heading">
 <h2 id="changes-heading">Recent changes</h2>
 {_changes_log(history)}
