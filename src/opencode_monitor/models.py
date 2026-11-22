@@ -40,7 +40,8 @@ def duckduckgo_ai_url(name: str) -> str:
     """
     prompt = (
         f"What is {name}? Summarise its context window, price and coding "
-        "benchmarks, with sources."
+        "benchmarks, plus community opinion and sentiment from Hacker News, "
+        "Lobsters, Reddit and similar sites. Cite sources."
     )
     return "https://duckduckgo.com/?q=" + quote_plus(prompt) + "&ia=chat&prompt=1"
 

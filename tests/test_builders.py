@@ -926,7 +926,8 @@ def test_uncovered_models_link_to_duckduckgo_ai() -> None:
     assert href.startswith("https://duckduckgo.com/?q=")
     expected_prompt = (
         "What is Plain Model? Summarise its context window, price and coding "
-        "benchmarks, with sources."
+        "benchmarks, plus community opinion and sentiment from Hacker News, "
+        "Lobsters, Reddit and similar sites. Cite sources."
     )
     assert quote_plus(expected_prompt) in href
     assert href.endswith("&ia=chat&prompt=1")

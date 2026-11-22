@@ -125,4 +125,6 @@ def test_duckduckgo_ai_url() -> None:
     assert url.startswith("https://duckduckgo.com/?q=")
     assert url.endswith("&ia=chat&prompt=1")
     assert "What+is+Icy+Model%3F" in url
-    assert "with+sources" in url
+    assert "community+opinion+and+sentiment" in url
+    assert "Hacker+News%2C+Lobsters%2C+Reddit" in url
+    assert "Cite+sources" in url
