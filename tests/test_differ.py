@@ -11,6 +11,7 @@ def _entry(**overrides) -> dict:
         "key": "alpha",
         "id": "alpha",
         "name": "Alpha",
+        "canonical_model_id": None,
         "providers": ["opencode-go"],
         "context_limit": 1000,
         "output_limit": 100,
@@ -28,6 +29,8 @@ def _entry(**overrides) -> dict:
         "info_checked": None,
         "epoch_url": None,
         "epoch_checked": None,
+        "opencode_url": None,
+        "opencode_checked": None,
     }
     base.update(overrides)
     return base

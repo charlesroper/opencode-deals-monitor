@@ -22,17 +22,18 @@ them to GitHub Pages:
   column, and changelog entries carry the same marker: ▲ marks a change in
   your favour (or a model starting), ▼ one against (or a model ending). A
   Links column follows the model name with the same destinations in a fixed
-  order: a DuckDuckGo AI search first, then Artificial Analysis and Epoch AI
-  pages where they exist. Rows are tinted in five tiers by Go allowance:
-  unlimited, $100 and up, $50 and up, $20 and up, then lower paid tiers. New
-  marks models that arrived after monitoring began, and Recently changed
-  marks models updated in the last 7 days. Model names link to Artificial
-  Analysis where that model is covered, and otherwise to a DuckDuckGo AI
-  search that asks for a sourced summary and community sentiment. A small
-  favicon marks each destination. Recent changes lists each deal event
-  newest first; every entry has a permalink, and each Atom entry links
-  straight to its changelog entry. A few lines of inline JavaScript handle
-  sorting, and the page loads no external scripts, fonts or other assets.
+  order: a DuckDuckGo AI search first, then the OpenCode model page,
+  Artificial Analysis and Epoch AI pages where they exist. Rows are tinted in
+  five tiers by Go allowance: unlimited, $100 and up, $50 and up, $20 and up,
+  then lower paid tiers. New marks models that arrived after monitoring
+  began, and Recently changed marks models updated in the last 7 days.
+  Model names link to the OpenCode model page where one exists, otherwise to
+  Artificial Analysis, or to a DuckDuckGo AI search that asks for a sourced
+  summary and community sentiment. A small favicon marks each destination.
+  Recent changes lists each deal event newest first; every entry has a
+  permalink, and each Atom entry links straight to its changelog entry. A
+  few lines of inline JavaScript handle sorting, and the page loads no
+  external scripts, fonts or other assets.
 - `deals.json`, a JSON snapshot for scripts and dashboards.
 
 Quiet days write nothing and exit with code `0`, so the live site stays as it

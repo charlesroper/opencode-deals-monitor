@@ -28,6 +28,7 @@ from .models import (
     Snapshot,
     artificial_analysis_url,
     epoch_ai_url,
+    opencode_model_url,
 )
 from .models_api import parse_models_api
 from .state_store import load_json, write_json_atomic, write_text_atomic
@@ -200,8 +201,13 @@ def _refresh_model_links(snapshot: Snapshot, today: str) -> bool:
     any model's link metadata changed.
     """
     checks = (
-        ("info_url", "info_checked", artificial_analysis_url),
-        ("epoch_url", "epoch_checked", epoch_ai_url),
+        ("info_url", "info_checked", lambda entry: artificial_analysis_url(entry["name"])),
+        ("epoch_url", "epoch_checked", lambda entry: epoch_ai_url(entry["name"])),
+        (
+            "opencode_url",
+            "opencode_checked",
+            lambda entry: opencode_model_url(entry.get("canonical_model_id")),
+        ),
     )
     changed = False
     with make_client() as client:
@@ -212,7 +218,13 @@ def _refresh_model_links(snapshot: Snapshot, today: str) -> bool:
                 if _needs_link_check(entry, url_key, checked_key, today)
             ]
             for entry in pending:
-                url = url_for(entry["name"])
+                url = url_for(entry)
+                if url is None:
+                    # No canonical id means no OpenCode page can ever exist.
+                    entry[checked_key] = today
+                    entry[url_key] = None
+                    changed = True
+                    continue
                 result = url_exists(url, client=client)
                 if result is None:
                     continue

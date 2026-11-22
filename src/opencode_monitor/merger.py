@@ -99,6 +99,7 @@ def merge_snapshot(
             key=key,
             id=api.id,
             name=api.name,
+            canonical_model_id=api.canonical_model_id,
             providers=list(api.providers),
             context_limit=api.context_limit,
             output_limit=api.output_limit,
@@ -118,6 +119,12 @@ def merge_snapshot(
             epoch_checked=(
                 previous_entry.get("epoch_checked") if previous_entry else None
             ),
+            opencode_url=(
+                previous_entry.get("opencode_url") if previous_entry else None
+            ),
+            opencode_checked=(
+                previous_entry.get("opencode_checked") if previous_entry else None
+            ),
         )
         console = console_models.get(key)
         if console is not None:
@@ -134,6 +141,9 @@ def merge_snapshot(
             key=key,
             id=console.name,
             name=console.name,
+            canonical_model_id=(
+                previous_entry.get("canonical_model_id") if previous_entry else None
+            ),
             providers=[],
             context_limit=None,
             output_limit=None,
@@ -152,6 +162,12 @@ def merge_snapshot(
             epoch_url=previous_entry.get("epoch_url") if previous_entry else None,
             epoch_checked=(
                 previous_entry.get("epoch_checked") if previous_entry else None
+            ),
+            opencode_url=(
+                previous_entry.get("opencode_url") if previous_entry else None
+            ),
+            opencode_checked=(
+                previous_entry.get("opencode_checked") if previous_entry else None
             ),
         )
         entries[key] = entry

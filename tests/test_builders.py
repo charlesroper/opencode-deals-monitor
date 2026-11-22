@@ -43,6 +43,7 @@ def _entry(**overrides) -> ModelEntry:
         key="alpha",
         id="alpha",
         name="Alpha",
+        canonical_model_id=None,
         providers=["opencode-go"],
         context_limit=1000,
         output_limit=100,
@@ -60,6 +61,8 @@ def _entry(**overrides) -> ModelEntry:
         info_checked=None,
         epoch_url=None,
         epoch_checked=None,
+        opencode_url=None,
+        opencode_checked=None,
     )
     base.update(overrides)  # type: ignore[union-attr]
     return base
@@ -689,14 +692,19 @@ def test_link_check_records_verified_urls(
     assert glm["info_checked"] is not None
     assert glm["epoch_url"] == "https://epoch.ai/models/glm-5-3"
     assert glm["epoch_checked"] is not None
+    assert glm["opencode_url"] == "https://opencode.ai/data/zhipuai/glm-5-3"
+    assert glm["opencode_checked"] is not None
     beam = state["models"]["beamfree"]
     assert beam["info_url"] is None
     assert beam["info_checked"] is not None
     assert beam["epoch_url"] is None
     assert beam["epoch_checked"] is not None
+    assert beam["opencode_url"] is None
+    assert beam["opencode_checked"] is not None
     page = settings.html_path.read_text(encoding="utf-8")
     assert 'href="https://artificialanalysis.ai/models/glm-5-3"' in page
     assert 'href="https://epoch.ai/models/glm-5-3"' in page
+    assert 'href="https://opencode.ai/data/zhipuai/glm-5-3"' in page
 
 
 def test_no_link_check_flag_skips_verification(
@@ -975,6 +983,7 @@ def test_force_run_populates_links_without_history_entry(
     state_after = json.loads(settings.state_path.read_text(encoding="utf-8"))
     assert state_after["models"]["glm53"]["info_url"].endswith("/glm-5-3")
     assert state_after["models"]["glm53"]["epoch_url"].endswith("/glm-5-3")
+    assert state_after["models"]["glm53"]["opencode_url"].endswith("/glm-5-3")
     # A link-only metadata change must not add a changelog event.
     assert settings.history_path.read_text(encoding="utf-8") == history_before
 
@@ -988,6 +997,7 @@ def test_links_column_order_and_presence() -> None:
             key="full", id="full", name="Full Model",
             info_url="https://artificialanalysis.ai/models/full-model",
             epoch_url="https://epoch.ai/models/full-model",
+            opencode_url="https://opencode.ai/data/maker/full-model",
         ),
         aa_only=_entry(
             key="aaonly", id="aaonly", name="AA Only",
@@ -1002,7 +1012,7 @@ def test_links_column_order_and_presence() -> None:
         for th in soup.select(".modelsTable tbody th")
     }
     full_links = [a.get_text() for a in cells["Full Model"].select("a")]
-    assert full_links == ["DDG", "AA", "Epoch"]
+    assert full_links == ["DDG", "OpenCode", "AA", "Epoch"]
     aa_links = [a.get_text() for a in cells["AA Only"].select("a")]
     assert aa_links == ["DDG", "AA"]
     bare_links = [a.get_text() for a in cells["Bare"].select("a")]
@@ -1012,12 +1022,39 @@ def test_links_column_order_and_presence() -> None:
         "DuckDuckGo AI search for Full Model"
     )
     labels = [a["aria-label"] for a in cells["Full Model"].select("a")]
-    assert labels[1] == "Artificial Analysis page for Full Model"
-    assert labels[2] == "Epoch AI page for Full Model"
+    assert labels[1] == "OpenCode page for Full Model"
+    assert labels[2] == "Artificial Analysis page for Full Model"
+    assert labels[3] == "Epoch AI page for Full Model"
     # The new column appears in every table.
     for table in soup.find_all("table"):
         headers = [th.find("button").get_text() for th in table.thead.find_all("th")]
         assert "Links" in headers
+
+
+def test_model_name_prefers_opencode_page() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp31"))
+    snapshot = _snapshot(
+        page=_entry(
+            key="page", id="page", name="Page Model",
+            opencode_url="https://opencode.ai/data/maker/page-model",
+            info_url="https://artificialanalysis.ai/models/page-model",
+        ),
+        fallback=_entry(
+            key="fallback", id="fallback", name="Fallback",
+            info_url="https://artificialanalysis.ai/models/fallback",
+        ),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    page_link = soup.find("a", string="Page Model")
+    assert page_link["href"] == "https://opencode.ai/data/maker/page-model"
+    icon = page_link.find_previous_sibling("span")
+    assert "linkIcon--opencode" in icon.get("class", [])
+    fallback_link = soup.find("a", string="Fallback")
+    assert "artificialanalysis.ai" in fallback_link["href"]
+    assert "linkIcon--aa" in fallback_link.find_previous_sibling("span").get("class", [])
 
 
 def test_step_summary_written(

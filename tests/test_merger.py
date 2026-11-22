@@ -16,6 +16,7 @@ def _api(key: str, *, is_free: bool = False) -> ApiModel:
         key=key,
         id=key,
         name=key.upper(),
+        canonical_model_id=None,
         providers=("opencode-go",),
         context_limit=1000,
         output_limit=100,
@@ -78,6 +79,7 @@ def test_first_seen_preserved_and_allowance_since_resets() -> None:
                 "key": "alpha",
                 "id": "alpha",
                 "name": "ALPHA",
+                "canonical_model_id": None,
                 "providers": ["opencode-go"],
                 "context_limit": 1000,
                 "output_limit": 100,
@@ -95,6 +97,8 @@ def test_first_seen_preserved_and_allowance_since_resets() -> None:
                 "info_checked": None,
                 "epoch_url": None,
                 "epoch_checked": None,
+                "opencode_url": None,
+                "opencode_checked": None,
             }
         }
     )
@@ -120,6 +124,7 @@ def test_degraded_scrape_carries_fields_forward() -> None:
                 "key": "alpha",
                 "id": "alpha",
                 "name": "ALPHA",
+                "canonical_model_id": None,
                 "providers": ["opencode-go"],
                 "context_limit": 1000,
                 "output_limit": 100,
@@ -137,6 +142,8 @@ def test_degraded_scrape_carries_fields_forward() -> None:
                 "info_checked": None,
                 "epoch_url": None,
                 "epoch_checked": None,
+                "opencode_url": None,
+                "opencode_checked": None,
             }
         }
     )
@@ -159,6 +166,7 @@ def test_recovery_clears_degraded_flag() -> None:
                 "key": "alpha",
                 "id": "alpha",
                 "name": "ALPHA",
+                "canonical_model_id": None,
                 "providers": ["opencode-go"],
                 "context_limit": 1000,
                 "output_limit": 100,
@@ -176,6 +184,8 @@ def test_recovery_clears_degraded_flag() -> None:
                 "info_checked": None,
                 "epoch_url": None,
                 "epoch_checked": None,
+                "opencode_url": None,
+                "opencode_checked": None,
             }
         }
     )
@@ -210,6 +220,8 @@ def test_drop_over_half_is_degraded() -> None:
             "info_checked": None,
             "epoch_url": None,
             "epoch_checked": None,
+            "opencode_url": None,
+            "opencode_checked": None,
         }
         for i in range(10)
     }
@@ -226,6 +238,7 @@ def test_last_changed_backfilled_from_known_dates() -> None:
             "key": "alpha",
             "id": "alpha",
             "name": "ALPHA",
+            "canonical_model_id": None,
             "providers": ["opencode-go"],
             "context_limit": 1000,
             "output_limit": 100,

@@ -92,6 +92,21 @@ def test_non_object_payload_rejected() -> None:
         parse_models_api(["nope"])
 
 
+def test_canonical_model_id_parsed() -> None:
+    payload = {
+        "opencode-go": {
+            "models": {
+                "glm-5.3": {
+                    "id": "glm-5.3",
+                    "name": "GLM-5.3",
+                    "canonical_model_id": "zhipuai/glm-5.3",
+                }
+            }
+        }
+    }
+    assert parse_models_api(payload)["glm53"].canonical_model_id == "zhipuai/glm-5.3"
+
+
 def test_artificial_analysis_slug() -> None:
     from opencode_monitor.models import artificial_analysis_url
 
@@ -116,6 +131,19 @@ def test_allowance_value() -> None:
     assert allowance_value(None) == float("-inf")
     assert allowance_value("$∞") == float("inf")
     assert allowance_value("$15") < allowance_value("$60") < allowance_value("$∞")
+
+
+def test_opencode_model_url() -> None:
+    from opencode_monitor.models import opencode_model_url
+
+    assert (
+        opencode_model_url("deepseek/deepseek-v4.1-flash")
+        == "https://opencode.ai/data/deepseek/deepseek-v4-1-flash"
+    )
+    assert opencode_model_url("zhipuai/glm-5.3") == "https://opencode.ai/data/zhipuai/glm-5-3"
+    assert opencode_model_url("tencent/hy4") == "https://opencode.ai/data/tencent/hy4"
+    assert opencode_model_url(None) is None
+    assert opencode_model_url("no-slash") is None
 
 
 def test_duckduckgo_ai_url() -> None:

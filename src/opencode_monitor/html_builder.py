@@ -146,6 +146,19 @@ _FAVICON_EPOCH = (
 )
 
 
+_FAVICON_OPENCODE = (
+    "data:image/png;base64,"
+    "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABh0lEQVR42u2XS26DMBCG/wHbG5uH"
+    "BHdhm6g9W3OpVhwosCBZAp2ujMjTBkLZxJI3YYg///OEsjRlbLgCbLw2BxAuAyJadAAzLwNo23bZ"
+    "DYWYD0BEyPIcwUwVfplxapqnKohHB7dtiyzL8FOWSJIEzOztDmvbNA0+djvUdQ0p5V0QpwJ5nsMY"
+    "M0sBKaUT2isGmHm4lesPx7Y+8eOVBfZQZkbzxKdEhDiOh3d8XCZ85bQ+/dzvb3w6jpnvskSapq+r"
+    "A9fy1nWN4/F4F8An7xcB2Ly2ewzAzM6cfwmAlHLYYwD7bFWAMAxRFAVO5/ONAl3XIY4ihGG4sgJK"
+    "QSl1AxAEAaRS67vA5rnd17+/54HVXXCvyk2pfIsB+r5H13UXRcdmQd/36wIQEbTWQ9G5BtBaT1ZB"
+    "TIl+Ywy+Dgc8inUCoI2ZNDuIKWlHRDBR5GXv2xecAHao8L3R2NanNAvXbaqqGoaSOSOZSwV69mVE"
+    "RIiT5P+H0ov+X1XbjeVzW+xLP0zmNJh3M5qy/gArfue1qzV+HwAAAABJRU5ErkJggg=="
+)
+
+
 _STYLESHEET = """
 @layer reset, tokens, base, layout, components;
 
@@ -376,6 +389,8 @@ _STYLESHEET = """
 
   .linkIcon--epoch { background-image: url("__FAVICON_EPOCH__"); }
 
+  .linkIcon--opencode { background-image: url("__FAVICON_OPENCODE__"); }
+
   .linksCell {
     display: flex;
     flex-wrap: wrap;
@@ -495,6 +510,7 @@ _STYLESHEET = (
     _STYLESHEET.replace("__FAVICON_AA__", _FAVICON_AA)
     .replace("__FAVICON_DDG__", _FAVICON_DDG)
     .replace("__FAVICON_EPOCH__", _FAVICON_EPOCH)
+    .replace("__FAVICON_OPENCODE__", _FAVICON_OPENCODE)
 )
 
 _SCRIPT = """
@@ -694,9 +710,10 @@ def _td(content: str, *, value: str | None = None) -> str:
 
 def _model_heading_cell(entry: ModelEntry) -> str:
     name = _esc(entry["name"])
-    url = entry.get("info_url")
-    if url:
-        icon_variant, href = "aa", url
+    if entry.get("opencode_url"):
+        icon_variant, href = "opencode", entry["opencode_url"]
+    elif entry.get("info_url"):
+        icon_variant, href = "aa", entry["info_url"]
     else:
         icon_variant, href = "ddg", duckduckgo_ai_url(entry["name"])
     icon_tag = (
@@ -706,7 +723,7 @@ def _model_heading_cell(entry: ModelEntry) -> str:
 
 
 def _links_cell(entry: ModelEntry) -> str:
-    """Destinations in a fixed order: DuckDuckGo, then AA, then Epoch AI."""
+    """Destinations in a fixed order: DuckDuckGo, OpenCode, AA, then Epoch."""
     name = entry["name"]
     destinations = [
         (
@@ -716,6 +733,10 @@ def _links_cell(entry: ModelEntry) -> str:
             f"DuckDuckGo AI search for {name}",
         )
     ]
+    if entry.get("opencode_url"):
+        destinations.append(
+            ("opencode", entry["opencode_url"], "OpenCode", f"OpenCode page for {name}")
+        )
     if entry.get("info_url"):
         destinations.append(
             ("aa", entry["info_url"], "AA", f"Artificial Analysis page for {name}")
@@ -1097,9 +1118,10 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 <footer class="pageFooter">
 <p>Data: <a href="deals.json">deals.json</a>
 &middot; sources: models.dev and the OpenCode Go console.</p>
-<p>Model names link to Artificial Analysis where covered, otherwise to
-a DuckDuckGo AI search. The Links column adds DuckDuckGo, Artificial
-Analysis and Epoch AI destinations where they exist.</p>
+<p>Model names link to the OpenCode model page, or to Artificial
+Analysis or a DuckDuckGo AI search where no page exists. The Links
+column lists DuckDuckGo, OpenCode, Artificial Analysis and Epoch AI
+destinations where they exist.</p>
 </footer>
 </div>
 <script>{_SCRIPT}</script>

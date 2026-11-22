@@ -50,6 +50,7 @@ def parse_models_api(payload: Any) -> dict[str, ApiModel]:
                     models[key] = ApiModel(
                         key=existing.key,
                         id=existing.id,
+                        canonical_model_id=existing.canonical_model_id,
                         name=existing.name,
                         providers=(*existing.providers, provider),
                         context_limit=existing.context_limit,
@@ -64,6 +65,7 @@ def parse_models_api(payload: Any) -> dict[str, ApiModel]:
             models[key] = ApiModel(
                 key=key,
                 id=model_id,
+                canonical_model_id=raw_model.get("canonical_model_id"),
                 name=str(raw_model.get("name") or model_id),
                 providers=(provider,),
                 context_limit=limit.get("context"),

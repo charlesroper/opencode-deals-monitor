@@ -62,6 +62,20 @@ def epoch_ai_url(name: str) -> str:
     return f"https://epoch.ai/models/{_model_slug(name)}"
 
 
+def opencode_model_url(canonical_model_id: str | None) -> str | None:
+    """OpenCode model page URL from a models.dev canonical id.
+
+    ``deepseek/deepseek-v4.1-flash`` becomes
+    ``opencode.ai/data/deepseek/deepseek-v4-1-flash``.
+    """
+    if not canonical_model_id:
+        return None
+    org, _, model = canonical_model_id.partition("/")
+    if not org or not model:
+        return None
+    return f"https://opencode.ai/data/{_model_slug(org)}/{_model_slug(model)}"
+
+
 @dataclass(frozen=True, slots=True)
 class ApiModel:
     """A model parsed from models.dev/api.json."""
@@ -69,6 +83,7 @@ class ApiModel:
     key: str
     id: str
     name: str
+    canonical_model_id: str | None
     providers: tuple[str, ...]
     context_limit: int | None
     output_limit: int | None
@@ -95,6 +110,7 @@ class ModelEntry(TypedDict):
     key: str
     id: str
     name: str
+    canonical_model_id: str | None
     providers: list[str]
     context_limit: int | None
     output_limit: int | None
@@ -112,6 +128,8 @@ class ModelEntry(TypedDict):
     info_checked: str | None
     epoch_url: str | None
     epoch_checked: str | None
+    opencode_url: str | None
+    opencode_checked: str | None
 
 
 class Snapshot(TypedDict):
