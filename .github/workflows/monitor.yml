@@ -24,6 +24,9 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.publish.outputs.deploy }}
+      exit_code: ${{ steps.monitor.outputs.exit_code }}
     steps:
       - name: Check out
         uses: actions/checkout@v5
@@ -99,14 +102,36 @@ jobs:
         with:
           path: public
 
+      # Exit codes 1 (models.dev failure) and 2 (degraded console scrape)
+      # fail the workflow so GitHub sends its native failure notification.
+      # A degraded run (2) still has publishable output, so its exit code
+      # travels to the deploy job and fails the workflow only after the
+      # deployment has happened.
+      - name: Propagate monitor exit code when nothing is deployed
+        if: always() && steps.publish.outputs.deploy != 'true' && steps.monitor.outputs.exit_code != ''
+        run: |
+          code="${{ steps.monitor.outputs.exit_code }}"
+          exit "$code"
+
+  deploy:
+    needs: monitor
+    if: needs.monitor.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url || steps.retry.outputs.page_url }}
+    steps:
       # deploy-pages looks the artifact up through the Actions artifacts
       # API. That index is eventually consistent: an immediate lookup can
       # report zero artifacts even though the upload succeeded (observed
-      # on 2 of the first 4 deployments, with no relation to the gap
-      # between steps). Poll the same API until the artifact is visible,
-      # so the deploy starts against a settled index.
+      # upstream in actions/deploy-pages#451). The separate deploy job
+      # already gives the index seconds to settle; the poll makes the
+      # guarantee explicit.
       - name: Wait for the Pages artifact
-        if: steps.publish.outputs.deploy == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -124,23 +149,23 @@ jobs:
           exit 1
 
       - name: Deploy Pages
-        id: deploy
-        if: steps.publish.outputs.deploy == 'true'
+        id: deployment
         uses: actions/deploy-pages@v4
         continue-on-error: true
 
       - name: Wait before retrying the Pages deployment
-        if: steps.publish.outputs.deploy == 'true' && steps.deploy.outcome == 'failure'
+        if: steps.deployment.outcome == 'failure'
         run: sleep 10
 
       - name: Retry Pages deployment
-        if: steps.publish.outputs.deploy == 'true' && steps.deploy.outcome == 'failure'
+        if: steps.deployment.outcome == 'failure'
+        id: retry
         uses: actions/deploy-pages@v4
 
-      # Exit codes 1 (models.dev failure) and 2 (degraded console scrape)
-      # fail the job so GitHub sends its native failure notification email.
+      # Publish first, then fail: a degraded run (2) must update the site
+      # with its stale-data notice before the workflow reports failure.
       - name: Propagate monitor exit code
-        if: always() && steps.monitor.outputs.exit_code != ''
+        if: always() && needs.monitor.outputs.exit_code != '' && needs.monitor.outputs.exit_code != '0'
         run: |
-          code="${{ steps.monitor.outputs.exit_code }}"
+          code="${{ needs.monitor.outputs.exit_code }}"
           exit "$code"
