@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
   pages: write
   id-token: write
 
@@ -98,11 +99,29 @@ jobs:
         with:
           path: public
 
-      # The artifact API is eventually consistent: deploy-pages can query
-      # before the fresh artifact is indexed and see zero artifacts.
-      - name: Let the Pages artifact index
+      # deploy-pages looks the artifact up through the Actions artifacts
+      # API. That index is eventually consistent: an immediate lookup can
+      # report zero artifacts even though the upload succeeded (observed
+      # on 2 of the first 4 deployments, with no relation to the gap
+      # between steps). Poll the same API until the artifact is visible,
+      # so the deploy starts against a settled index.
+      - name: Wait for the Pages artifact
         if: steps.publish.outputs.deploy == 'true'
-        run: sleep 20
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in $(seq 1 30); do
+            count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
+              --jq '[.artifacts[] | select(.name == "github-pages")] | length' \
+              2>/dev/null || echo 0)
+            if [ "$count" -gt 0 ]; then
+              echo "Pages artifact visible after ${attempt}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "::error::Pages artifact never became visible to the artifacts API"
+          exit 1
 
       - name: Deploy Pages
         id: deploy
@@ -112,7 +131,7 @@ jobs:
 
       - name: Wait before retrying the Pages deployment
         if: steps.publish.outputs.deploy == 'true' && steps.deploy.outcome == 'failure'
-        run: sleep 30
+        run: sleep 10
 
       - name: Retry Pages deployment
         if: steps.publish.outputs.deploy == 'true' && steps.deploy.outcome == 'failure'
