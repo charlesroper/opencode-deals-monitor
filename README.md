@@ -1,75 +1,72 @@
 # OpenCode Go Deals Monitor
 
-A small Python CLI that checks OpenCode Go model deals every day and publishes
-what changed. It runs on GitHub Actions in a public repository, needs no
-secrets, and costs nothing to operate.
+A daily Python CLI that checks OpenCode Go model deals and publishes what
+changed. It runs on GitHub Actions in a public repository, needs no secrets,
+and costs nothing to run.
 
-The monitor reads two live sources:
+Two live sources feed it: models.dev for model data and prices, and the
+OpenCode Go console for monthly allowances and promotional badges.
 
-- `models.dev/api.json` for model IDs, context and output limits, per-token
+## What gets published
+
+Each publishing run writes three files and deploys them to GitHub Pages:
+
+- **`feed.xml`** is an Atom 1.0 feed for readers and RSS-to-email services.
+- **`index.html`** is a static status page, described below.
+- **`deals.json`** is a JSON snapshot for scripts and dashboards.
+
+Quiet days write nothing and exit `0`, so the live site stays untouched.
+
+## The status page
+
+The page uses a monospace design and system fonts. It loads no external
+assets and needs a few lines of inline JavaScript for sorting.
+
+- **Panels.** Promos, Free models and All tracked models start collapsed.
+- **Sorting.** Every table opens sorted by Go allowance, largest first. Click
+  any column to re-sort; ties fall back to Go order.
+- **Trend.** `▲` marks a change in your favour and `▼` one against. The Trend
+  column and each changelog item carry the same marker.
+- **Links.** Each model name is followed by a Links column: DuckDuckGo AI
+  search first, then the OpenCode model page, Artificial Analysis and Epoch
+  AI pages where they exist. Model names link to the OpenCode page when
+  there is one.
+- **Heat tiers.** Rows are tinted in five tiers by Go allowance: unlimited,
+  $100 and up, $50 and up, $20 and up, then lower paid tiers.
+- **New and Recently changed.** Models that arrived after monitoring began,
+  or changed in the last 7 days, are flagged. The starting inventory is
+  never flagged New.
+- **Recent changes.** Every deal event, newest first, each with a permalink.
+  Atom entries link straight to their changelog entry.
+
+## Data sources
+
+- **`models.dev/api.json`**: model IDs, context and output limits, per-token
   prices, and free tiers under the `opencode-go` and `opencode` providers.
-- The OpenCode Go console page for monthly Go and Go Plus dollar allowances
-  and promotional badges such as `New` or `Limited time`.
+- **`opencode.ai/console/go`**: monthly Go and Go Plus allowances, plus
+  badges such as `New` or `Limited time`.
 
-When a deal starts, changes or ends, the run writes three files and deploys
-them to GitHub Pages:
+Entries join on a normalised key: the name or ID lowercased, with punctuation
+and spaces removed. `GLM-5.3-Flash` and `glm-5.3-flash` both become
+`glm53flash`. A model found in only one source is kept.
 
-- `feed.xml`, an Atom 1.0 feed for feed readers and RSS-to-email services.
-- `index.html`, a static status page in a monospace design. Promos, free
-  models and the full model list each sit in a collapsed panel, and every
-  table opens sorted by Go allowance, largest first; sorting any column
-  falls back to Go order when values tie. Every table leads with a Trend
-  column, and changelog entries carry the same marker: ▲ marks a change in
-  your favour (or a model starting), ▼ one against (or a model ending). A
-  Links column follows the model name with the same destinations in a fixed
-  order: a DuckDuckGo AI search first, then the OpenCode model page,
-  Artificial Analysis and Epoch AI pages where they exist. Rows are tinted in
-  five tiers by Go allowance: unlimited, $100 and up, $50 and up, $20 and up,
-  then lower paid tiers. New marks models that arrived after monitoring
-  began, and Recently changed marks models updated in the last 7 days.
-  Model names link to the OpenCode model page where one exists, otherwise to
-  Artificial Analysis, or to a DuckDuckGo AI search that asks for a sourced
-  summary and community sentiment. A small favicon marks each destination.
-  Recent changes lists each deal event newest first; every entry has a
-  permalink, and each Atom entry links straight to its changelog entry. A
-  few lines of inline JavaScript handle sorting, and the page loads no
-  external scripts, fonts or other assets.
-- `deals.json`, a JSON snapshot for scripts and dashboards.
-
-Quiet days write nothing and exit with code `0`, so the live site stays as it
-was until something changes.
-
-## Data sources and how they are joined
-
-Entries from both sources are joined on a normalised key: the model name or ID
-lowercased with punctuation and spaces removed, so `GLM-5.3-Flash` and
-`glm-5.3-flash` both become `glm53flash`. A model that appears in only one
-source is kept, never dropped.
-
-The console page is server-rendered, so the parser reads the static DOM with
-BeautifulSoup (`html.parser`, no JavaScript execution):
+The console page is server-rendered, so the parser reads the static DOM:
 
 - Rows: `tr[data-model]`.
-- Display names: `span[data-layer="model-name"]`.
-- Allowances: the `td[data-allowance-type="usage"]` cell, where the layered
-  `span[data-plan="go"]` and `span[data-plan="go-plus"]` values carry the
-  dollar figures.
-- Badges: `span.console-go-models-new` and `span.console-go-models-note`
-  (the note text is split on `·`).
+- Names: `span[data-layer="model-name"]`.
+- Allowances: `td[data-allowance-type="usage"]`, reading its `data-plan`
+  spans.
+- Badges: `span.console-go-models-new` and `span.console-go-models-note`.
 
-The page was inspected for hydration payloads before this strategy was
-chosen. The models table ships complete in the static HTML, so DOM parsing is
-used directly and no embedded JSON bootstrap needs decoding.
+The table ships complete in the HTML, so no hydration payload is parsed.
 
-The two sources are treated as unequal partners:
+Fault tolerance differs by source:
 
-- If `models.dev/api.json` fails after two retries, the run stops with exit
-  code `1` and writes nothing.
-- If the console scrape fails, parses zero models, or drops by more than half
-  against the previous snapshot, the run degrades: the previous allowances,
-  badges and verification timestamp are carried forward, the status page
-  shows a stale-data notice, and the run exits with code `2`. A degraded run
-  still publishes any models.dev changes.
+- If `models.dev` fails after two retries, the run stops with exit `1` and
+  writes nothing.
+- If the console scrape fails, parses zero models, or drops by more than
+  half, the run carries forward the previous allowances and badges. It shows
+  a stale-data notice, publishes what it has, and exits `2`.
 
 ## Exit codes
 
@@ -77,26 +74,22 @@ The two sources are treated as unequal partners:
 | :--- | :--- |
 | `0` | Clean run: quiet day, update published, or first run. |
 | `1` | Fatal: `models.dev/api.json` could not be fetched or parsed. Nothing written. |
-| `2` | Partial degradation: console scrape failed or dropped. Prior allowances carried forward; run still published. |
+| `2` | Partial degradation: the console scrape failed or dropped by more than half. Previous allowances carried forward; run still published. |
 
 ## Set up the repository
 
 1. Create a public GitHub repository and push this code to `main`.
-2. In the repository, open **Settings**, then **Pages**. Under **Build and
-   deployment**, set **Source** to **GitHub Actions**.
-3. In your GitHub account, open **Settings**, then **Notifications**, then
-   **Actions**. Enable email notifications for failed workflow runs, so exit
-   codes `1` and `2` reach you automatically.
-4. Open **Actions**, select **Monitor**, then **Run workflow** for the first
-   run. This seeds `data/state.json` and `data/history.json` and deploys the
-   initial site.
+2. In **Settings**, then **Pages**, set **Source** to **GitHub Actions**.
+3. In your account's **Settings**, then **Notifications**, then **Actions**,
+   turn on email alerts for failed workflow runs.
+4. In **Actions**, pick **Monitor**, then **Run workflow** for the first run.
+   It seeds `data/state.json` and `data/history.json` and deploys the site.
 5. Add `https://<owner>.github.io/<repo>/feed.xml` to your feed reader, or
    read `https://<owner>.github.io/<repo>/deals.json` from your scripts.
 
-The scheduled run executes daily at 08:23 UTC, off the top of the hour to
-reduce cron jitter. GitHub disables scheduled workflows after 60 days without
-repository activity, so the workflow pushes an empty keepalive commit when the
-last commit on `main` is older than 45 days.
+The schedule runs daily at 08:23 UTC, off the hour to reduce cron jitter.
+GitHub disables schedules after 60 days without repository activity, so the
+workflow pushes a keepalive commit once `main` is 45 days idle.
 
 ## Run it yourself
 
@@ -122,26 +115,21 @@ last commit on `main` is older than 45 days.
 
 Flags:
 
-- `--dry-run`: fetch and print the computed diff without writing files.
-- `--force`: rebuild `public/feed.xml`, `public/index.html` and
-  `public/deals.json` even when nothing changed.
-- `--json-fixture=<path>`: read the models.dev payload from a local file
-  instead of the network.
-- `--html-fixture=<path>`: read the console page from a local file instead of
-  the network.
-- `--no-link-check`: skip the Artificial Analysis link check (useful offline).
+- `--dry-run`: print the computed diff without writing files.
+- `--force`: rebuild the public outputs even when nothing changed.
+- `--json-fixture=<path>`: read the models.dev payload from a local file.
+- `--html-fixture=<path>`: read the console page from a local file.
+- `--no-link-check`: skip the link check against the review sites.
 
-The first publishing run checks every model against Artificial Analysis and
-adds about half a minute; later runs check only new models, and models without
-a page are rechecked monthly.
+The first publishing run checks every model against OpenCode, Artificial
+Analysis and Epoch AI, which adds about two minutes. Later runs check only
+new models, and misses are rechecked monthly.
 
-The repository pins Python 3.14 in `.python-version`; `uv` installs it
-automatically.
+The repository pins Python 3.14 in `.python-version`; `uv` installs it.
 
 ## Configuration
 
-All settings have sensible defaults and can be overridden with environment
-variables:
+All settings have defaults and can be overridden with environment variables:
 
 | Variable | Default | Purpose |
 | :--- | :--- | :--- |
@@ -151,17 +139,16 @@ variables:
 | `FEED_TITLE` | `OpenCode Go Deals Monitor` | Page and feed title |
 | `HISTORY_LIMIT` | `30` | Entries kept in `data/history.json` and `feed.xml` |
 | `DATA_DIR` | `data` | Directory for `state.json` and `history.json` |
-| `PUBLIC_DIR` | `public` | Directory for `index.html`, `feed.xml`, `deals.json` |
+| `PUBLIC_DIR` | `public` | Directory for the published files |
 
 ## Troubleshooting
 
-- If the job fails with exit code `1`, `models.dev/api.json` was unreachable
-  or invalid. Check the URL and try a manual run.
-- If the job fails with exit code `2`, the console scrape degraded. Open
-  `https://opencode.ai/console/go` in a browser to check whether the page
-  structure changed; the run carries the previous allowances forward until a
-  healthy scrape recovers.
-- If the feed shows nothing new, the day was quiet: no diff, no writes. Run
+- **The job fails with exit code 1.** `models.dev/api.json` was unreachable
+  or invalid. Check the URL, then rerun the workflow.
+- **The job fails with exit code 2.** The console scrape degraded. Open
+  `https://opencode.ai/console/go` in a browser to check the page structure.
+  The previous allowances stay live until a healthy scrape.
+- **The feed shows nothing new.** The day was quiet: no diff, no writes. Run
   the workflow manually with the `force` input to rebuild the page.
-- If GitHub Pages does not update, check that `public/index.html` was built
-  in the failing run. The deploy step only runs when that file exists.
+- **GitHub Pages does not update.** Check whether the failing run built
+  `public/index.html`. The deploy job only runs when that file exists.

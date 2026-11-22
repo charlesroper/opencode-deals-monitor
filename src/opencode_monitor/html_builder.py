@@ -177,7 +177,7 @@ _STYLESHEET = """
     --color-text: #1a1a1a;
     --color-text-muted: #565656;
     --color-border: #767676;
-    --color-accent: #0b57d0;
+    --color-accent: #8a6100;
     --color-notice-bg: #fff4d6;
     --color-tier1-bg: #ffd9a0;
     --color-tier2-bg: #ffe8c2;
@@ -205,7 +205,7 @@ _STYLESHEET = """
       --color-text: #f2f2f2;
       --color-text-muted: #b0b0b0;
       --color-border: #6e6e6e;
-      --color-accent: #a8c7fa;
+      --color-accent: #ffd60a;
       --color-notice-bg: #2b2617;
       --color-tier1-bg: #3a2c10;
       --color-tier2-bg: #30250f;
@@ -232,6 +232,8 @@ _STYLESHEET = """
   h1 { font-size: 1.5rem; line-height: 1.25; }
   h2 { font-size: 1.25rem; line-height: 1.3; }
   h3 { font-size: 1rem; line-height: 1.4; }
+
+  p + p { margin-top: var(--space-s); }
 
   a { color: var(--color-accent); }
 
@@ -492,6 +494,12 @@ _STYLESHEET = """
 
   .changesLog-items { margin-top: var(--space-xs); }
   .changesLog-items li + li { margin-top: var(--space-xs); }
+
+  /* Hanging indent: wrapped lines align under the text, not the marker. */
+  .changesLog-items li {
+    padding-left: 1.4em;
+    text-indent: -1.4em;
+  }
 
   .changesLog-note { color: var(--color-text-muted); }
 
