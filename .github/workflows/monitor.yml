@@ -98,8 +98,24 @@ jobs:
         with:
           path: public
 
-      - name: Deploy Pages
+      # The artifact API is eventually consistent: deploy-pages can query
+      # before the fresh artifact is indexed and see zero artifacts.
+      - name: Let the Pages artifact index
         if: steps.publish.outputs.deploy == 'true'
+        run: sleep 20
+
+      - name: Deploy Pages
+        id: deploy
+        if: steps.publish.outputs.deploy == 'true'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      - name: Wait before retrying the Pages deployment
+        if: steps.publish.outputs.deploy == 'true' && steps.deploy.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry Pages deployment
+        if: steps.publish.outputs.deploy == 'true' && steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
 
       # Exit codes 1 (models.dev failure) and 2 (degraded console scrape)
