@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22T15:37:44Z",
-  "console_html_verified_at": "2026-11-22T15:37:44Z",
+  "updated_at": "2026-11-22T15:56:59Z",
+  "console_html_verified_at": "2026-11-22T15:56:59Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -2111,12 +2111,12 @@
       "output_limit": 131072,
       "input_cost_per_m": 0.3,
       "output_cost_per_m": 1.2,
-      "go_allowance": "$60",
-      "go_plus_allowance": "$240",
+      "go_allowance": null,
+      "go_plus_allowance": null,
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22",
+      "allowance_since": null,
       "last_changed": "2026-11-22"
     },
     "longcat20free": {
@@ -2149,12 +2149,15 @@
       "output_limit": 262144,
       "input_cost_per_m": 0.3,
       "output_cost_per_m": 1.2,
-      "go_allowance": null,
-      "go_plus_allowance": null,
-      "badges": [],
+      "go_allowance": "$60",
+      "go_plus_allowance": "$240",
+      "badges": [
+        "New",
+        "Limited regions"
+      ],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null,
+      "allowance_since": "2026-11-22",
       "last_changed": "2026-11-22"
     },
     "longcat25free": {
@@ -2169,14 +2172,12 @@
       "output_limit": 262144,
       "input_cost_per_m": 0,
       "output_cost_per_m": 0,
-      "go_allowance": "∞",
-      "go_plus_allowance": "∞",
-      "badges": [
-        "Limited time"
-      ],
+      "go_allowance": null,
+      "go_plus_allowance": null,
+      "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22",
+      "allowance_since": null,
       "last_changed": "2026-11-22"
     },
     "longcat25previewfree": {

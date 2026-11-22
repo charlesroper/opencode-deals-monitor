@@ -20,5 +20,69 @@
     "removed": [],
     "degraded": false,
     "note": ""
+  },
+  {
+    "id": "urn:opencode-deals:2026-11-22:66b69fdeb0",
+    "timestamp": "2026-11-22T15:56:59Z",
+    "title": "8 changes",
+    "added": [],
+    "changed": [
+      {
+        "key": "longcat20",
+        "field": "go_allowance",
+        "old": "$60",
+        "new": null
+      },
+      {
+        "key": "longcat20",
+        "field": "go_plus_allowance",
+        "old": "$240",
+        "new": null
+      },
+      {
+        "key": "longcat25",
+        "field": "go_allowance",
+        "old": null,
+        "new": "$60"
+      },
+      {
+        "key": "longcat25",
+        "field": "go_plus_allowance",
+        "old": null,
+        "new": "$240"
+      },
+      {
+        "key": "longcat25",
+        "field": "badges",
+        "old": [],
+        "new": [
+          "New",
+          "Limited regions"
+        ]
+      },
+      {
+        "key": "longcat25free",
+        "field": "go_allowance",
+        "old": "∞",
+        "new": null
+      },
+      {
+        "key": "longcat25free",
+        "field": "go_plus_allowance",
+        "old": "∞",
+        "new": null
+      },
+      {
+        "key": "longcat25free",
+        "field": "badges",
+        "old": [
+          "Limited time"
+        ],
+        "new": []
+      }
+    ],
+    "removed": [],
+    "degraded": false,
+    "note": ""
   }
 ]
