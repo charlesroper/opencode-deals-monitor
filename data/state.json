@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22T18:25:56Z",
-  "console_html_verified_at": "2026-11-22T18:25:56Z",
+  "updated_at": "2026-11-22T21:47:50Z",
+  "console_html_verified_at": "2026-11-22T21:47:50Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -27,7 +27,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "bigpickle": {
       "key": "bigpickle",
@@ -49,7 +51,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "catjamfree": {
       "key": "catjamfree",
@@ -72,7 +76,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "claude35haiku": {
       "key": "claude35haiku",
@@ -94,7 +100,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "claudefable5": {
       "key": "claudefable5",
@@ -116,7 +124,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-fable-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-fable-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudefable51": {
       "key": "claudefable51",
@@ -138,7 +148,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-fable-5-1",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-fable-5-1",
+      "epoch_checked": "2026-11-22"
     },
     "claudefable52": {
       "key": "claudefable52",
@@ -160,7 +172,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-fable-5-2",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-fable-5-2",
+      "epoch_checked": "2026-11-22"
     },
     "claudehaiku45": {
       "key": "claudehaiku45",
@@ -182,7 +196,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-haiku-4-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudehaiku55": {
       "key": "claudehaiku55",
@@ -205,7 +221,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-haiku-5-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudeopus41": {
       "key": "claudeopus41",
@@ -227,7 +245,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-opus-4-1",
+      "epoch_checked": "2026-11-22"
     },
     "claudeopus45": {
       "key": "claudeopus45",
@@ -249,7 +269,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-opus-4-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudeopus46": {
       "key": "claudeopus46",
@@ -271,7 +293,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-6",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-opus-4-6",
+      "epoch_checked": "2026-11-22"
     },
     "claudeopus47": {
       "key": "claudeopus47",
@@ -293,7 +317,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-7",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-opus-4-7",
+      "epoch_checked": "2026-11-22"
     },
     "claudeopus48": {
       "key": "claudeopus48",
@@ -315,7 +341,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-opus-4-8",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-opus-4-8",
+      "epoch_checked": "2026-11-22"
     },
     "claudeopus5": {
       "key": "claudeopus5",
@@ -337,7 +365,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-opus-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-opus-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudeopus55": {
       "key": "claudeopus55",
@@ -359,7 +389,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-opus-5-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudesonnet4": {
       "key": "claudesonnet4",
@@ -381,7 +413,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-sonnet-4",
+      "epoch_checked": "2026-11-22"
     },
     "claudesonnet45": {
       "key": "claudesonnet45",
@@ -403,7 +437,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-sonnet-4-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudesonnet46": {
       "key": "claudesonnet46",
@@ -425,7 +461,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-sonnet-4-6",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-sonnet-4-6",
+      "epoch_checked": "2026-11-22"
     },
     "claudesonnet5": {
       "key": "claudesonnet5",
@@ -447,7 +485,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-sonnet-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-sonnet-5",
+      "epoch_checked": "2026-11-22"
     },
     "claudesonnet55": {
       "key": "claudesonnet55",
@@ -469,7 +509,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/claude-sonnet-5-5",
+      "epoch_checked": "2026-11-22"
     },
     "croutonalphafree": {
       "key": "croutonalphafree",
@@ -492,7 +534,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "deepseekv41flash": {
       "key": "deepseekv41flash",
@@ -515,7 +559,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/deepseek-v4-1-flash-1017",
+      "epoch_checked": "2026-11-22"
     },
     "deepseekv41flashfree": {
       "key": "deepseekv41flashfree",
@@ -537,7 +583,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "deepseekv4flash": {
       "key": "deepseekv4flash",
@@ -559,7 +607,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/deepseek-v4-flash",
+      "epoch_checked": "2026-11-22"
     },
     "deepseekv4flashfree": {
       "key": "deepseekv4flashfree",
@@ -581,7 +631,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "deepseekv4flashvisionexp": {
       "key": "deepseekv4flashvisionexp",
@@ -603,7 +655,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "deepseekv4pro": {
       "key": "deepseekv4pro",
@@ -626,7 +680,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/deepseek-v4-pro",
+      "epoch_checked": "2026-11-22"
     },
     "exofree": {
       "key": "exofree",
@@ -648,7 +704,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "fledgealphafree": {
       "key": "fledgealphafree",
@@ -670,7 +728,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "flint40bfree": {
       "key": "flint40bfree",
@@ -692,7 +752,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "gemini31pro": {
       "key": "gemini31pro",
@@ -714,7 +776,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "gemini35flash": {
       "key": "gemini35flash",
@@ -736,7 +800,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-3-5-flash",
+      "epoch_checked": "2026-11-22"
     },
     "gemini35flashlite": {
       "key": "gemini35flashlite",
@@ -758,7 +824,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-3-5-flash-lite",
+      "epoch_checked": "2026-11-22"
     },
     "gemini36flash": {
       "key": "gemini36flash",
@@ -780,7 +848,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-6-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-3-6-flash",
+      "epoch_checked": "2026-11-22"
     },
     "gemini37flash": {
       "key": "gemini37flash",
@@ -802,7 +872,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-7-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-3-7-flash",
+      "epoch_checked": "2026-11-22"
     },
     "gemini38flash": {
       "key": "gemini38flash",
@@ -824,7 +896,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-8-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-3-8-flash",
+      "epoch_checked": "2026-11-22"
     },
     "gemini3flash": {
       "key": "gemini3flash",
@@ -846,7 +920,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-3-flash",
+      "epoch_checked": "2026-11-22"
     },
     "gemini3pro": {
       "key": "gemini3pro",
@@ -868,7 +944,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-3-pro",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-3-pro",
+      "epoch_checked": "2026-11-22"
     },
     "gemini4argon": {
       "key": "gemini4argon",
@@ -891,7 +969,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-4-argon",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-4-argon",
+      "epoch_checked": "2026-11-22"
     },
     "gemini4argoncontributor": {
       "key": "gemini4argoncontributor",
@@ -913,7 +993,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "gemini4carbon": {
       "key": "gemini4carbon",
@@ -935,7 +1017,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-4-carbon",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-4-carbon",
+      "epoch_checked": "2026-11-22"
     },
     "gemini4hydrogen": {
       "key": "gemini4hydrogen",
@@ -957,7 +1041,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-4-hydrogen",
+      "epoch_checked": "2026-11-22"
     },
     "gemini4neon": {
       "key": "gemini4neon",
@@ -979,7 +1065,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gemini-4-neon",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gemini-4-neon",
+      "epoch_checked": "2026-11-22"
     },
     "glm46": {
       "key": "glm46",
@@ -1001,7 +1089,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/glm-4-6",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/glm-4-6",
+      "epoch_checked": "2026-11-22"
     },
     "glm47": {
       "key": "glm47",
@@ -1023,7 +1113,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/glm-4-7",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/glm-4-7",
+      "epoch_checked": "2026-11-22"
     },
     "glm47free": {
       "key": "glm47free",
@@ -1045,7 +1137,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "glm5": {
       "key": "glm5",
@@ -1067,7 +1161,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/glm-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/glm-5",
+      "epoch_checked": "2026-11-22"
     },
     "glm51": {
       "key": "glm51",
@@ -1089,7 +1185,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/glm-5-1",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/glm-5-1",
+      "epoch_checked": "2026-11-22"
     },
     "glm52": {
       "key": "glm52",
@@ -1112,7 +1210,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/glm-5-2",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/glm-5-2",
+      "epoch_checked": "2026-11-22"
     },
     "glm53": {
       "key": "glm53",
@@ -1135,7 +1235,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/glm-5-3",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/glm-5-3",
+      "epoch_checked": "2026-11-22"
     },
     "glm53flash": {
       "key": "glm53flash",
@@ -1158,7 +1260,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/glm-5-3-flash",
+      "epoch_checked": "2026-11-22"
     },
     "glm53flashfree": {
       "key": "glm53flashfree",
@@ -1180,7 +1284,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "glm5free": {
       "key": "glm5free",
@@ -1202,7 +1308,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "gpt5": {
       "key": "gpt5",
@@ -1224,7 +1332,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5",
+      "epoch_checked": "2026-11-22"
     },
     "gpt51": {
       "key": "gpt51",
@@ -1246,7 +1356,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-1",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-1",
+      "epoch_checked": "2026-11-22"
     },
     "gpt51codex": {
       "key": "gpt51codex",
@@ -1268,7 +1380,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-1-codex",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-1-codex",
+      "epoch_checked": "2026-11-22"
     },
     "gpt51codexmax": {
       "key": "gpt51codexmax",
@@ -1290,7 +1404,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-1-codex-max",
+      "epoch_checked": "2026-11-22"
     },
     "gpt51codexmini": {
       "key": "gpt51codexmini",
@@ -1312,7 +1428,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-1-codex-mini",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-1-codex-mini",
+      "epoch_checked": "2026-11-22"
     },
     "gpt52": {
       "key": "gpt52",
@@ -1334,7 +1452,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-2",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-2",
+      "epoch_checked": "2026-11-22"
     },
     "gpt52codex": {
       "key": "gpt52codex",
@@ -1356,7 +1476,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-2-codex",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-2-codex",
+      "epoch_checked": "2026-11-22"
     },
     "gpt53codex": {
       "key": "gpt53codex",
@@ -1378,7 +1500,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-3-codex",
+      "epoch_checked": "2026-11-22"
     },
     "gpt53codexspark": {
       "key": "gpt53codexspark",
@@ -1400,7 +1524,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "gpt54": {
       "key": "gpt54",
@@ -1422,7 +1548,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-4",
+      "epoch_checked": "2026-11-22"
     },
     "gpt54mini": {
       "key": "gpt54mini",
@@ -1444,7 +1572,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-4-mini",
+      "epoch_checked": "2026-11-22"
     },
     "gpt54nano": {
       "key": "gpt54nano",
@@ -1466,7 +1596,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-4-nano",
+      "epoch_checked": "2026-11-22"
     },
     "gpt54pro": {
       "key": "gpt54pro",
@@ -1488,7 +1620,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-4-pro",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-4-pro",
+      "epoch_checked": "2026-11-22"
     },
     "gpt55": {
       "key": "gpt55",
@@ -1510,7 +1644,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-5",
+      "epoch_checked": "2026-11-22"
     },
     "gpt55pro": {
       "key": "gpt55pro",
@@ -1532,7 +1668,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-5-pro",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-5-pro",
+      "epoch_checked": "2026-11-22"
     },
     "gpt56luna": {
       "key": "gpt56luna",
@@ -1555,7 +1693,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-6-luna",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-6-luna",
+      "epoch_checked": "2026-11-22"
     },
     "gpt56sol": {
       "key": "gpt56sol",
@@ -1577,7 +1717,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-6-sol",
+      "epoch_checked": "2026-11-22"
     },
     "gpt56terra": {
       "key": "gpt56terra",
@@ -1599,7 +1741,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-6-terra",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-6-terra",
+      "epoch_checked": "2026-11-22"
     },
     "gpt5codex": {
       "key": "gpt5codex",
@@ -1621,7 +1765,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-codex",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-codex",
+      "epoch_checked": "2026-11-22"
     },
     "gpt5nano": {
       "key": "gpt5nano",
@@ -1643,7 +1789,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-5-nano",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-5-nano",
+      "epoch_checked": "2026-11-22"
     },
     "gpt61sol": {
       "key": "gpt61sol",
@@ -1665,7 +1813,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-6-1-sol",
+      "epoch_checked": "2026-11-22"
     },
     "gpt62astra": {
       "key": "gpt62astra",
@@ -1687,7 +1837,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-6-2-astra",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-6-2-astra",
+      "epoch_checked": "2026-11-22"
     },
     "gpt62sol": {
       "key": "gpt62sol",
@@ -1709,7 +1861,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-6-2-sol",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-6-2-sol",
+      "epoch_checked": "2026-11-22"
     },
     "gpt6astra": {
       "key": "gpt6astra",
@@ -1731,7 +1885,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-6-astra",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-6-astra",
+      "epoch_checked": "2026-11-22"
     },
     "gpt6luna": {
       "key": "gpt6luna",
@@ -1754,7 +1910,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-6-luna",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-6-luna",
+      "epoch_checked": "2026-11-22"
     },
     "gpt6sol": {
       "key": "gpt6sol",
@@ -1776,7 +1934,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/gpt-6-sol",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/gpt-6-sol",
+      "epoch_checked": "2026-11-22"
     },
     "grok45": {
       "key": "grok45",
@@ -1798,7 +1958,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/grok-4-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/grok-4-5",
+      "epoch_checked": "2026-11-22"
     },
     "grok46": {
       "key": "grok46",
@@ -1820,7 +1982,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/grok-4-6",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/grok-4-6",
+      "epoch_checked": "2026-11-22"
     },
     "grok47": {
       "key": "grok47",
@@ -1843,7 +2007,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/grok-4-7",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/grok-4-7",
+      "epoch_checked": "2026-11-22"
     },
     "grokbuild01": {
       "key": "grokbuild01",
@@ -1865,7 +2031,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/grok-build-0-1",
+      "epoch_checked": "2026-11-22"
     },
     "grokcode": {
       "key": "grokcode",
@@ -1887,7 +2055,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/grok-code-fast-1",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "hy3": {
       "key": "hy3",
@@ -1909,7 +2079,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/hy3",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "hy3free": {
       "key": "hy3free",
@@ -1931,7 +2103,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "hy3previewfree": {
       "key": "hy3previewfree",
@@ -1953,7 +2127,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "hy4": {
       "key": "hy4",
@@ -1977,7 +2153,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "hy4flashfree": {
       "key": "hy4flashfree",
@@ -2003,7 +2181,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "hy4preview": {
       "key": "hy4preview",
@@ -2025,7 +2205,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "icemancontributorfree": {
       "key": "icemancontributorfree",
@@ -2049,7 +2231,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "icemanfree": {
       "key": "icemanfree",
@@ -2071,7 +2255,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "inkling2smallfree": {
       "key": "inkling2smallfree",
@@ -2093,7 +2279,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "kimik2": {
       "key": "kimik2",
@@ -2115,7 +2303,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/kimi-k2",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "kimik25": {
       "key": "kimik25",
@@ -2137,7 +2327,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/kimi-k2-5",
+      "epoch_checked": "2026-11-22"
     },
     "kimik25free": {
       "key": "kimik25free",
@@ -2159,7 +2351,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "kimik26": {
       "key": "kimik26",
@@ -2181,7 +2375,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-6",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/kimi-k2-6",
+      "epoch_checked": "2026-11-22"
     },
     "kimik27code": {
       "key": "kimik27code",
@@ -2204,7 +2400,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/kimi-k2-7-code",
+      "epoch_checked": "2026-11-22"
     },
     "kimik2thinking": {
       "key": "kimik2thinking",
@@ -2226,7 +2424,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/kimi-k2-thinking",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/kimi-k2-thinking",
+      "epoch_checked": "2026-11-22"
     },
     "kimik3": {
       "key": "kimik3",
@@ -2249,7 +2449,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/kimi-k3",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/kimi-k3",
+      "epoch_checked": "2026-11-22"
     },
     "kimik31pro": {
       "key": "kimik31pro",
@@ -2271,7 +2473,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/kimi-k3-1-pro",
+      "epoch_checked": "2026-11-22"
     },
     "lagunas21free": {
       "key": "lagunas21free",
@@ -2293,7 +2497,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "ling26flashfree": {
       "key": "ling26flashfree",
@@ -2315,7 +2521,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "ling30flashfinfree": {
       "key": "ling30flashfinfree",
@@ -2337,7 +2545,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "ling30flashfree": {
       "key": "ling30flashfree",
@@ -2359,7 +2569,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "ling30tinyfree": {
       "key": "ling30tinyfree",
@@ -2381,7 +2593,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "ling31flashfree": {
       "key": "ling31flashfree",
@@ -2403,7 +2617,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "llalphafree": {
       "key": "llalphafree",
@@ -2425,7 +2641,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "longcat20": {
       "key": "longcat20",
@@ -2447,7 +2665,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/longcat-2-0",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "longcat20free": {
       "key": "longcat20free",
@@ -2469,7 +2689,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "longcat25": {
       "key": "longcat25",
@@ -2494,7 +2716,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "longcat25free": {
       "key": "longcat25free",
@@ -2517,7 +2741,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "longcat25previewfree": {
       "key": "longcat25previewfree",
@@ -2540,7 +2766,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "mimov25": {
       "key": "mimov25",
@@ -2562,7 +2790,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/mimo-v2-5",
+      "epoch_checked": "2026-11-22"
     },
     "mimov25free": {
       "key": "mimov25free",
@@ -2584,7 +2814,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "mimov25pro": {
       "key": "mimov25pro",
@@ -2606,7 +2838,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/mimo-v2-5-pro",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/mimo-v2-5-pro",
+      "epoch_checked": "2026-11-22"
     },
     "mimov26flash": {
       "key": "mimov26flash",
@@ -2628,7 +2862,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/mimo-v2-6-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "mimov26flashfree": {
       "key": "mimov26flashfree",
@@ -2650,7 +2886,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "mimov26pro": {
       "key": "mimov26pro",
@@ -2672,7 +2910,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/mimo-v2-6-pro",
+      "epoch_checked": "2026-11-22"
     },
     "mimov2flashfree": {
       "key": "mimov2flashfree",
@@ -2694,7 +2934,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "mimov2omnifree": {
       "key": "mimov2omnifree",
@@ -2716,7 +2958,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "mimov2profree": {
       "key": "mimov2profree",
@@ -2738,7 +2982,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm21": {
       "key": "minimaxm21",
@@ -2760,7 +3006,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/minimax-m2-1",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/minimax-m2-1",
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm21free": {
       "key": "minimaxm21free",
@@ -2782,7 +3030,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm25": {
       "key": "minimaxm25",
@@ -2804,7 +3054,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/minimax-m2-5",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/minimax-m2-5",
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm25free": {
       "key": "minimaxm25free",
@@ -2826,7 +3078,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm27": {
       "key": "minimaxm27",
@@ -2849,7 +3103,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/minimax-m2-7",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/minimax-m2-7",
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm3": {
       "key": "minimaxm3",
@@ -2872,7 +3128,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/minimax-m3",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/minimax-m3",
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm31flash": {
       "key": "minimaxm31flash",
@@ -2894,7 +3152,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm31flashfree": {
       "key": "minimaxm31flashfree",
@@ -2917,7 +3177,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "minimaxm3free": {
       "key": "minimaxm3free",
@@ -2939,7 +3201,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "mistrallarge4": {
       "key": "mistrallarge4",
@@ -2961,7 +3225,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/mistral-large-4",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/mistral-large-4",
+      "epoch_checked": "2026-11-22"
     },
     "museember10": {
       "key": "museember10",
@@ -2983,7 +3249,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "musespark12": {
       "key": "musespark12",
@@ -3005,7 +3273,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/muse-spark-1-2",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/muse-spark-1-2",
+      "epoch_checked": "2026-11-22"
     },
     "musespark12contributor": {
       "key": "musespark12contributor",
@@ -3029,7 +3299,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "musespark12contributorfree": {
       "key": "musespark12contributorfree",
@@ -3051,7 +3323,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "musespark13": {
       "key": "musespark13",
@@ -3073,7 +3347,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/muse-spark-1-3",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/muse-spark-1-3",
+      "epoch_checked": "2026-11-22"
     },
     "musespark13contributor": {
       "key": "musespark13contributor",
@@ -3097,7 +3373,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "musespark13contributorfree": {
       "key": "musespark13contributorfree",
@@ -3119,7 +3397,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "musewonder10": {
       "key": "musewonder10",
@@ -3141,7 +3421,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/muse-wonder",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/muse-wonder",
+      "epoch_checked": "2026-11-22"
     },
     "nemotron35lightningfree": {
       "key": "nemotron35lightningfree",
@@ -3163,7 +3445,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "nemotron35supervlfree": {
       "key": "nemotron35supervlfree",
@@ -3185,7 +3469,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "nemotron3superfree": {
       "key": "nemotron3superfree",
@@ -3207,7 +3493,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "nemotron3ultrafree": {
       "key": "nemotron3ultrafree",
@@ -3229,7 +3517,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "northminicodefree": {
       "key": "northminicodefree",
@@ -3251,7 +3541,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "pulsealphafree": {
       "key": "pulsealphafree",
@@ -3273,7 +3565,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "qwen35plus": {
       "key": "qwen35plus",
@@ -3295,7 +3589,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "qwen36plus": {
       "key": "qwen36plus",
@@ -3317,7 +3613,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/qwen3-6-plus",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "qwen36plusfree": {
       "key": "qwen36plusfree",
@@ -3339,7 +3637,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "qwen37plus": {
       "key": "qwen37plus",
@@ -3361,7 +3661,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/qwen3-7-plus",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/qwen3-7-plus",
+      "epoch_checked": "2026-11-22"
     },
     "qwen38flash": {
       "key": "qwen38flash",
@@ -3384,7 +3686,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "qwen38max": {
       "key": "qwen38max",
@@ -3407,7 +3711,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/qwen3-8-max",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "qwen3coder": {
       "key": "qwen3coder",
@@ -3429,7 +3735,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "qwen4max": {
       "key": "qwen4max",
@@ -3453,7 +3761,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/qwen4-max",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "ring261tfree": {
       "key": "ring261tfree",
@@ -3475,7 +3785,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "spacebunny": {
       "key": "spacebunny",
@@ -3497,7 +3809,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "spacebunnyfree": {
       "key": "spacebunnyfree",
@@ -3519,7 +3833,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "step5preview": {
       "key": "step5preview",
@@ -3541,7 +3857,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": "https://artificialanalysis.ai/models/step-5-preview",
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": "https://epoch.ai/models/step-5-preview",
+      "epoch_checked": "2026-11-22"
     },
     "step5previewfree": {
       "key": "step5previewfree",
@@ -3564,7 +3882,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "tidepoolalphafree": {
       "key": "tidepoolalphafree",
@@ -3586,7 +3906,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "trinitylargepreviewfree": {
       "key": "trinitylargepreviewfree",
@@ -3608,7 +3930,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     },
     "xpreviewffree": {
       "key": "xpreviewffree",
@@ -3630,7 +3954,9 @@
       "last_changed": "2026-11-22",
       "last_trend": null,
       "info_url": null,
-      "info_checked": "2026-11-22"
+      "info_checked": "2026-11-22",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-22"
     }
   }
 }
