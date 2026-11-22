@@ -107,3 +107,4 @@ class HistoryEntry(TypedDict):
     removed: list[str]
     degraded: bool
     note: str
+    names: dict[str, str]

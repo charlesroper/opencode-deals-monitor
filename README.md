@@ -22,7 +22,9 @@ them to GitHub Pages:
   Go allowance: unlimited, $100 and up, $50 and up, $20 and up, then lower
   paid tiers. New marks models that arrived after monitoring began, and
   Recently changed marks models updated in the last 7 days. Click any
-  column to re-sort. A few lines of inline JavaScript handle sorting, and
+  column to re-sort. Recent changes lists each deal event newest first;
+  every entry has a permalink, and each Atom entry links straight to its
+  changelog entry. A few lines of inline JavaScript handle sorting, and
   the page loads no external scripts, fonts or other assets.
 - `deals.json`, a JSON snapshot for scripts and dashboards.
 

@@ -61,7 +61,12 @@ def _load_console_html(args: argparse.Namespace, settings: Settings) -> str | No
 
 
 def _history_entry(
-    snapshot: Snapshot, diff: DiffResult, timestamp: str, *, first_run: bool
+    snapshot: Snapshot,
+    diff: DiffResult,
+    timestamp: str,
+    *,
+    first_run: bool,
+    names: dict[str, str] | None = None,
 ) -> HistoryEntry:
     if first_run:
         promo_count = sum(1 for entry in snapshot["models"].values() if _is_promo(entry))
@@ -74,6 +79,7 @@ def _history_entry(
             removed=[],
             degraded=snapshot["console_html_degraded"],
             note=f"Baseline snapshot: {promo_count} models have an active promo or free tier.",
+            names={},
         )
     return HistoryEntry(
         id=entry_id(timestamp, diff.added, [asdict(c) for c in diff.changed], diff.removed),
@@ -84,6 +90,7 @@ def _history_entry(
         removed=list(diff.removed),
         degraded=snapshot["console_html_degraded"],
         note="",
+        names=dict(names or {}),
     )
 
 
@@ -264,7 +271,17 @@ def main(argv: list[str] | None = None) -> int:
         or degraded_flip
     )
     if write_state:
-        history_entry = _history_entry(snapshot, diff, timestamp, first_run=first_run)
+        names: dict[str, str] = {}
+        for key in [*diff.added, *(change.key for change in diff.changed)]:
+            current_entry = snapshot["models"].get(key)
+            if current_entry is not None:
+                names[key] = current_entry["name"]
+        for key in diff.removed:
+            if previous is not None and key in previous["models"]:
+                names[key] = previous["models"][key]["name"]
+        history_entry = _history_entry(
+            snapshot, diff, timestamp, first_run=first_run, names=names
+        )
         history = [*history, history_entry][-settings.history_limit :]
         write_json_atomic(settings.state_path, snapshot)
         write_json_atomic(settings.history_path, history)

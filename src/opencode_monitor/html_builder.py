@@ -23,6 +23,7 @@ import html
 from datetime import date
 from typing import Any
 
+from .atom_builder import entry_anchor, field_label, format_timestamp, format_value
 from .config import Settings
 from .models import HistoryEntry, ModelEntry, Snapshot
 
@@ -58,10 +59,11 @@ _STYLESHEET = """
     --color-changed-bg: #e3eefc;
     --font-mono: ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo,
                  Consolas, "DejaVu Sans Mono", monospace;
+    --space-xs: 0.25rem;
     --space-s: 0.5rem;
     --space-m: 0.75rem;
     --space-l: 1.25rem;
-    --space-xl: 2rem;
+    --space-xl: 1.5rem;
     --radius-s: 4px;
   }
 
@@ -114,6 +116,11 @@ _STYLESHEET = """
   }
 
   .page > * + * { margin-top: var(--space-xl); }
+
+  @media (max-width: 40rem) {
+    .page { padding: var(--space-m); }
+    .page > * + * { margin-top: var(--space-l); }
+  }
 }
 
 @layer components {
@@ -128,8 +135,8 @@ _STYLESHEET = """
   .skipLink:focus { left: var(--space-l); }
 
   .pageHeader-title { margin-top: var(--space-s); }
-  .pageHeader-meta { color: var(--color-text-muted); }
-  .pageHeader-meta + .pageHeader-meta { margin-top: var(--space-s); }
+  .pageHeader-meta { color: var(--color-text-muted); font-size: 0.875rem; }
+  .pageHeader-meta + .pageHeader-meta { margin-top: var(--space-xs); }
 
   .statusBanner {
     padding: var(--space-m);
@@ -145,14 +152,18 @@ _STYLESHEET = """
 
   .tablePanel-toggle {
     display: block;
-    padding: var(--space-m);
+    padding: var(--space-s) var(--space-m);
     cursor: pointer;
     list-style: revert;
   }
 
+  .tablePanel-toggle:hover { background: var(--color-surface); }
+
   .tablePanel-toggle::-webkit-details-marker { display: none; }
   .tablePanel-toggle::before { content: "\\25B8 "; }
   .tablePanel[open] > .tablePanel-toggle::before { content: "\\25BE "; }
+
+  .tablePanel-title { font-size: 1.0625rem; margin: 0; }
 
   .tableScroll {
     overflow-x: auto;
@@ -230,19 +241,51 @@ _STYLESHEET = """
     color: var(--color-text-muted);
   }
 
-  .changesLog-entry + .changesLog-entry { margin-top: var(--space-l); }
+  .changesLog-entry {
+    margin-top: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-border);
+    scroll-margin-top: var(--space-m);
+  }
 
-  .changesLog-entryTitle { margin-bottom: var(--space-s); }
+  .changesLog-entry:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
 
-  .changesLog-detail + .changesLog-detail { margin-top: var(--space-s); }
+  .changesLog-entry:target { background: var(--color-surface); }
 
-  .changesLog-item { color: var(--color-text); }
-  .changesLog-item + .changesLog-item { margin-top: var(--space-s); }
+  .changesLog-entryTitle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-s);
+    font-size: 0.9375rem;
+  }
+
+  .changesLog-time { color: var(--color-text-muted); font-weight: 400; }
+
+  .changesLog-permalink { text-decoration: none; font-weight: 400; }
+
+  .changesLog-detail { margin-top: var(--space-s); }
+
+  .changesLog-label {
+    margin-top: var(--space-s);
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+  }
+
+  .changesLog-items { margin-top: var(--space-xs); }
+  .changesLog-items li + li { margin-top: var(--space-xs); }
+
+  .changesLog-note { color: var(--color-text-muted); }
 
   .pageFooter {
-    padding-top: var(--space-l);
+    padding-top: var(--space-m);
     border-top: 1px solid var(--color-border);
     color: var(--color-text-muted);
+    font-size: 0.875rem;
   }
 
   .pageFooter-links { margin-top: var(--space-s); }
@@ -602,7 +645,8 @@ def _panel(heading_id: str, title: str, inner: str) -> str:
     return (
         f'<details class="tablePanel">'
         f'<summary class="tablePanel-toggle">'
-        f'<h2 id="{heading_id}">{_esc(title)}</h2></summary>'
+        f'<h2 class="tablePanel-title" id="{heading_id}">{_esc(title)}</h2>'
+        f"</summary>"
         f"{inner}</details>"
     )
 
@@ -620,31 +664,71 @@ def _banner(snapshot: Snapshot) -> str:
     )
 
 
-def _changes_log(history: list[HistoryEntry]) -> str:
+def _model_label(
+    names: dict[str, str], models: dict[str, ModelEntry], key: str
+) -> str:
+    current = models.get(key)
+    return names.get(key) or (current["name"] if current else key)
+
+
+def _changes_log(
+    history: list[HistoryEntry], models: dict[str, ModelEntry]
+) -> str:
     if not history:
         return '<p class="emptyState">No changes recorded yet.</p>'
     items: list[str] = []
     for entry in reversed(history):
+        anchor = entry_anchor(entry["id"])
+        names = entry.get("names") or {}
+
+        def label(key: str, entry_names: dict[str, str] = names) -> str:
+            return _model_label(entry_names, models, key)
+
         details: list[str] = []
+        if entry.get("note"):
+            details.append(f'<p class="changesLog-note">{_esc(entry["note"])}</p>')
         if entry["added"]:
-            starting = "".join(f"<li>{_esc(name)}</li>" for name in entry["added"])
-            details.append(f"<p>Starting:</p><ul>{starting}</ul>")
-        for change in entry["changed"]:
-            label = change["field"].replace("_", " ")
+            starting = "".join(f"<li>{_esc(label(key))}</li>" for key in entry["added"])
             details.append(
-                f'<ul><li class="changesLog-item">{_esc(change["key"])}: '
-                f"{label} {_esc(change['old'])} &rarr; {_esc(change['new'])}</li></ul>"
+                f'<p class="changesLog-label">Starting</p>'
+                f'<ul class="changesLog-items">{starting}</ul>'
+            )
+        if entry["changed"]:
+            changed_items = "".join(
+                f"<li><strong>{_esc(label(change['key']))}</strong>: "
+                f"{_esc(field_label(change['field']))} from "
+                f"{_esc(format_value(change['field'], change['old']))} to "
+                f"{_esc(format_value(change['field'], change['new']))}</li>"
+                for change in entry["changed"]
+            )
+            details.append(
+                f'<p class="changesLog-label">Changed</p>'
+                f'<ul class="changesLog-items">{changed_items}</ul>'
             )
         if entry["removed"]:
-            ended = "".join(f"<li>{_esc(name)}</li>" for name in entry["removed"])
-            details.append(f"<p>Ended:</p><ul>{ended}</ul>")
+            ended = "".join(f"<li>{_esc(label(key))}</li>" for key in entry["removed"])
+            details.append(
+                f'<p class="changesLog-label">Ended</p>'
+                f'<ul class="changesLog-items">{ended}</ul>'
+            )
+        if entry["degraded"]:
+            details.append(
+                '<p class="changesLog-note">Go and Go Plus allowances could not '
+                "be refreshed in this run. The figures were carried forward from "
+                "the last successful check.</p>"
+            )
         if not details:
             continue
         timestamp = entry["timestamp"]
         items.append(
-            f'<li class="changesLog-entry">'
-            f'<h3 class="changesLog-entryTitle">{_esc(entry["title"])}: '
-            f'<time datetime="{_esc(timestamp)}">{_esc(timestamp)}</time></h3>'
+            f'<li class="changesLog-entry" id="{_esc(anchor)}">'
+            f'<h3 class="changesLog-entryTitle">'
+            f'<span class="changesLog-title">{_esc(entry["title"])}</span>'
+            f'<time class="changesLog-time" datetime="{_esc(timestamp)}">'
+            f"{_esc(format_timestamp(timestamp))}</time>"
+            f'<a class="changesLog-permalink" href="#{_esc(anchor)}" '
+            f'aria-label="Link to this entry">#</a>'
+            f"</h3>"
             f'<div class="changesLog-detail">{"".join(details)}</div>'
             f"</li>"
         )
@@ -659,6 +743,7 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
     promo_entries = [entry for entry in models.values() if _is_promo(entry)]
     free_entries = [entry for entry in models.values() if entry["is_free"]]
     updated = snapshot["updated_at"]
+    updated_human = format_timestamp(updated)
     today = updated.split("T")[0]
     baseline_date = history[0]["timestamp"].split("T")[0] if history else None
     promos = _deal_table(
@@ -691,7 +776,8 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 <div class="page">
 <header class="pageHeader">
 <h1 class="pageHeader-title">{_esc(settings.feed_title)}</h1>
-<p class="pageHeader-meta">Last updated <time datetime="{_esc(updated)}">{_esc(updated)}</time></p>
+<p class="pageHeader-meta">Last updated
+<time datetime="{_esc(updated)}">{_esc(updated_human)}</time></p>
 <p class="pageHeader-meta">Subscribe: <a href="feed.xml">Atom feed</a></p>
 </header>
 <main id="main-content">
@@ -701,7 +787,7 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 {_panel("all-models-heading", "All tracked models", all_models)}
 <section aria-labelledby="changes-heading">
 <h2 id="changes-heading">Recent changes</h2>
-{_changes_log(history)}
+{_changes_log(history, models)}
 </section>
 </main>
 <footer class="pageFooter">

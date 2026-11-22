@@ -73,6 +73,7 @@ def _history(**overrides) -> HistoryEntry:
         removed=[],
         degraded=False,
         note="",
+        names={},
     )
     base.update(overrides)  # type: ignore[union-attr]
     return base
@@ -92,6 +93,9 @@ def test_feed_is_valid_atom() -> None:
     assert entry is not None
     assert entry.findtext(f"{ATOM}id") == "urn:opencode-deals:2026-11-23:abc123"
     assert entry.findtext(f"{ATOM}updated") == "2026-11-23T08:23:00Z"
+    feed_link = entry.find(f"{ATOM}link[@rel='alternate']")
+    assert feed_link is not None
+    assert feed_link.get("href", "").endswith("/#chg-2026-11-23-abc123")
     content = entry.find(f"{ATOM}content")
     assert content is not None
     assert content.get("type") == "html"
@@ -170,9 +174,9 @@ def test_tables_are_collapsible_and_closed() -> None:
     assert "<details open" not in page  # collapsed by default
     assert '<details class="tablePanel">' in page
     assert '<summary class="tablePanel-toggle">' in page
-    assert '<h2 id="promos-heading">Promos</h2>' in page
-    assert '<h2 id="free-heading">Free models</h2>' in page
-    assert '<h2 id="all-models-heading">All tracked models</h2>' in page
+    assert '<h2 class="tablePanel-title" id="promos-heading">Promos</h2>' in page
+    assert '<h2 class="tablePanel-title" id="free-heading">Free models</h2>' in page
+    assert '<h2 class="tablePanel-title" id="all-models-heading">All tracked models</h2>' in page
 
 
 def test_every_column_is_sortable() -> None:
@@ -650,6 +654,103 @@ def test_change_stamps_last_changed(
     assert glm["input_cost_per_m"] == 2.75
     assert glm["last_changed"] == today  # stamped by the diff pass
     assert glm["first_seen"] <= glm["last_changed"]
+
+
+def test_changelog_is_readable_anchored_and_newest_first() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp21"))
+    history = [
+        _history(
+            id="urn:opencode-deals:2026-11-20:old111",
+            timestamp="2026-11-20T08:00:00Z",
+            title="1 model started",
+            added=["oldmodel"],
+            names={"oldmodel": "Old Model"},
+        ),
+        _history(
+            id="urn:opencode-deals:2026-11-23:abc123",
+            timestamp="2026-11-23T08:23:00Z",
+            title="2 changes",
+            added=[],
+            changed=[
+                {"key": "glm53", "field": "go_allowance", "old": "$500", "new": "$200"},
+                {"key": "glm53", "field": "badges", "old": ["New"], "new": []},
+            ],
+            names={"glm53": "GLM-5.3"},
+        ),
+    ]
+    snapshot = _snapshot(glm53=_entry(key="glm53", id="glm-5.3", name="GLM-5.3"))
+    page = build_page(snapshot, history, settings)
+    soup = BeautifulSoup(page, "html.parser")
+    entries = soup.select(".changesLog-entry")
+    # Reverse chronological: the newest entry renders first.
+    assert [entry["id"] for entry in entries] == [
+        "chg-2026-11-23-abc123",
+        "chg-2026-11-20-old111",
+    ]
+    newest = entries[0]
+    text = newest.get_text(" ", strip=True)
+    assert "GLM-5.3" in text
+    assert "Go allowance from $500 to $200" in text
+    assert "Badges from New to none" in text
+    assert "23 November 2026, 08:23 UTC" in text
+    # No raw field names or Python reprs anywhere in the changelog.
+    changelog = soup.select_one(".changesLog").get_text(" ", strip=True)
+    assert "go_allowance" not in changelog
+    assert "['" not in changelog
+    # Each entry is linkable, and the permalink points at itself.
+    permalink = newest.select_one(".changesLog-permalink")
+    assert permalink["href"] == "#chg-2026-11-23-abc123"
+    assert permalink.get("aria-label") == "Link to this entry"
+    assert "#chg-2026-11-23-abc123" in page  # target highlight rule present
+    assert "changesLog-entry:target" in page
+
+
+def test_changelog_falls_back_to_snapshot_names() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp22"))
+    history = [
+        _history(
+            title="1 change",
+            added=[],
+            changed=[{"key": "glm53", "field": "is_free", "old": False, "new": True}],
+            names={},  # older entries carry no names map
+        )
+    ]
+    snapshot = _snapshot(glm53=_entry(key="glm53", id="glm-5.3", name="GLM-5.3"))
+    page = build_page(snapshot, history, settings)
+    soup = BeautifulSoup(page, "html.parser")
+    text = soup.select_one(".changesLog").get_text(" ", strip=True)
+    assert "GLM-5.3" in text
+    assert "Free tier from no to yes" in text
+
+
+def test_atom_entry_links_match_changelog_anchors() -> None:
+    settings = _settings(Path("/tmp/opencode/test-tmp23"))
+    history = [
+        _history(
+            added=[],
+            title="1 change",
+            changed=[
+                {"key": "glm53", "field": "input_cost_per_m", "old": 1.4, "new": 2.75}
+            ],
+            names={"glm53": "GLM-5.3"},
+        )
+    ]
+    feed_xml = build_feed(history, settings)
+    root = ET.fromstring(feed_xml)
+    entry = root.find(f"{ATOM}entry")
+    link = entry.find(f"{ATOM}link[@rel='alternate']")
+    assert link is not None
+    assert link.get("href", "").endswith("/#chg-2026-11-23-abc123")
+    content = entry.findtext(f"{ATOM}content") or ""
+    assert "GLM-5.3: Input price from $1.40/M to $2.75/M" in content
+
+    snapshot = _snapshot(glm53=_entry(key="glm53", id="glm-5.3", name="GLM-5.3"))
+    page = build_page(snapshot, history, settings)
+    assert 'id="chg-2026-11-23-abc123"' in page
 
 
 def test_step_summary_written(
