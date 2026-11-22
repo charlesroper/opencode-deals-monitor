@@ -58,6 +58,8 @@ def _entry(**overrides) -> ModelEntry:
         last_trend=None,
         info_url=None,
         info_checked=None,
+        epoch_url=None,
+        epoch_checked=None,
     )
     base.update(overrides)  # type: ignore[union-attr]
     return base
@@ -248,17 +250,18 @@ def test_sort_values_are_machine_readable() -> None:
     cells = row.find_all("td")
     # Column order matches the deal tables, then the models-only columns.
     assert cells[0]["data-value"] == ""  # trend: no recorded change
-    assert cells[1]["data-value"] == "60"  # Go: $60
-    assert cells[2]["data-value"] == "120"  # Go Plus: $120
-    assert cells[3]["data-value"] == "New"  # badges sort as text
-    assert cells[4]["data-value"] == "1.0"  # In $/M
-    assert cells[5]["data-value"] == "2.0"  # Out $/M
-    assert cells[6].get("data-value") is None  # ID: plain text
-    assert cells[7]["data-value"] == "opencode-go"  # providers
-    assert cells[8]["data-value"] == "1000"  # context
-    assert cells[9]["data-value"] == "100"  # output cap
-    assert cells[10]["data-value"] == "2026-11-01"  # first seen
-    assert cells[11]["data-value"] == "2026-11-01"  # last changed
+    assert cells[1].get("class") == ["linksCell"]  # links: no sort value
+    assert cells[2]["data-value"] == "60"  # Go: $60
+    assert cells[3]["data-value"] == "120"  # Go Plus: $120
+    assert cells[4]["data-value"] == "New"  # badges sort as text
+    assert cells[5]["data-value"] == "1.0"  # In $/M
+    assert cells[6]["data-value"] == "2.0"  # Out $/M
+    assert cells[7].get("data-value") is None  # ID: plain text
+    assert cells[8]["data-value"] == "opencode-go"  # providers
+    assert cells[9]["data-value"] == "1000"  # context
+    assert cells[10]["data-value"] == "100"  # output cap
+    assert cells[11]["data-value"] == "2026-11-01"  # first seen
+    assert cells[12]["data-value"] == "2026-11-01"  # last changed
 
 
 def test_all_models_columns_match_deal_table_order() -> None:
@@ -272,7 +275,7 @@ def test_all_models_columns_match_deal_table_order() -> None:
         th.find("button").get_text() for th in soup.select(".modelsTable thead th")
     ]
     # The shared columns keep the same relative order in both tables.
-    shared = ["Trend", "Model", "Go", "Go Plus", "Badges", "In $/M", "Out $/M"]
+    shared = ["Trend", "Model", "Links", "Go", "Go Plus", "Badges", "In $/M", "Out $/M"]
     assert models_head[: len(shared)] == shared
     assert deals_head[: len(shared)] == shared
 
@@ -684,11 +687,16 @@ def test_link_check_records_verified_urls(
     glm = state["models"]["glm53"]
     assert glm["info_url"] == "https://artificialanalysis.ai/models/glm-5-3"
     assert glm["info_checked"] is not None
+    assert glm["epoch_url"] == "https://epoch.ai/models/glm-5-3"
+    assert glm["epoch_checked"] is not None
     beam = state["models"]["beamfree"]
     assert beam["info_url"] is None
     assert beam["info_checked"] is not None
+    assert beam["epoch_url"] is None
+    assert beam["epoch_checked"] is not None
     page = settings.html_path.read_text(encoding="utf-8")
     assert 'href="https://artificialanalysis.ai/models/glm-5-3"' in page
+    assert 'href="https://epoch.ai/models/glm-5-3"' in page
 
 
 def test_no_link_check_flag_skips_verification(
@@ -966,8 +974,50 @@ def test_force_run_populates_links_without_history_entry(
     ) == 0
     state_after = json.loads(settings.state_path.read_text(encoding="utf-8"))
     assert state_after["models"]["glm53"]["info_url"].endswith("/glm-5-3")
+    assert state_after["models"]["glm53"]["epoch_url"].endswith("/glm-5-3")
     # A link-only metadata change must not add a changelog event.
     assert settings.history_path.read_text(encoding="utf-8") == history_before
+
+
+def test_links_column_order_and_presence() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp30"))
+    snapshot = _snapshot(
+        full=_entry(
+            key="full", id="full", name="Full Model",
+            info_url="https://artificialanalysis.ai/models/full-model",
+            epoch_url="https://epoch.ai/models/full-model",
+        ),
+        aa_only=_entry(
+            key="aaonly", id="aaonly", name="AA Only",
+            info_url="https://artificialanalysis.ai/models/aa-only",
+        ),
+        bare=_entry(key="bare", id="bare", name="Bare"),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    cells = {
+        th.get_text(): th.find_parent("tr").select_one(".linksCell")
+        for th in soup.select(".modelsTable tbody th")
+    }
+    full_links = [a.get_text() for a in cells["Full Model"].select("a")]
+    assert full_links == ["DDG", "AA", "Epoch"]
+    aa_links = [a.get_text() for a in cells["AA Only"].select("a")]
+    assert aa_links == ["DDG", "AA"]
+    bare_links = [a.get_text() for a in cells["Bare"].select("a")]
+    assert bare_links == ["DDG"]
+    # Destinations are named for assistive tech, not just by icon.
+    assert cells["Full Model"].select_one("a")["aria-label"] == (
+        "DuckDuckGo AI search for Full Model"
+    )
+    labels = [a["aria-label"] for a in cells["Full Model"].select("a")]
+    assert labels[1] == "Artificial Analysis page for Full Model"
+    assert labels[2] == "Epoch AI page for Full Model"
+    # The new column appears in every table.
+    for table in soup.find_all("table"):
+        headers = [th.find("button").get_text() for th in table.thead.find_all("th")]
+        assert "Links" in headers
 
 
 def test_step_summary_written(

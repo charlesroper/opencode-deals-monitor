@@ -26,6 +26,8 @@ def _entry(**overrides) -> dict:
         "last_trend": None,
         "info_url": None,
         "info_checked": None,
+        "epoch_url": None,
+        "epoch_checked": None,
     }
     base.update(overrides)
     return base

@@ -105,6 +105,47 @@ _FAVICON_DDG = (
 )
 
 
+_FAVICON_EPOCH = (
+    "data:image/svg+xml;base64,"
+    "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxz"
+    "dmcKICAgd2lkdGg9IjMyIgogICBoZWlnaHQ9IjMyIgogICB2aWV3Qm94PSIwIDAgMzIgMzIiCiAg"
+    "IGZpbGw9Im5vbmUiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzQiCiAgIHNvZGlwb2RpOmRv"
+    "Y25hbWU9ImZhdmljb24uc3ZnIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjEuMiAoMGEwMGNmNTMz"
+    "OSwgMjAyMi0wMi0wNCkiCiAgIGlua3NjYXBlOmV4cG9ydC1maWxlbmFtZT0iL2hvbWUvZWR1L1By"
+    "b2plY3RzL0Vwb2NoL2Rldi1lcG9jaC13ZWJzaXRlL2Fzc2V0cy9pbWFnZXMvZmF2aWNvbi5wbmci"
+    "CiAgIGlua3NjYXBlOmV4cG9ydC14ZHBpPSIyOTkuOTMyMDEiCiAgIGlua3NjYXBlOmV4cG9ydC15"
+    "ZHBpPSIyOTkuOTMyMDEiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9y"
+    "Zy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2Rp"
+    "LnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zPSJodHRwOi8vd3d3"
+    "LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2"
+    "ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczgiIC8+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAg"
+    "IGlkPSJuYW1lZHZpZXc2IgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xv"
+    "cj0iIzY2NjY2NiIKICAgICBib3JkZXJvcGFjaXR5PSIxLjAiCiAgICAgaW5rc2NhcGU6cGFnZXNo"
+    "YWRvdz0iMiIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMC4wIgogICAgIGlua3NjYXBlOnBh"
+    "Z2VjaGVja2VyYm9hcmQ9IjAiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpv"
+    "b209IjEwLjI0ODA0OCIKICAgICBpbmtzY2FwZTpjeD0iMTYuNDkwOTQ1IgogICAgIGlua3NjYXBl"
+    "OmN5PSIxOS4xNzQzODMiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxMjgwIgogICAgIGlu"
+    "a3NjYXBlOndpbmRvdy1oZWlnaHQ9Ijc4MiIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMCIKICAg"
+    "ICBpbmtzY2FwZTp3aW5kb3cteT0iMTgiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0i"
+    "MSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmc0IiAvPgogIDxwYXRoCiAgICAgZmls"
+    "bC1ydWxlPSJldmVub2RkIgogICAgIGNsaXAtcnVsZT0iZXZlbm9kZCIKICAgICBkPSJNIDMuNDQx"
+    "ODUsMjAuNTQzMjkxIDMwLjYwMDEsNy44NzkxNTEgQyAzMS40NTQxLDcuNDgwOTIxIDMyLDYuNjIz"
+    "OTgxIDMyLDUuNjgxNzAxIDMyLDMuOTA3NzMxIDMwLjE1NzQsMi43MzQzMzEgMjguNTQ5OSwzLjQ4"
+    "NDYwMSBMIDEuMzk2MTIsMTYuMTU4MjkxIEMgMC41NDQzOTYsMTYuNTU1ODkxIDAsMTcuNDEwNjkx"
+    "IDAsMTguMzUwNTkxIGMgMCwxLjc2OTggMS44Mzc5MSwyLjk0MDcgMy40NDE4NSwyLjE5MjcgeiBt"
+    "IDIwLjQwMDA1LC00LjQ5NjkgLTIyLjQ0NTIsMTAuNDY2NCBDIDAuNTQ0Njc0LDI2LjkxMDA5MSAw"
+    "LDI3Ljc2NTA5MSAwLDI4LjcwNTE5MSBjIDAsMS43Njk1IDEuODM3NjUsMi45NDAyIDMuNDQxMzcs"
+    "Mi4xOTI0IGwgMjIuNDQ1MjMsLTEwLjQ2NjQgYyAwLjg1MiwtMC4zOTczIDEuMzk2NywtMS4yNTIz"
+    "IDEuMzk2NywtMi4xOTI0IDAsLTEuNzY5NSAtMS44Mzc3LC0yLjk0MDIgLTMuNDQxNCwtMi4xOTI0"
+    "IHogTSAxMS40ODA4LDEuMTAyNDI0IDEuMzk2Nyw1LjgwNDcyMSBDIDAuNTQ0Njc0LDYuMjAyMDMx"
+    "IDAsNy4wNTcwMDEgMCw3Ljk5NzExMSBjIDAsMS43Njk1MiAxLjgzNzY1LDIuOTQwMTggMy40NDEz"
+    "NywyLjE5MjQgbCAxMC4wODQwMywtNC43MDIzIGMgMC44NTIxLC0wLjM5NzMxIDEuMzk2NywtMS4y"
+    "NTIyOCAxLjM5NjcsLTIuMTkyNCAwLC0xLjc2OTUxIC0xLjgzNzYsLTIuOTQwMjE4NyAtMy40NDEz"
+    "LC0yLjE5MjM4NyB6IgogICAgIGZpbGw9IiNFNkZFRjMiCiAgICAgaWQ9InBhdGgyIgogICAgIHN0"
+    "eWxlPSJmaWxsOiMwMGE1YTY7ZmlsbC1vcGFjaXR5OjEiIC8+Cjwvc3ZnPgo="
+)
+
+
 _STYLESHEET = """
 @layer reset, tokens, base, layout, components;
 
@@ -333,6 +374,20 @@ _STYLESHEET = """
 
   .linkIcon--ddg { background-image: url("__FAVICON_DDG__"); }
 
+  .linkIcon--epoch { background-image: url("__FAVICON_EPOCH__"); }
+
+  .linksCell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
+
+  .linksCell-link {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
   .changesLog-marker { color: var(--color-up); }
 
   .changesLog-marker--down { color: var(--color-down); }
@@ -436,8 +491,10 @@ _STYLESHEET = """
 }
 """
 
-_STYLESHEET = _STYLESHEET.replace("__FAVICON_AA__", _FAVICON_AA).replace(
-    "__FAVICON_DDG__", _FAVICON_DDG
+_STYLESHEET = (
+    _STYLESHEET.replace("__FAVICON_AA__", _FAVICON_AA)
+    .replace("__FAVICON_DDG__", _FAVICON_DDG)
+    .replace("__FAVICON_EPOCH__", _FAVICON_EPOCH)
 )
 
 _SCRIPT = """
@@ -648,6 +705,35 @@ def _model_heading_cell(entry: ModelEntry) -> str:
     return f'<th scope="row">{icon_tag}<a href="{_esc(href)}">{name}</a></th>'
 
 
+def _links_cell(entry: ModelEntry) -> str:
+    """Destinations in a fixed order: DuckDuckGo, then AA, then Epoch AI."""
+    name = entry["name"]
+    destinations = [
+        (
+            "ddg",
+            duckduckgo_ai_url(name),
+            "DDG",
+            f"DuckDuckGo AI search for {name}",
+        )
+    ]
+    if entry.get("info_url"):
+        destinations.append(
+            ("aa", entry["info_url"], "AA", f"Artificial Analysis page for {name}")
+        )
+    if entry.get("epoch_url"):
+        destinations.append(
+            ("epoch", entry["epoch_url"], "Epoch", f"Epoch AI page for {name}")
+        )
+    links = "".join(
+        f'<a class="linksCell-link" href="{_esc(href)}" '
+        f'aria-label="{_esc(aria)}">'
+        f'<span class="linkIcon linkIcon--{variant}" aria-hidden="true"></span>'
+        f'<span>{_esc(label)}</span></a>'
+        for variant, href, label, aria in destinations
+    )
+    return f'<td class="linksCell">{links}</td>'
+
+
 def _trend_cell(entry: ModelEntry, module: str) -> str:
     trend = entry.get("last_trend")
     if trend == "up":
@@ -701,6 +787,7 @@ def _deal_row(entry: ModelEntry, module: str) -> str:
         f'<tr class="{row_classes}">'
         f"{_trend_cell(entry, module)}"
         f"{_model_heading_cell(entry)}"
+        f"{_links_cell(entry)}"
         f"{_td(go, value=go_value)}"
         f"{_td(go_plus, value=go_plus_value)}"
         f"{_td(_badges(entry, module), value=badges)}"
@@ -752,6 +839,7 @@ def _model_row(
         f'<tr class="{row_classes}">'
         f"{_trend_cell(entry, 'modelsTable')}"
         f"{_model_heading_cell(entry)}"
+        f"{_links_cell(entry)}"
         f"{_td(go, value=go_value)}"
         f"{_td(go_plus, value=go_plus_value)}"
         f"{_td(badge_block, value=' '.join(entry['badges']))}"
@@ -779,6 +867,7 @@ def _deal_table(
     head = (
         f'<tr>{_th("Trend", module, "text")}'
         f"{_th('Model', module, 'text')}"
+        f"{_th('Links', module, 'text')}"
         f"{_th('Go', module, 'num', default='descending')}"
         f"{_th('Go Plus', module, 'num')}"
         f"{_th('Badges', module, 'text')}"
@@ -806,6 +895,7 @@ def _all_models_table(
     head = (
         f'<tr>{_th("Trend", "modelsTable", "text")}'
         f'{_th("Model", "modelsTable", "text")}'
+        f'{_th("Links", "modelsTable", "text")}'
         f'{_th("Go", "modelsTable", "num", default="descending")}'
         f'{_th("Go Plus", "modelsTable", "num")}'
         f'{_th("Badges", "modelsTable", "text")}'
@@ -1007,8 +1097,9 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 <footer class="pageFooter">
 <p>Data: <a href="deals.json">deals.json</a>
 &middot; sources: models.dev and the OpenCode Go console.</p>
-<p>Model names link to Artificial Analysis where covered,
-and to a DuckDuckGo AI search otherwise.</p>
+<p>Model names link to Artificial Analysis where covered, otherwise to
+a DuckDuckGo AI search. The Links column adds DuckDuckGo, Artificial
+Analysis and Epoch AI destinations where they exist.</p>
 </footer>
 </div>
 <script>{_SCRIPT}</script>

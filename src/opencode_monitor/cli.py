@@ -27,6 +27,7 @@ from .models import (
     ModelEntry,
     Snapshot,
     artificial_analysis_url,
+    epoch_ai_url,
 )
 from .models_api import parse_models_api
 from .state_store import load_json, write_json_atomic, write_text_atomic
@@ -175,10 +176,12 @@ def _to_snapshot(payload: Any) -> Snapshot | None:
     return payload  # type: ignore[return-value]
 
 
-def _needs_info_check(entry: ModelEntry, today: str) -> bool:
-    if entry.get("info_url"):
+def _needs_link_check(
+    entry: ModelEntry, url_key: str, checked_key: str, today: str
+) -> bool:
+    if entry.get(url_key):
         return False
-    checked = entry.get("info_checked")
+    checked = entry.get(checked_key)
     if not checked:
         return True
     try:
@@ -188,31 +191,34 @@ def _needs_info_check(entry: ModelEntry, today: str) -> bool:
     return age >= INFO_RECHECK_DAYS
 
 
-def _refresh_info_urls(snapshot: Snapshot, today: str) -> bool:
-    """Verify Artificial Analysis pages for models without a known link.
+def _refresh_model_links(snapshot: Snapshot, today: str) -> bool:
+    """Verify Artificial Analysis and Epoch AI pages for every model.
 
     Runs on publishing and force runs, so a quiet day never pays for
     network checks. Unknown answers (network trouble, 5xx) are retried on
     the next run; clear misses are rechecked monthly. Returns True when
     any model's link metadata changed.
     """
-    pending = [
-        entry
-        for entry in snapshot["models"].values()
-        if _needs_info_check(entry, today)
-    ]
-    if not pending:
-        return False
+    checks = (
+        ("info_url", "info_checked", artificial_analysis_url),
+        ("epoch_url", "epoch_checked", epoch_ai_url),
+    )
     changed = False
     with make_client() as client:
-        for entry in pending:
-            url = artificial_analysis_url(entry["name"])
-            result = url_exists(url, client=client)
-            if result is None:
-                continue
-            entry["info_checked"] = today
-            entry["info_url"] = url if result else None
-            changed = True
+        for url_key, checked_key, url_for in checks:
+            pending = [
+                entry
+                for entry in snapshot["models"].values()
+                if _needs_link_check(entry, url_key, checked_key, today)
+            ]
+            for entry in pending:
+                url = url_for(entry["name"])
+                result = url_exists(url, client=client)
+                if result is None:
+                    continue
+                entry[checked_key] = today
+                entry[url_key] = url if result else None
+                changed = True
     return changed
 
 
@@ -341,7 +347,7 @@ def main(argv: list[str] | None = None) -> int:
         or degraded_flip
     )
     should_check_links = not args.no_link_check and (write_state or args.force)
-    if should_check_links and _refresh_info_urls(snapshot, today):
+    if should_check_links and _refresh_model_links(snapshot, today):
         write_state = True
     if write_state:
         if first_run or not diff.is_empty():

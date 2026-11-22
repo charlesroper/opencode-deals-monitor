@@ -46,11 +46,20 @@ def duckduckgo_ai_url(name: str) -> str:
     return "https://duckduckgo.com/?q=" + quote_plus(prompt) + "&ia=chat&prompt=1"
 
 
-def artificial_analysis_url(name: str) -> str:
-    """Best-guess Artificial Analysis page for a model display name."""
+def _model_slug(name: str) -> str:
+    """URL slug shared by review sites: lowercased, dots and spaces dashed."""
     slug = name.casefold().replace(".", "-")
-    slug = re.sub(r"[^a-z0-9]+", "-", slug).strip("-")
-    return f"https://artificialanalysis.ai/models/{slug}"
+    return re.sub(r"[^a-z0-9]+", "-", slug).strip("-")
+
+
+def artificial_analysis_url(name: str) -> str:
+    """Artificial Analysis page URL for a model display name."""
+    return f"https://artificialanalysis.ai/models/{_model_slug(name)}"
+
+
+def epoch_ai_url(name: str) -> str:
+    """Epoch AI model page URL for a model display name."""
+    return f"https://epoch.ai/models/{_model_slug(name)}"
 
 
 @dataclass(frozen=True, slots=True)
@@ -101,6 +110,8 @@ class ModelEntry(TypedDict):
     last_trend: str | None
     info_url: str | None
     info_checked: str | None
+    epoch_url: str | None
+    epoch_checked: str | None
 
 
 class Snapshot(TypedDict):

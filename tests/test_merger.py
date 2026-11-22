@@ -93,6 +93,8 @@ def test_first_seen_preserved_and_allowance_since_resets() -> None:
                 "last_trend": None,
                 "info_url": None,
                 "info_checked": None,
+                "epoch_url": None,
+                "epoch_checked": None,
             }
         }
     )
@@ -133,6 +135,8 @@ def test_degraded_scrape_carries_fields_forward() -> None:
                 "last_trend": None,
                 "info_url": None,
                 "info_checked": None,
+                "epoch_url": None,
+                "epoch_checked": None,
             }
         }
     )
@@ -170,6 +174,8 @@ def test_recovery_clears_degraded_flag() -> None:
                 "last_trend": None,
                 "info_url": None,
                 "info_checked": None,
+                "epoch_url": None,
+                "epoch_checked": None,
             }
         }
     )
@@ -202,6 +208,8 @@ def test_drop_over_half_is_degraded() -> None:
             "last_trend": None,
             "info_url": None,
             "info_checked": None,
+            "epoch_url": None,
+            "epoch_checked": None,
         }
         for i in range(10)
     }
