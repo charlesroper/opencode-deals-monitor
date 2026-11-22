@@ -42,7 +42,7 @@ def duckduckgo_ai_url(name: str) -> str:
         f"What is {name}? Summarise its context window, price and coding "
         "benchmarks, with sources."
     )
-    return "https://duckduckgo.com/?q=" + quote_plus(prompt) + "&ia=chat"
+    return "https://duckduckgo.com/?q=" + quote_plus(prompt) + "&ia=chat&prompt=1"
 
 
 def artificial_analysis_url(name: str) -> str:

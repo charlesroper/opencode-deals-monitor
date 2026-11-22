@@ -929,7 +929,7 @@ def test_uncovered_models_link_to_duckduckgo_ai() -> None:
         "benchmarks, with sources."
     )
     assert quote_plus(expected_prompt) in href
-    assert href.endswith("&ia=chat")
+    assert href.endswith("&ia=chat&prompt=1")
     icon = link.find_previous_sibling("span")
     assert icon is not None
     assert "linkIcon--ddg" in icon.get("class", [])
