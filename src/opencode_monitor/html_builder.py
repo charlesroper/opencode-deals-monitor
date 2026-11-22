@@ -233,7 +233,7 @@ _STYLESHEET = """
 
   p + p { margin-top: var(--space-s); }
 
-  a { color: inherit; text-decoration: underline; }
+  a { color: var(--color-text); text-decoration: underline; }
 
   :focus-visible {
     outline: 2px solid var(--color-text);

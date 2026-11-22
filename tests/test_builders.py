@@ -961,8 +961,8 @@ def test_section_spacing_is_consistent() -> None:
     assert "p + p { margin-top: var(--space-s); }" in page
     # Wrapped changelog lines align under the text, not the marker.
     assert "text-indent: -1.4em;" in page
-    # Links are text-coloured and underlined; no accent colour remains.
-    assert "a { color: inherit; text-decoration: underline; }" in page
+    # Links are full-contrast text colour, underlined; no muted grey links.
+    assert "a { color: var(--color-text); text-decoration: underline; }" in page
     assert "outline: 2px solid var(--color-text);" in page
     assert "solid var(--color-text);" in page
     assert "--color-accent" not in page
