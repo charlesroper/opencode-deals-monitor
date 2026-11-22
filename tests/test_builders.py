@@ -961,9 +961,11 @@ def test_section_spacing_is_consistent() -> None:
     assert "p + p { margin-top: var(--space-s); }" in page
     # Wrapped changelog lines align under the text, not the marker.
     assert "text-indent: -1.4em;" in page
-    # Links and disclosure arrows use the yellow accent in both schemes.
-    assert "--color-accent: #8a6100;" in page
-    assert "--color-accent: #ffd60a;" in page
+    # Links are text-coloured and underlined; no accent colour remains.
+    assert "a { color: inherit; text-decoration: underline; }" in page
+    assert "outline: 2px solid var(--color-text);" in page
+    assert "solid var(--color-text);" in page
+    assert "--color-accent" not in page
 
 
 def test_force_run_populates_links_without_history_entry(

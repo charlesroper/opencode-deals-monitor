@@ -177,7 +177,6 @@ _STYLESHEET = """
     --color-text: #1a1a1a;
     --color-text-muted: #565656;
     --color-border: #767676;
-    --color-accent: #8a6100;
     --color-notice-bg: #fff4d6;
     --color-tier1-bg: #ffd9a0;
     --color-tier2-bg: #ffe8c2;
@@ -205,7 +204,6 @@ _STYLESHEET = """
       --color-text: #f2f2f2;
       --color-text-muted: #b0b0b0;
       --color-border: #6e6e6e;
-      --color-accent: #ffd60a;
       --color-notice-bg: #2b2617;
       --color-tier1-bg: #3a2c10;
       --color-tier2-bg: #30250f;
@@ -235,10 +233,10 @@ _STYLESHEET = """
 
   p + p { margin-top: var(--space-s); }
 
-  a { color: var(--color-accent); }
+  a { color: inherit; text-decoration: underline; }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-text);
     outline-offset: 2px;
   }
 }
@@ -267,7 +265,7 @@ _STYLESHEET = """
     left: -9999px;
     padding: var(--space-s) var(--space-m);
     background: var(--color-bg);
-    color: var(--color-accent);
+    color: var(--color-text);
   }
 
   .skipLink:focus { left: var(--space-l); }
@@ -310,7 +308,7 @@ _STYLESHEET = """
     height: 0;
     border-top: 0.45rem solid transparent;
     border-bottom: 0.45rem solid transparent;
-    border-left: 0.6rem solid var(--color-accent);
+    border-left: 0.6rem solid var(--color-text);
     transition: transform 120ms ease;
   }
 
@@ -482,7 +480,7 @@ _STYLESHEET = """
 
   .changesLog-time { color: var(--color-text-muted); font-weight: 400; }
 
-  .changesLog-permalink { text-decoration: none; font-weight: 400; }
+  .changesLog-permalink { font-weight: 400; }
 
   .changesLog-detail { margin-top: var(--space-s); }
 
