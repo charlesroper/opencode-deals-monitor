@@ -8,5 +8,17 @@
     "removed": [],
     "degraded": false,
     "note": "Baseline snapshot: 58 models have an active promo or free tier."
+  },
+  {
+    "id": "urn:opencode-deals:2026-11-22:b31f33a6fa",
+    "timestamp": "2026-11-22T15:37:44Z",
+    "title": "1 model started",
+    "added": [
+      "longcat25"
+    ],
+    "changed": [],
+    "removed": [],
+    "degraded": false,
+    "note": ""
   }
 ]

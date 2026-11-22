@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22T15:18:16Z",
-  "console_html_verified_at": "2026-11-22T15:18:16Z",
+  "updated_at": "2026-11-22T15:37:44Z",
+  "console_html_verified_at": "2026-11-22T15:37:44Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -23,7 +23,8 @@
       ],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "bigpickle": {
       "key": "bigpickle",
@@ -41,7 +42,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "catjamfree": {
       "key": "catjamfree",
@@ -60,7 +62,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claude35haiku": {
       "key": "claude35haiku",
@@ -78,7 +81,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudefable5": {
       "key": "claudefable5",
@@ -96,7 +100,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudefable51": {
       "key": "claudefable51",
@@ -114,7 +119,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudefable52": {
       "key": "claudefable52",
@@ -132,7 +138,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudehaiku45": {
       "key": "claudehaiku45",
@@ -150,7 +157,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudehaiku55": {
       "key": "claudehaiku55",
@@ -169,7 +177,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "claudeopus41": {
       "key": "claudeopus41",
@@ -187,7 +196,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudeopus45": {
       "key": "claudeopus45",
@@ -205,7 +215,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudeopus46": {
       "key": "claudeopus46",
@@ -223,7 +234,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudeopus47": {
       "key": "claudeopus47",
@@ -241,7 +253,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudeopus48": {
       "key": "claudeopus48",
@@ -259,7 +272,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudeopus5": {
       "key": "claudeopus5",
@@ -277,7 +291,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudeopus55": {
       "key": "claudeopus55",
@@ -295,7 +310,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudesonnet4": {
       "key": "claudesonnet4",
@@ -313,7 +329,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudesonnet45": {
       "key": "claudesonnet45",
@@ -331,7 +348,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudesonnet46": {
       "key": "claudesonnet46",
@@ -349,7 +367,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudesonnet5": {
       "key": "claudesonnet5",
@@ -367,7 +386,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "claudesonnet55": {
       "key": "claudesonnet55",
@@ -385,7 +405,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "croutonalphafree": {
       "key": "croutonalphafree",
@@ -404,7 +425,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "deepseekv41flash": {
       "key": "deepseekv41flash",
@@ -423,7 +445,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "deepseekv41flashfree": {
       "key": "deepseekv41flashfree",
@@ -441,7 +464,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "deepseekv4flash": {
       "key": "deepseekv4flash",
@@ -459,7 +483,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "deepseekv4flashfree": {
       "key": "deepseekv4flashfree",
@@ -477,7 +502,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "deepseekv4flashvisionexp": {
       "key": "deepseekv4flashvisionexp",
@@ -495,7 +521,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "deepseekv4pro": {
       "key": "deepseekv4pro",
@@ -514,7 +541,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "exofree": {
       "key": "exofree",
@@ -532,7 +560,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "fledgealphafree": {
       "key": "fledgealphafree",
@@ -550,7 +579,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "flint40bfree": {
       "key": "flint40bfree",
@@ -568,7 +598,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini31pro": {
       "key": "gemini31pro",
@@ -586,7 +617,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini35flash": {
       "key": "gemini35flash",
@@ -604,7 +636,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini35flashlite": {
       "key": "gemini35flashlite",
@@ -622,7 +655,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini36flash": {
       "key": "gemini36flash",
@@ -640,7 +674,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini37flash": {
       "key": "gemini37flash",
@@ -658,7 +693,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini38flash": {
       "key": "gemini38flash",
@@ -676,7 +712,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini3flash": {
       "key": "gemini3flash",
@@ -694,7 +731,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini3pro": {
       "key": "gemini3pro",
@@ -712,7 +750,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini4argon": {
       "key": "gemini4argon",
@@ -731,7 +770,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "gemini4argoncontributor": {
       "key": "gemini4argoncontributor",
@@ -749,7 +789,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini4carbon": {
       "key": "gemini4carbon",
@@ -767,7 +808,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini4hydrogen": {
       "key": "gemini4hydrogen",
@@ -785,7 +827,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gemini4neon": {
       "key": "gemini4neon",
@@ -803,7 +846,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "glm46": {
       "key": "glm46",
@@ -821,7 +865,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "glm47": {
       "key": "glm47",
@@ -839,7 +884,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "glm47free": {
       "key": "glm47free",
@@ -857,7 +903,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "glm5": {
       "key": "glm5",
@@ -875,7 +922,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "glm51": {
       "key": "glm51",
@@ -893,7 +941,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "glm52": {
       "key": "glm52",
@@ -912,7 +961,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "glm53": {
       "key": "glm53",
@@ -931,7 +981,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "glm53flash": {
       "key": "glm53flash",
@@ -950,7 +1001,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "glm53flashfree": {
       "key": "glm53flashfree",
@@ -968,7 +1020,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "glm5free": {
       "key": "glm5free",
@@ -986,7 +1039,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt5": {
       "key": "gpt5",
@@ -1004,7 +1058,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt51": {
       "key": "gpt51",
@@ -1022,7 +1077,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt51codex": {
       "key": "gpt51codex",
@@ -1040,7 +1096,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt51codexmax": {
       "key": "gpt51codexmax",
@@ -1058,7 +1115,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt51codexmini": {
       "key": "gpt51codexmini",
@@ -1076,7 +1134,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt52": {
       "key": "gpt52",
@@ -1094,7 +1153,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt52codex": {
       "key": "gpt52codex",
@@ -1112,7 +1172,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt53codex": {
       "key": "gpt53codex",
@@ -1130,7 +1191,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt53codexspark": {
       "key": "gpt53codexspark",
@@ -1148,7 +1210,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt54": {
       "key": "gpt54",
@@ -1166,7 +1229,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt54mini": {
       "key": "gpt54mini",
@@ -1184,7 +1248,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt54nano": {
       "key": "gpt54nano",
@@ -1202,7 +1267,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt54pro": {
       "key": "gpt54pro",
@@ -1220,7 +1286,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt55": {
       "key": "gpt55",
@@ -1238,7 +1305,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt55pro": {
       "key": "gpt55pro",
@@ -1256,7 +1324,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt56luna": {
       "key": "gpt56luna",
@@ -1275,7 +1344,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "gpt56sol": {
       "key": "gpt56sol",
@@ -1293,7 +1363,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt56terra": {
       "key": "gpt56terra",
@@ -1311,7 +1382,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt5codex": {
       "key": "gpt5codex",
@@ -1329,7 +1401,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt5nano": {
       "key": "gpt5nano",
@@ -1347,7 +1420,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt61sol": {
       "key": "gpt61sol",
@@ -1365,7 +1439,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt62astra": {
       "key": "gpt62astra",
@@ -1383,7 +1458,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt62sol": {
       "key": "gpt62sol",
@@ -1401,7 +1477,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt6astra": {
       "key": "gpt6astra",
@@ -1419,7 +1496,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "gpt6luna": {
       "key": "gpt6luna",
@@ -1438,7 +1516,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "gpt6sol": {
       "key": "gpt6sol",
@@ -1456,7 +1535,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "grok45": {
       "key": "grok45",
@@ -1474,7 +1554,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "grok46": {
       "key": "grok46",
@@ -1492,7 +1573,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "grok47": {
       "key": "grok47",
@@ -1511,7 +1593,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "grokbuild01": {
       "key": "grokbuild01",
@@ -1529,7 +1612,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "grokcode": {
       "key": "grokcode",
@@ -1547,7 +1631,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "hy3": {
       "key": "hy3",
@@ -1565,7 +1650,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "hy3free": {
       "key": "hy3free",
@@ -1583,7 +1669,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "hy3previewfree": {
       "key": "hy3previewfree",
@@ -1601,7 +1688,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "hy4": {
       "key": "hy4",
@@ -1621,7 +1709,8 @@
       ],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "hy4flashfree": {
       "key": "hy4flashfree",
@@ -1643,7 +1732,8 @@
       ],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "hy4preview": {
       "key": "hy4preview",
@@ -1661,7 +1751,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "icemancontributorfree": {
       "key": "icemancontributorfree",
@@ -1681,7 +1772,8 @@
       ],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "icemanfree": {
       "key": "icemanfree",
@@ -1699,7 +1791,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "inkling2smallfree": {
       "key": "inkling2smallfree",
@@ -1717,7 +1810,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "kimik2": {
       "key": "kimik2",
@@ -1735,7 +1829,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "kimik25": {
       "key": "kimik25",
@@ -1753,7 +1848,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "kimik25free": {
       "key": "kimik25free",
@@ -1771,7 +1867,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "kimik26": {
       "key": "kimik26",
@@ -1789,7 +1886,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "kimik27code": {
       "key": "kimik27code",
@@ -1808,7 +1906,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "kimik2thinking": {
       "key": "kimik2thinking",
@@ -1826,7 +1925,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "kimik3": {
       "key": "kimik3",
@@ -1845,7 +1945,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "kimik31pro": {
       "key": "kimik31pro",
@@ -1863,7 +1964,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "lagunas21free": {
       "key": "lagunas21free",
@@ -1881,7 +1983,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "ling26flashfree": {
       "key": "ling26flashfree",
@@ -1899,7 +2002,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "ling30flashfinfree": {
       "key": "ling30flashfinfree",
@@ -1917,7 +2021,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "ling30flashfree": {
       "key": "ling30flashfree",
@@ -1935,7 +2040,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "ling30tinyfree": {
       "key": "ling30tinyfree",
@@ -1953,7 +2059,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "ling31flashfree": {
       "key": "ling31flashfree",
@@ -1971,7 +2078,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "llalphafree": {
       "key": "llalphafree",
@@ -1989,7 +2097,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "longcat20": {
       "key": "longcat20",
@@ -2007,7 +2116,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "longcat20free": {
       "key": "longcat20free",
@@ -2025,7 +2135,27 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
+    },
+    "longcat25": {
+      "key": "longcat25",
+      "id": "longcat-2.5",
+      "name": "LongCat-2.5",
+      "providers": [
+        "opencode-go"
+      ],
+      "context_limit": 1000000,
+      "output_limit": 262144,
+      "input_cost_per_m": 0.3,
+      "output_cost_per_m": 1.2,
+      "go_allowance": null,
+      "go_plus_allowance": null,
+      "badges": [],
+      "is_free": false,
+      "first_seen": "2026-11-22",
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "longcat25free": {
       "key": "longcat25free",
@@ -2046,7 +2176,8 @@
       ],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "longcat25previewfree": {
       "key": "longcat25previewfree",
@@ -2065,7 +2196,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mimov25": {
       "key": "mimov25",
@@ -2083,7 +2215,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mimov25free": {
       "key": "mimov25free",
@@ -2101,7 +2234,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mimov25pro": {
       "key": "mimov25pro",
@@ -2119,7 +2253,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mimov26flash": {
       "key": "mimov26flash",
@@ -2137,7 +2272,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "mimov26flashfree": {
       "key": "mimov26flashfree",
@@ -2155,7 +2291,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mimov26pro": {
       "key": "mimov26pro",
@@ -2173,7 +2310,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "mimov2flashfree": {
       "key": "mimov2flashfree",
@@ -2191,7 +2329,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mimov2omnifree": {
       "key": "mimov2omnifree",
@@ -2209,7 +2348,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mimov2profree": {
       "key": "mimov2profree",
@@ -2227,7 +2367,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "minimaxm21": {
       "key": "minimaxm21",
@@ -2245,7 +2386,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "minimaxm21free": {
       "key": "minimaxm21free",
@@ -2263,7 +2405,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "minimaxm25": {
       "key": "minimaxm25",
@@ -2281,7 +2424,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "minimaxm25free": {
       "key": "minimaxm25free",
@@ -2299,7 +2443,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "minimaxm27": {
       "key": "minimaxm27",
@@ -2318,7 +2463,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "minimaxm3": {
       "key": "minimaxm3",
@@ -2337,7 +2483,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "minimaxm31flash": {
       "key": "minimaxm31flash",
@@ -2355,7 +2502,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "minimaxm31flashfree": {
       "key": "minimaxm31flashfree",
@@ -2374,7 +2522,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "minimaxm3free": {
       "key": "minimaxm3free",
@@ -2392,7 +2541,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "mistrallarge4": {
       "key": "mistrallarge4",
@@ -2410,7 +2560,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "museember10": {
       "key": "museember10",
@@ -2428,7 +2579,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "musespark12": {
       "key": "musespark12",
@@ -2446,7 +2598,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "musespark12contributor": {
       "key": "musespark12contributor",
@@ -2466,7 +2619,8 @@
       ],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "musespark12contributorfree": {
       "key": "musespark12contributorfree",
@@ -2484,7 +2638,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "musespark13": {
       "key": "musespark13",
@@ -2502,7 +2657,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "musespark13contributor": {
       "key": "musespark13contributor",
@@ -2522,7 +2678,8 @@
       ],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "musespark13contributorfree": {
       "key": "musespark13contributorfree",
@@ -2540,7 +2697,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "musewonder10": {
       "key": "musewonder10",
@@ -2558,7 +2716,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "nemotron35lightningfree": {
       "key": "nemotron35lightningfree",
@@ -2576,7 +2735,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "nemotron35supervlfree": {
       "key": "nemotron35supervlfree",
@@ -2594,7 +2754,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "nemotron3superfree": {
       "key": "nemotron3superfree",
@@ -2612,7 +2773,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "nemotron3ultrafree": {
       "key": "nemotron3ultrafree",
@@ -2630,7 +2792,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "northminicodefree": {
       "key": "northminicodefree",
@@ -2648,7 +2811,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "pulsealphafree": {
       "key": "pulsealphafree",
@@ -2666,7 +2830,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "qwen35plus": {
       "key": "qwen35plus",
@@ -2684,7 +2849,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "qwen36plus": {
       "key": "qwen36plus",
@@ -2702,7 +2868,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "qwen36plusfree": {
       "key": "qwen36plusfree",
@@ -2720,7 +2887,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "qwen37plus": {
       "key": "qwen37plus",
@@ -2738,7 +2906,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "qwen38flash": {
       "key": "qwen38flash",
@@ -2757,7 +2926,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "qwen38max": {
       "key": "qwen38max",
@@ -2776,7 +2946,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "qwen3coder": {
       "key": "qwen3coder",
@@ -2794,7 +2965,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "qwen4max": {
       "key": "qwen4max",
@@ -2814,7 +2986,8 @@
       ],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "ring261tfree": {
       "key": "ring261tfree",
@@ -2832,7 +3005,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "spacebunny": {
       "key": "spacebunny",
@@ -2850,7 +3024,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "spacebunnyfree": {
       "key": "spacebunnyfree",
@@ -2868,7 +3043,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "step5preview": {
       "key": "step5preview",
@@ -2886,7 +3062,8 @@
       "badges": [],
       "is_free": false,
       "first_seen": "2026-11-22",
-      "allowance_since": "2026-11-22"
+      "allowance_since": "2026-11-22",
+      "last_changed": "2026-11-22"
     },
     "step5previewfree": {
       "key": "step5previewfree",
@@ -2905,7 +3082,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "tidepoolalphafree": {
       "key": "tidepoolalphafree",
@@ -2923,7 +3101,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "trinitylargepreviewfree": {
       "key": "trinitylargepreviewfree",
@@ -2941,7 +3120,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     },
     "xpreviewffree": {
       "key": "xpreviewffree",
@@ -2959,7 +3139,8 @@
       "badges": [],
       "is_free": true,
       "first_seen": "2026-11-22",
-      "allowance_since": null
+      "allowance_since": null,
+      "last_changed": "2026-11-22"
     }
   }
 }
