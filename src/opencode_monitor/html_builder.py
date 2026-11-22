@@ -25,6 +25,7 @@ from typing import Any
 
 from .atom_builder import entry_anchor, field_label, format_timestamp, format_value
 from .config import Settings
+from .differ import change_direction
 from .models import HistoryEntry, ModelEntry, Snapshot
 
 # Days a model stays flagged New, or a change stays flagged Recently changed.
@@ -57,6 +58,8 @@ _STYLESHEET = """
     --color-tier5-bg: #fbfcf7;
     --color-new-bg: #e4f3e4;
     --color-changed-bg: #e3eefc;
+    --color-up: #1a7f37;
+    --color-down: #cf222e;
     --font-mono: ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo,
                  Consolas, "DejaVu Sans Mono", monospace;
     --space-xs: 0.25rem;
@@ -83,6 +86,8 @@ _STYLESHEET = """
       --color-tier5-bg: #191509;
       --color-new-bg: #152318;
       --color-changed-bg: #14202e;
+      --color-up: #3fb950;
+      --color-down: #f85149;
     }
   }
 }
@@ -117,9 +122,12 @@ _STYLESHEET = """
 
   .page > * + * { margin-top: var(--space-xl); }
 
+  main > * + * { margin-top: var(--space-xl); }
+
   @media (max-width: 40rem) {
     .page { padding: var(--space-m); }
     .page > * + * { margin-top: var(--space-l); }
+    main > * + * { margin-top: var(--space-l); }
   }
 }
 
@@ -226,6 +234,33 @@ _STYLESHEET = """
     flex-wrap: wrap;
     gap: var(--space-s);
     white-space: normal;
+  }
+
+  .dealsTable-trend, .freeTable-trend, .modelsTable-trend {
+    color: var(--color-up);
+    font-weight: 700;
+  }
+
+  .dealsTable-trend--down, .freeTable-trend--down, .modelsTable-trend--down {
+    color: var(--color-down);
+  }
+
+  .changesLog-marker { color: var(--color-up); }
+
+  .changesLog-marker--down { color: var(--color-down); }
+
+  .changesSection-heading { margin-bottom: var(--space-m); }
+
+  .visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .dealsTable-row--tier1, .freeTable-row--tier1, .modelsTable-row--tier1 {
@@ -508,6 +543,46 @@ def _td(content: str, *, value: str | None = None) -> str:
     return f"<td{data}>{content}</td>"
 
 
+def _model_heading_cell(entry: ModelEntry) -> str:
+    name = _esc(entry["name"])
+    url = entry.get("info_url")
+    if url:
+        name = f'<a href="{_esc(url)}">{name}</a>'
+    return f'<th scope="row">{name}</th>'
+
+
+def _trend_cell(entry: ModelEntry, module: str) -> str:
+    trend = entry.get("last_trend")
+    if trend == "up":
+        content = (
+            f'<span class="{module}-trend" aria-hidden="true">▲</span>'
+            '<span class="visuallyHidden">better</span>'
+        )
+    elif trend == "down":
+        content = (
+            f'<span class="{module}-trend {module}-trend--down" '
+            'aria-hidden="true">▼</span><span class="visuallyHidden">worse</span>'
+        )
+    else:
+        content = "—"
+    return _td(content, value=trend or "")
+
+
+def _change_marker(direction: int) -> str:
+    if direction > 0:
+        return (
+            '<span class="visuallyHidden">Better: </span>'
+            '<span class="changesLog-marker" aria-hidden="true">▲</span> '
+        )
+    if direction < 0:
+        return (
+            '<span class="visuallyHidden">Worse: </span>'
+            '<span class="changesLog-marker changesLog-marker--down" '
+            'aria-hidden="true">▼</span> '
+        )
+    return ""
+
+
 def _is_promo(entry: ModelEntry) -> bool:
     return bool(entry["badges"]) and not entry["is_free"]
 
@@ -527,7 +602,8 @@ def _deal_row(entry: ModelEntry, module: str) -> str:
     row_classes = f"{module}-row" + _tier_class(entry, module)
     return (
         f'<tr class="{row_classes}">'
-        f'<th scope="row">{_esc(entry["name"])}</th>'
+        f"{_trend_cell(entry, module)}"
+        f"{_model_heading_cell(entry)}"
         f"{_td(go, value=go_value)}"
         f"{_td(go_plus, value=go_plus_value)}"
         f"{_td(_badges(entry, module), value=badges)}"
@@ -577,7 +653,8 @@ def _model_row(
     )
     return (
         f'<tr class="{row_classes}">'
-        f'<th scope="row">{_esc(entry["name"])}</th>'
+        f"{_trend_cell(entry, 'modelsTable')}"
+        f"{_model_heading_cell(entry)}"
         f"{_td(go, value=go_value)}"
         f"{_td(go_plus, value=go_plus_value)}"
         f"{_td(badge_block, value=' '.join(entry['badges']))}"
@@ -603,7 +680,8 @@ def _deal_table(
     if not entries:
         return f'<p class="emptyState">{_esc(empty_text)}</p>'
     head = (
-        f'<tr>{_th("Model", module, "text")}'
+        f'<tr>{_th("Trend", module, "text")}'
+        f"{_th('Model', module, 'text')}"
         f"{_th('Go', module, 'num', default='descending')}"
         f"{_th('Go Plus', module, 'num')}"
         f"{_th('Badges', module, 'text')}"
@@ -629,7 +707,8 @@ def _all_models_table(
     entries: list[ModelEntry], today: str, baseline_date: str | None
 ) -> str:
     head = (
-        f'<tr>{_th("Model", "modelsTable", "text")}'
+        f'<tr>{_th("Trend", "modelsTable", "text")}'
+        f'{_th("Model", "modelsTable", "text")}'
         f'{_th("Go", "modelsTable", "num", default="descending")}'
         f'{_th("Go Plus", "modelsTable", "num")}'
         f'{_th("Badges", "modelsTable", "text")}'
@@ -649,6 +728,10 @@ def _all_models_table(
         f'aria-labelledby="all-models-heading">'
         f'<table class="modelsTable">'
         f"<caption>All tracked models from models.dev and the Go console. "
+        f"Trend shows the direction of the latest change: "
+        f"<span class=\"modelsTable-trend\" aria-hidden=\"true\">▲</span> better, "
+        f"<span class=\"modelsTable-trend modelsTable-trend--down\" "
+        f'aria-hidden="true">▼</span> worse. '
         f"Rows are tinted in five tiers by Go monthly allowance: unlimited, "
         f"$100 and up, $50 and up, $20 and up, then lower paid tiers; models "
         f"with no Go listing are untinted. New and Recently changed mark "
@@ -709,25 +792,36 @@ def _changes_log(
         if entry.get("note"):
             details.append(f'<p class="changesLog-note">{_esc(entry["note"])}</p>')
         if entry["added"]:
-            starting = "".join(f"<li>{_esc(label(key))}</li>" for key in entry["added"])
+            starting = "".join(
+                f"<li>{_change_marker(1)}{_esc(label(key))}</li>"
+                for key in entry["added"]
+            )
             details.append(
                 f'<p class="changesLog-label">Starting</p>'
                 f'<ul class="changesLog-items">{starting}</ul>'
             )
         if entry["changed"]:
-            changed_items = "".join(
-                f"<li><strong>{_esc(label(change['key']))}</strong>: "
-                f"{_esc(field_label(change['field']))} from "
-                f"{_esc(format_value(change['field'], change['old']))} to "
-                f"{_esc(format_value(change['field'], change['new']))}</li>"
-                for change in entry["changed"]
-            )
+            changed_items = ""
+            for change in entry["changed"]:
+                direction = change_direction(
+                    change["field"], change["old"], change["new"]
+                )
+                changed_items += (
+                    f"<li>{_change_marker(direction)}"
+                    f"<strong>{_esc(label(change['key']))}</strong>: "
+                    f"{_esc(field_label(change['field']))} from "
+                    f"{_esc(format_value(change['field'], change['old']))} to "
+                    f"{_esc(format_value(change['field'], change['new']))}</li>"
+                )
             details.append(
                 f'<p class="changesLog-label">Changed</p>'
                 f'<ul class="changesLog-items">{changed_items}</ul>'
             )
         if entry["removed"]:
-            ended = "".join(f"<li>{_esc(label(key))}</li>" for key in entry["removed"])
+            ended = "".join(
+                f"<li>{_change_marker(-1)}{_esc(label(key))}</li>"
+                for key in entry["removed"]
+            )
             details.append(
                 f'<p class="changesLog-label">Ended</p>'
                 f'<ul class="changesLog-items">{ended}</ul>'
@@ -771,14 +865,16 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
         promo_entries,
         "promos-heading",
         "dealsTable",
-        "Models with an active promotion, tinted by Go allowance tier",
+        "Models with an active promotion, tinted by Go allowance tier. "
+        "Trend: ▲ better, ▼ worse.",
         "No active promotions right now.",
     )
     frees = _deal_table(
         free_entries,
         "free-heading",
         "freeTable",
-        "Models with a free tier, tinted by Go allowance tier",
+        "Models with a free tier, tinted by Go allowance tier. "
+        "Trend: ▲ better, ▼ worse.",
         "No free models right now.",
     )
     all_models = _all_models_table(list(models.values()), today, baseline_date)
@@ -807,13 +903,14 @@ def build_page(snapshot: Snapshot, history: list[HistoryEntry], settings: Settin
 {_panel("free-heading", "Free models", frees)}
 {_panel("all-models-heading", "All tracked models", all_models)}
 <section aria-labelledby="changes-heading">
-<h2 id="changes-heading">Recent changes</h2>
+<h2 class="changesSection-heading" id="changes-heading">Recent changes</h2>
 {_changes_log(history, models)}
 </section>
 </main>
 <footer class="pageFooter">
 <p>Data: <a href="deals.json">deals.json</a>
 &middot; sources: models.dev and the OpenCode Go console.</p>
+<p>Model names link to Artificial Analysis where the model is covered.</p>
 </footer>
 </div>
 <script>{_SCRIPT}</script>

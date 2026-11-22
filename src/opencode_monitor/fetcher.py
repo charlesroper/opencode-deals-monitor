@@ -18,6 +18,11 @@ RETRY_DELAYS: tuple[float, ...] = (2.0, 5.0)
 TIMEOUT = httpx.Timeout(15.0, connect=5.0)
 
 
+def make_client() -> httpx.Client:
+    """A shared client so bulk link checks reuse connections."""
+    return httpx.Client(timeout=TIMEOUT, follow_redirects=True, verify=True)
+
+
 class FetchError(Exception):
     """Raised when a URL could not be fetched after retries."""
 
@@ -26,6 +31,30 @@ class FetchError(Exception):
         self.status = status
         self.reason = reason
         super().__init__(f"fetch failed for {url}: status={status} reason={reason}")
+
+
+def url_exists(url: str, *, client: httpx.Client | None = None) -> bool | None:
+    """Check whether a URL resolves to a page.
+
+    Returns True for a success response, False for a clear miss (4xx), and
+    None when the answer is unknown (network trouble, 5xx). Callers should
+    not cache unknown answers.
+    """
+    owned_client = client is None
+    if client is None:
+        client = make_client()
+    try:
+        response = client.head(url, headers={"User-Agent": USER_AGENT})
+        if response.status_code < 400:
+            return True
+        if response.status_code < 500:
+            return False
+        return None
+    except httpx.HTTPError:
+        return None
+    finally:
+        if owned_client:
+            client.close()
 
 
 def _is_transient(exc: httpx.HTTPError) -> bool:

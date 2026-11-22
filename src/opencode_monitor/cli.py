@@ -7,20 +7,32 @@ import json
 import os
 import sys
 from dataclasses import asdict
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
 from .atom_builder import build_feed, entry_id
 from .config import Settings
 from .console_html import parse_console_html
-from .differ import diff_snapshots
-from .fetcher import FetchError, fetch_text
+from .differ import diff_snapshots, trend_for_changes
+from .fetcher import FetchError, fetch_text, make_client, url_exists
 from .html_builder import build_page
 from .merger import merge_snapshot
-from .models import ApiModel, ConsoleModel, DiffResult, HistoryEntry, ModelEntry, Snapshot
+from .models import (
+    ApiModel,
+    Change,
+    ConsoleModel,
+    DiffResult,
+    HistoryEntry,
+    ModelEntry,
+    Snapshot,
+    artificial_analysis_url,
+)
 from .models_api import parse_models_api
 from .state_store import load_json, write_json_atomic, write_text_atomic
+
+# Models without a verified info link are rechecked this often.
+INFO_RECHECK_DAYS = 30
 
 
 def _plural(count: int, noun: str) -> str:
@@ -163,6 +175,47 @@ def _to_snapshot(payload: Any) -> Snapshot | None:
     return payload  # type: ignore[return-value]
 
 
+def _needs_info_check(entry: ModelEntry, today: str) -> bool:
+    if entry.get("info_url"):
+        return False
+    checked = entry.get("info_checked")
+    if not checked:
+        return True
+    try:
+        age = (date.fromisoformat(today) - date.fromisoformat(checked)).days
+    except ValueError:
+        return True
+    return age >= INFO_RECHECK_DAYS
+
+
+def _refresh_info_urls(snapshot: Snapshot, today: str) -> bool:
+    """Verify Artificial Analysis pages for models without a known link.
+
+    Runs on publishing and force runs, so a quiet day never pays for
+    network checks. Unknown answers (network trouble, 5xx) are retried on
+    the next run; clear misses are rechecked monthly. Returns True when
+    any model's link metadata changed.
+    """
+    pending = [
+        entry
+        for entry in snapshot["models"].values()
+        if _needs_info_check(entry, today)
+    ]
+    if not pending:
+        return False
+    changed = False
+    with make_client() as client:
+        for entry in pending:
+            url = artificial_analysis_url(entry["name"])
+            result = url_exists(url, client=client)
+            if result is None:
+                continue
+            entry["info_checked"] = today
+            entry["info_url"] = url if result else None
+            changed = True
+    return changed
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="opencode-monitor",
@@ -179,6 +232,11 @@ def main(argv: list[str] | None = None) -> int:
         help="rebuild public outputs even when no diff is detected",
     )
     parser.add_argument("--verbose", action="store_true", help="log quiet runs")
+    parser.add_argument(
+        "--no-link-check",
+        action="store_true",
+        help="skip Artificial Analysis link verification",
+    )
     parser.add_argument(
         "--json-fixture", metavar="PATH", help="read models.dev JSON from a local file"
     )
@@ -232,12 +290,23 @@ def main(argv: list[str] | None = None) -> int:
 
     diff = DiffResult() if first_run else diff_snapshots(previous, snapshot)
 
-    # A tracked-field change stamps the model's last_changed date.
+    # A tracked-field change stamps the model's last_changed date and trend.
     today = now.strftime("%Y-%m-%d")
     for change in diff.changed:
         changed_entry = snapshot["models"].get(change.key)
         if changed_entry is not None:
             changed_entry["last_changed"] = today
+    changes_by_key: dict[str, list[Change]] = {}
+    for change in diff.changed:
+        changes_by_key.setdefault(change.key, []).append(change)
+    for key, changes in changes_by_key.items():
+        changed_entry = snapshot["models"].get(key)
+        if changed_entry is not None:
+            changed_entry["last_trend"] = trend_for_changes(changes)
+    for key in diff.added:
+        added_entry = snapshot["models"].get(key)
+        if added_entry is not None:
+            added_entry["last_trend"] = "up"
 
     # A run that flips the degradation flag must publish even with no diff:
     # the state file records the flag, and recovery must clear it on disk.
@@ -263,28 +332,33 @@ def main(argv: list[str] | None = None) -> int:
         return 2 if snapshot["console_html_degraded"] else 0
 
     # 3. Persist state and history when something actually changed. A pure
-    #    --force rebuild touches only the public outputs.
+    #    --force rebuild touches only the public outputs, unless the link
+    #    check adds new metadata.
     write_state = (
         first_run
         or not diff.is_empty()
         or snapshot["console_html_degraded"]
         or degraded_flip
     )
+    should_check_links = not args.no_link_check and (write_state or args.force)
+    if should_check_links and _refresh_info_urls(snapshot, today):
+        write_state = True
     if write_state:
-        names: dict[str, str] = {}
-        for key in [*diff.added, *(change.key for change in diff.changed)]:
-            current_entry = snapshot["models"].get(key)
-            if current_entry is not None:
-                names[key] = current_entry["name"]
-        for key in diff.removed:
-            if previous is not None and key in previous["models"]:
-                names[key] = previous["models"][key]["name"]
-        history_entry = _history_entry(
-            snapshot, diff, timestamp, first_run=first_run, names=names
-        )
-        history = [*history, history_entry][-settings.history_limit :]
+        if first_run or not diff.is_empty():
+            names: dict[str, str] = {}
+            for key in [*diff.added, *(change.key for change in diff.changed)]:
+                current_entry = snapshot["models"].get(key)
+                if current_entry is not None:
+                    names[key] = current_entry["name"]
+            for key in diff.removed:
+                if previous is not None and key in previous["models"]:
+                    names[key] = previous["models"][key]["name"]
+            history_entry = _history_entry(
+                snapshot, diff, timestamp, first_run=first_run, names=names
+            )
+            history = [*history, history_entry][-settings.history_limit :]
+            write_json_atomic(settings.history_path, history)
         write_json_atomic(settings.state_path, snapshot)
-        write_json_atomic(settings.history_path, history)
 
     # 4. Publish the static outputs atomically.
     feed = build_feed(history, settings)

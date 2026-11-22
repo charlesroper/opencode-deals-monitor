@@ -18,6 +18,26 @@ def normalise_key(value: str) -> str:
     return stripped
 
 
+def allowance_value(value: str | None) -> float:
+    """Numeric sort/significance value for an allowance: ``∞`` is infinite."""
+    if value is None:
+        return float("-inf")
+    if "∞" in value:
+        return float("inf")
+    digits = value.replace("$", "").replace(",", "")
+    try:
+        return float(digits)
+    except ValueError:
+        return float("-inf")
+
+
+def artificial_analysis_url(name: str) -> str:
+    """Best-guess Artificial Analysis page for a model display name."""
+    slug = name.casefold().replace(".", "-")
+    slug = re.sub(r"[^a-z0-9]+", "-", slug).strip("-")
+    return f"https://artificialanalysis.ai/models/{slug}"
+
+
 @dataclass(frozen=True, slots=True)
 class ApiModel:
     """A model parsed from models.dev/api.json."""
@@ -63,6 +83,9 @@ class ModelEntry(TypedDict):
     first_seen: str
     allowance_since: str | None
     last_changed: str | None
+    last_trend: str | None
+    info_url: str | None
+    info_checked: str | None
 
 
 class Snapshot(TypedDict):

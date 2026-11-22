@@ -22,6 +22,12 @@ JSON_FIXTURE = str(FIXTURES / "models.dev.json")
 HTML_FIXTURE = str(FIXTURES / "console-go.html")
 
 
+@pytest.fixture(autouse=True)
+def _no_link_network(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep CLI tests offline: link checks answer "not covered" by default."""
+    monkeypatch.setattr("opencode_monitor.cli.url_exists", lambda url, **_: False)
+
+
 def _settings(tmp_path: Path) -> Settings:
     return Settings.from_env(
         {
@@ -49,6 +55,9 @@ def _entry(**overrides) -> ModelEntry:
         first_seen="2026-11-01",
         allowance_since="2026-11-01",
         last_changed="2026-11-01",
+        last_trend=None,
+        info_url=None,
+        info_checked=None,
     )
     base.update(overrides)  # type: ignore[union-attr]
     return base
@@ -237,17 +246,18 @@ def test_sort_values_are_machine_readable() -> None:
     row = soup.select_one(".modelsTable tbody tr")
     cells = row.find_all("td")
     # Column order matches the deal tables, then the models-only columns.
-    assert cells[0]["data-value"] == "60"  # Go: $60
-    assert cells[1]["data-value"] == "120"  # Go Plus: $120
-    assert cells[2]["data-value"] == "New"  # badges sort as text
-    assert cells[3]["data-value"] == "1.0"  # In $/M
-    assert cells[4]["data-value"] == "2.0"  # Out $/M
-    assert cells[5].get("data-value") is None  # ID: plain text
-    assert cells[6]["data-value"] == "opencode-go"  # providers
-    assert cells[7]["data-value"] == "1000"  # context
-    assert cells[8]["data-value"] == "100"  # output cap
-    assert cells[9]["data-value"] == "2026-11-01"  # first seen
-    assert cells[10]["data-value"] == "2026-11-01"  # last changed
+    assert cells[0]["data-value"] == ""  # trend: no recorded change
+    assert cells[1]["data-value"] == "60"  # Go: $60
+    assert cells[2]["data-value"] == "120"  # Go Plus: $120
+    assert cells[3]["data-value"] == "New"  # badges sort as text
+    assert cells[4]["data-value"] == "1.0"  # In $/M
+    assert cells[5]["data-value"] == "2.0"  # Out $/M
+    assert cells[6].get("data-value") is None  # ID: plain text
+    assert cells[7]["data-value"] == "opencode-go"  # providers
+    assert cells[8]["data-value"] == "1000"  # context
+    assert cells[9]["data-value"] == "100"  # output cap
+    assert cells[10]["data-value"] == "2026-11-01"  # first seen
+    assert cells[11]["data-value"] == "2026-11-01"  # last changed
 
 
 def test_all_models_columns_match_deal_table_order() -> None:
@@ -261,7 +271,7 @@ def test_all_models_columns_match_deal_table_order() -> None:
         th.find("button").get_text() for th in soup.select(".modelsTable thead th")
     ]
     # The shared columns keep the same relative order in both tables.
-    shared = ["Model", "Go", "Go Plus", "Badges", "In $/M", "Out $/M"]
+    shared = ["Trend", "Model", "Go", "Go Plus", "Badges", "In $/M", "Out $/M"]
     assert models_head[: len(shared)] == shared
     assert deals_head[: len(shared)] == shared
 
@@ -625,7 +635,7 @@ def test_history_appends_and_caps(
     assert history[-1]["removed"] == [candidate]
 
 
-def test_change_stamps_last_changed(
+def test_change_stamps_last_changed_and_trend(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     settings = _settings(tmp_path)
@@ -653,7 +663,49 @@ def test_change_stamps_last_changed(
     today = datetime.now(UTC).strftime("%Y-%m-%d")
     assert glm["input_cost_per_m"] == 2.75
     assert glm["last_changed"] == today  # stamped by the diff pass
+    assert glm["last_trend"] == "down"  # a price rise goes against the reader
     assert glm["first_seen"] <= glm["last_changed"]
+
+
+def test_link_check_records_verified_urls(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    settings = _settings(tmp_path)
+    monkeypatch.setenv("DATA_DIR", str(settings.data_dir))
+    monkeypatch.setenv("PUBLIC_DIR", str(settings.public_dir))
+    monkeypatch.setattr(
+        "opencode_monitor.cli.url_exists",
+        lambda url, **_: url.endswith("/glm-5-3"),
+    )
+    assert main(["--json-fixture", JSON_FIXTURE, "--html-fixture", HTML_FIXTURE]) == 0
+    state = json.loads(settings.state_path.read_text(encoding="utf-8"))
+    glm = state["models"]["glm53"]
+    assert glm["info_url"] == "https://artificialanalysis.ai/models/glm-5-3"
+    assert glm["info_checked"] is not None
+    beam = state["models"]["beamfree"]
+    assert beam["info_url"] is None
+    assert beam["info_checked"] is not None
+    page = settings.html_path.read_text(encoding="utf-8")
+    assert 'href="https://artificialanalysis.ai/models/glm-5-3"' in page
+
+
+def test_no_link_check_flag_skips_verification(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    settings = _settings(tmp_path)
+    monkeypatch.setenv("DATA_DIR", str(settings.data_dir))
+    monkeypatch.setenv("PUBLIC_DIR", str(settings.public_dir))
+
+    def explode(url: str, **_: object) -> bool:
+        raise AssertionError("link check should not run")
+
+    monkeypatch.setattr("opencode_monitor.cli.url_exists", explode)
+    code = main(
+        ["--no-link-check", "--json-fixture", JSON_FIXTURE, "--html-fixture", HTML_FIXTURE]
+    )
+    assert code == 0
+    state = json.loads(settings.state_path.read_text(encoding="utf-8"))
+    assert state["models"]["glm53"]["info_url"] is None
 
 
 def test_changelog_is_readable_anchored_and_newest_first() -> None:
@@ -751,6 +803,142 @@ def test_atom_entry_links_match_changelog_anchors() -> None:
     snapshot = _snapshot(glm53=_entry(key="glm53", id="glm-5.3", name="GLM-5.3"))
     page = build_page(snapshot, history, settings)
     assert 'id="chg-2026-11-23-abc123"' in page
+
+
+def test_trend_column_shows_direction() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp24"))
+    snapshot = _snapshot(
+        up=_entry(key="up", id="up", name="Up", last_trend="up"),
+        down=_entry(key="down", id="down", name="Down", last_trend="down"),
+        flat=_entry(key="flat", id="flat", name="Flat", last_trend=None),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    by_name = {
+        th.get_text(): th.find_parent("tr") for th in soup.select(".modelsTable tbody th")
+    }
+    up_cell = by_name["Up"].find("td")
+    assert "▲" in up_cell.get_text()
+    assert up_cell.find("span", class_="modelsTable-trend") is not None
+    down_cell = by_name["Down"].find("td")
+    assert "▼" in down_cell.get_text()
+    assert down_cell.find("span", class_="modelsTable-trend--down") is not None
+    assert by_name["Flat"].find("td").get_text() == "—"
+    # First column in every table.
+    for table in soup.find_all("table"):
+        assert table.thead.find("th").find("button").get_text() == "Trend"
+    assert "--color-up" in page and "--color-down" in page
+    assert "modelsTable-trend--down" in page
+
+
+def test_changelog_markers_show_direction() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp25"))
+    history = [
+        _history(
+            title="3 changes",
+            added=[],
+            changed=[
+                {"key": "a", "field": "go_allowance", "old": "$60", "new": "$120"},
+                {"key": "a", "field": "input_cost_per_m", "old": 1.0, "new": 2.0},
+                {"key": "a", "field": "badges", "old": ["New"], "new": ["New", "Promo"]},
+            ],
+            names={"a": "Model A"},
+        )
+    ]
+    page = build_page(_snapshot(), history, settings)
+    soup = BeautifulSoup(page, "html.parser")
+    items = soup.select(".changesLog-items li")
+    # Allowance up: green up triangle with hidden "Better:" text.
+    assert "▲" in items[0].get_text()
+    assert "Better:" in items[0].get_text()
+    # Cost up: red down triangle with hidden "Worse:" text.
+    assert "▼" in items[1].get_text()
+    assert "Worse:" in items[1].get_text()
+    # Badge count up: better.
+    assert "Better:" in items[2].get_text()
+    # Glyphs are hidden from assistive tech; the direction is spoken as a word.
+    assert items[0].find("span", class_="changesLog-marker").get("aria-hidden") == "true"
+    assert items[1].find("span", class_="changesLog-marker--down") is not None
+
+
+def test_changelog_started_and_ended_markers() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp26"))
+    history = [
+        _history(
+            title="1 model started, 1 model ended",
+            added=["newbie"],
+            removed=["leaver"],
+            names={"newbie": "Newbie", "leaver": "Leaver"},
+        )
+    ]
+    page = build_page(_snapshot(), history, settings)
+    soup = BeautifulSoup(page, "html.parser")
+    items = soup.select(".changesLog-items li")
+    started = next(item for item in items if "Newbie" in item.get_text())
+    ended = next(item for item in items if "Leaver" in item.get_text())
+    assert "▲" in started.get_text() and "Better:" in started.get_text()
+    assert "▼" in ended.get_text() and "Worse:" in ended.get_text()
+
+
+def test_model_names_link_when_verified() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp27"))
+    snapshot = _snapshot(
+        linked=_entry(
+            key="linked", id="linked", name="Linked",
+            info_url="https://artificialanalysis.ai/models/linked",
+        ),
+        plain=_entry(key="plain", id="plain", name="Plain"),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    link = soup.select_one('a[href="https://artificialanalysis.ai/models/linked"]')
+    assert link is not None
+    assert link.get_text() == "Linked"
+    assert "Model names link to Artificial Analysis" in page
+    # Unverified models stay plain text.
+    assert soup.find("a", string="Plain") is None
+
+
+def test_section_spacing_is_consistent() -> None:
+    settings = _settings(Path("/tmp/opencode/test-tmp28"))
+    page = build_page(_snapshot(), [], settings)
+    assert "main > * + * { margin-top: var(--space-xl); }" in page
+    assert '<h2 class="changesSection-heading" id="changes-heading">' in page
+    assert ".changesSection-heading { margin-bottom: var(--space-m); }" in page
+
+
+def test_force_run_populates_links_without_history_entry(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    settings = _settings(tmp_path)
+    monkeypatch.setenv("DATA_DIR", str(settings.data_dir))
+    monkeypatch.setenv("PUBLIC_DIR", str(settings.public_dir))
+    assert main(
+        ["--no-link-check", "--json-fixture", JSON_FIXTURE, "--html-fixture", HTML_FIXTURE]
+    ) == 0
+    history_before = settings.history_path.read_text(encoding="utf-8")
+    state_before = json.loads(settings.state_path.read_text(encoding="utf-8"))
+    assert state_before["models"]["glm53"]["info_url"] is None
+
+    monkeypatch.setattr(
+        "opencode_monitor.cli.url_exists",
+        lambda url, **_: url.endswith("/glm-5-3"),
+    )
+    assert main(
+        ["--force", "--json-fixture", JSON_FIXTURE, "--html-fixture", HTML_FIXTURE]
+    ) == 0
+    state_after = json.loads(settings.state_path.read_text(encoding="utf-8"))
+    assert state_after["models"]["glm53"]["info_url"].endswith("/glm-5-3")
+    # A link-only metadata change must not add a changelog event.
+    assert settings.history_path.read_text(encoding="utf-8") == history_before
 
 
 def test_step_summary_written(

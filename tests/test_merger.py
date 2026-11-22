@@ -90,6 +90,9 @@ def test_first_seen_preserved_and_allowance_since_resets() -> None:
                 "first_seen": "2026-11-01",
                 "allowance_since": "2026-11-02",
                 "last_changed": "2026-11-02",
+                "last_trend": None,
+                "info_url": None,
+                "info_checked": None,
             }
         }
     )
@@ -127,6 +130,9 @@ def test_degraded_scrape_carries_fields_forward() -> None:
                 "first_seen": "2026-11-01",
                 "allowance_since": "2026-11-02",
                 "last_changed": "2026-11-02",
+                "last_trend": None,
+                "info_url": None,
+                "info_checked": None,
             }
         }
     )
@@ -161,6 +167,9 @@ def test_recovery_clears_degraded_flag() -> None:
                 "first_seen": "2026-11-01",
                 "allowance_since": "2026-11-02",
                 "last_changed": "2026-11-02",
+                "last_trend": None,
+                "info_url": None,
+                "info_checked": None,
             }
         }
     )
@@ -190,6 +199,9 @@ def test_drop_over_half_is_degraded() -> None:
             "first_seen": "2026-11-01",
             "allowance_since": "2026-11-01",
             "last_changed": "2026-11-01",
+            "last_trend": None,
+            "info_url": None,
+            "info_checked": None,
         }
         for i in range(10)
     }

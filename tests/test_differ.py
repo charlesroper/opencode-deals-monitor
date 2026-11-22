@@ -23,6 +23,9 @@ def _entry(**overrides) -> dict:
         "first_seen": "2026-11-01",
         "allowance_since": "2026-11-01",
         "last_changed": "2026-11-01",
+        "last_trend": None,
+        "info_url": None,
+        "info_checked": None,
     }
     base.update(overrides)
     return base
@@ -96,3 +99,37 @@ def test_untracked_fields_ignored() -> None:
         {"alpha": _entry(first_seen="2026-11-23", name="Alpha 2", last_changed="2026-11-23")}
     )
     assert diff_snapshots(previous, current).is_empty()
+
+
+def test_change_direction_marks_better_and_worse() -> None:
+    from opencode_monitor.differ import change_direction
+
+    # Allowances: more is better, none is the floor, ∞ the ceiling.
+    assert change_direction("go_allowance", "$60", "$120") == 1
+    assert change_direction("go_allowance", "$500", "$200") == -1
+    assert change_direction("go_allowance", None, "$60") == 1
+    assert change_direction("go_allowance", "$60", None) == -1
+    assert change_direction("go_plus_allowance", "$∞", "$500") == -1
+    # Prices: cheaper is better.
+    assert change_direction("input_cost_per_m", 2.0, 1.0) == 1
+    assert change_direction("output_cost_per_m", 1.0, 2.0) == -1
+    assert change_direction("input_cost_per_m", None, 1.0) == 0
+    # Free tier and badges.
+    assert change_direction("is_free", False, True) == 1
+    assert change_direction("is_free", True, False) == -1
+    assert change_direction("badges", ["New"], ["New", "Promo"]) == 1
+    assert change_direction("badges", ["New", "Promo"], []) == -1
+    assert change_direction("badges", ["New"], ["Promo"]) == 0
+
+
+def test_trend_for_changes_aggregates() -> None:
+    from opencode_monitor.differ import trend_for_changes
+    from opencode_monitor.models import Change
+
+    up = Change(key="a", field="go_allowance", old="$60", new="$120")
+    down = Change(key="a", field="input_cost_per_m", old=1.0, new=2.0)
+    neutral = Change(key="a", field="badges", old=["New"], new=["Promo"])
+    assert trend_for_changes([up]) == "up"
+    assert trend_for_changes([down]) == "down"
+    assert trend_for_changes([neutral]) is None
+    assert trend_for_changes([up, down]) is None  # mixed stays unmarked

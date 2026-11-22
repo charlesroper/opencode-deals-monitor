@@ -18,14 +18,17 @@ them to GitHub Pages:
 - `index.html`, a static status page in a monospace design. Promos, free
   models and the full model list each sit in a collapsed panel, and every
   table opens sorted by Go allowance, largest first; sorting any column
-  falls back to Go order when values tie. Rows are tinted in five tiers by
-  Go allowance: unlimited, $100 and up, $50 and up, $20 and up, then lower
-  paid tiers. New marks models that arrived after monitoring began, and
-  Recently changed marks models updated in the last 7 days. Click any
-  column to re-sort. Recent changes lists each deal event newest first;
-  every entry has a permalink, and each Atom entry links straight to its
-  changelog entry. A few lines of inline JavaScript handle sorting, and
-  the page loads no external scripts, fonts or other assets.
+  falls back to Go order when values tie. Every table leads with a Trend
+  column, and changelog entries carry the same marker: ▲ marks a change in
+  your favour (or a model starting), ▼ one against (or a model ending).
+  Rows are tinted in five tiers by Go allowance: unlimited, $100 and up,
+  $50 and up, $20 and up, then lower paid tiers. New marks models that
+  arrived after monitoring began, and Recently changed marks models updated
+  in the last 7 days. Model names link to Artificial Analysis where that
+  model is covered. Recent changes lists each deal event newest first; every
+  entry has a permalink, and each Atom entry links straight to its changelog
+  entry. A few lines of inline JavaScript handle sorting, and the page loads
+  no external scripts, fonts or other assets.
 - `deals.json`, a JSON snapshot for scripts and dashboards.
 
 Quiet days write nothing and exit with code `0`, so the live site stays as it
@@ -121,6 +124,11 @@ Flags:
   instead of the network.
 - `--html-fixture=<path>`: read the console page from a local file instead of
   the network.
+- `--no-link-check`: skip the Artificial Analysis link check (useful offline).
+
+The first publishing run checks every model against Artificial Analysis and
+adds about half a minute; later runs check only new models, and models without
+a page are rechecked monthly.
 
 The repository pins Python 3.14 in `.python-version`; `uv` installs it
 automatically.

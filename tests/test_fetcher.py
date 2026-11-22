@@ -88,3 +88,37 @@ def test_user_agent_sent() -> None:
     with _client(handler) as client:
         fetch_text(URL, client=client, sleep=lambda _: None)
     assert USER_AGENT in seen["ua"]
+
+
+def test_url_exists() -> None:
+    from opencode_monitor.fetcher import url_exists
+
+    def ok(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200)
+
+    def missing(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(404)
+
+    def broken(request: httpx.Request) -> httpx.Response:
+        raise httpx.ConnectError("boom", request=request)
+
+    with _client(ok) as client:
+        assert url_exists(URL, client=client) is True
+    with _client(missing) as client:
+        assert url_exists(URL, client=client) is False
+    with _client(broken) as client:
+        assert url_exists(URL, client=client) is None
+
+
+def test_url_exists_uses_head() -> None:
+    from opencode_monitor.fetcher import url_exists
+
+    methods: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        methods.append(request.method)
+        return httpx.Response(200)
+
+    with _client(handler) as client:
+        url_exists(URL, client=client)
+    assert methods == ["HEAD"]

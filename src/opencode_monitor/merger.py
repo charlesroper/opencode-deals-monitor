@@ -111,6 +111,9 @@ def merge_snapshot(
             first_seen=previous_entry["first_seen"] if previous_entry else today,
             allowance_since=None,
             last_changed=_backfill_last_changed(previous_entry) or today,
+            last_trend=previous_entry.get("last_trend") if previous_entry else None,
+            info_url=previous_entry.get("info_url") if previous_entry else None,
+            info_checked=previous_entry.get("info_checked") if previous_entry else None,
         )
         console = console_models.get(key)
         if console is not None:
@@ -139,6 +142,9 @@ def merge_snapshot(
             first_seen=previous_entry["first_seen"] if previous_entry else today,
             allowance_since=today,
             last_changed=_backfill_last_changed(previous_entry) or today,
+            last_trend=previous_entry.get("last_trend") if previous_entry else None,
+            info_url=previous_entry.get("info_url") if previous_entry else None,
+            info_checked=previous_entry.get("info_checked") if previous_entry else None,
         )
         entries[key] = entry
 

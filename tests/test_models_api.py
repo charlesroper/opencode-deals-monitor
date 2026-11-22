@@ -90,3 +90,29 @@ def test_non_object_payload_rejected() -> None:
 
     with pytest.raises(ValueError, match="not a JSON object"):
         parse_models_api(["nope"])
+
+
+def test_artificial_analysis_slug() -> None:
+    from opencode_monitor.models import artificial_analysis_url
+
+    assert (
+        artificial_analysis_url("GLM-5.3")
+        == "https://artificialanalysis.ai/models/glm-5-3"
+    )
+    assert (
+        artificial_analysis_url("DeepSeek V4.1 Flash 1017")
+        == "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017"
+    )
+    assert (
+        artificial_analysis_url("LongCat 2.5 Free")
+        == "https://artificialanalysis.ai/models/longcat-2-5-free"
+    )
+
+
+def test_allowance_value() -> None:
+    from opencode_monitor.models import allowance_value
+
+    assert allowance_value("$1,000") == 1000
+    assert allowance_value(None) == float("-inf")
+    assert allowance_value("$∞") == float("inf")
+    assert allowance_value("$15") < allowance_value("$60") < allowance_value("$∞")
