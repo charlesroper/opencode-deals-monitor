@@ -229,3 +229,6 @@ or a test double library. The tests use `httpx.MockTransport` instead.
 The code is released under the MIT licence. The destination icons for
 OpenCode, DuckDuckGo, Artificial Analysis and Epoch AI remain the trademarks
 of their owners. They appear only as link markers.
+
+The bundled `maintainable-css` skill in `.agents/skills/` keeps its own
+CC BY-NC-SA 4.0 licence and sits outside the MIT grant.
