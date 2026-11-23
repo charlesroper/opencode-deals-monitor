@@ -338,13 +338,13 @@ def test_heat_tiers_are_granular() -> None:
     by_name = {
         th.get_text(): th.find_parent("tr") for th in soup.select(".modelsTable tbody th")
     }
-    assert "modelsTable-row--tier1" in by_name["Unlimited"].get("class", [])
-    assert "modelsTable-row--tier2" in by_name["Top"].get("class", [])
-    assert "modelsTable-row--tier2" in by_name["High"].get("class", [])
-    assert "modelsTable-row--tier3" in by_name["Mid"].get("class", [])
-    assert "modelsTable-row--tier4" in by_name["Low"].get("class", [])
-    assert "modelsTable-row--tier5" in by_name["Basic"].get("class", [])
-    assert by_name["Unlisted"].get("class", []) == ["modelsTable-row"]
+    assert "tableRow--tier1" in by_name["Unlimited"].get("class", [])
+    assert "tableRow--tier2" in by_name["Top"].get("class", [])
+    assert "tableRow--tier2" in by_name["High"].get("class", [])
+    assert "tableRow--tier3" in by_name["Mid"].get("class", [])
+    assert "tableRow--tier4" in by_name["Low"].get("class", [])
+    assert "tableRow--tier5" in by_name["Basic"].get("class", [])
+    assert by_name["Unlisted"].get("class", []) == ["tableRow"]
     assert "Top allowance" not in page  # the single hot flag is gone
 
 
@@ -360,8 +360,8 @@ def test_heat_tiers_apply_to_deal_tables_too() -> None:
     soup = BeautifulSoup(page, "html.parser")
     promo_row = soup.select_one(".dealsTable tbody tr")
     free_row = soup.select_one(".freeTable tbody tr")
-    assert "dealsTable-row--tier2" in promo_row.get("class", [])
-    assert "freeTable-row--tier3" in free_row.get("class", [])  # default $60
+    assert "tableRow--tier2" in promo_row.get("class", [])
+    assert "tableRow--tier3" in free_row.get("class", [])  # default $60
 
 
 def test_allowance_tier_thresholds() -> None:
@@ -403,14 +403,14 @@ def test_new_and_recently_changed_flags() -> None:
         th.get_text(): th.find_parent("tr") for th in soup.select(".modelsTable tbody th")
     }
     fresh = by_name["Fresh"]
-    assert "modelsTable-row--new" in fresh.get("class", [])
+    assert "tableRow--new" in fresh.get("class", [])
     assert "New" in fresh.get_text()
     updated = by_name["Updated"]
-    assert "modelsTable-row--changed" in updated.get("class", [])
+    assert "tableRow--changed" in updated.get("class", [])
     assert "Recently changed" in updated.get_text()
     stale = by_name["Stale"]
-    assert "modelsTable-row--new" not in (stale.get("class", []))
-    assert "modelsTable-row--changed" not in (stale.get("class", []))
+    assert "tableRow--new" not in (stale.get("class", []))
+    assert "tableRow--changed" not in (stale.get("class", []))
 
 
 def test_baseline_inventory_is_not_flagged_new() -> None:
@@ -433,13 +433,13 @@ def test_baseline_inventory_is_not_flagged_new() -> None:
     )
     page = build_page(snapshot, history, settings)
     soup = BeautifulSoup(page, "html.parser")
-    assert soup.select(".modelsTable-row--new") == []
+    assert soup.select(".tableRow--new") == []
 
     # Monitoring began earlier: models first seen after that date get flagged.
     history = [_history(timestamp="2026-11-20T08:23:00Z", title="Monitoring started")]
     page = build_page(snapshot, history, settings)
     soup = BeautifulSoup(page, "html.parser")
-    flagged = [th.get_text() for th in soup.select(".modelsTable-row--new th")]
+    flagged = [th.get_text() for th in soup.select(".tableRow--new th")]
     assert flagged == ["Launchday", "Postlaunch"]
 
 
@@ -839,16 +839,16 @@ def test_trend_column_shows_direction() -> None:
     }
     up_cell = by_name["Up"].find("td")
     assert "▲" in up_cell.get_text()
-    assert up_cell.find("span", class_="modelsTable-trend") is not None
+    assert up_cell.find("span", class_="trend") is not None
     down_cell = by_name["Down"].find("td")
     assert "▼" in down_cell.get_text()
-    assert down_cell.find("span", class_="modelsTable-trend--down") is not None
+    assert down_cell.find("span", class_="trend--down") is not None
     assert by_name["Flat"].find("td").get_text() == "—"
     # First column in every table.
     for table in soup.find_all("table"):
         assert table.thead.find("th").find("button").get_text() == "Trend"
     assert "--color-up" in page and "--color-down" in page
-    assert "modelsTable-trend--down" in page
+    assert "trend--down" in page
 
 
 def test_changelog_markers_show_direction() -> None:
@@ -959,8 +959,10 @@ def test_section_spacing_is_consistent() -> None:
     assert '<h2 class="changesSection-heading" id="changes-heading">' in page
     assert ".changesSection-heading { margin-bottom: var(--space-m); }" in page
     assert "p + p { margin-top: var(--space-s); }" in page
-    # Wrapped changelog lines align under the text, not the marker.
-    assert "text-indent: -1.4em;" in page
+    # Wrapped changelog lines align under the text: marker and text are
+    # separate flex columns.
+    assert ".changesLog-marker { flex: none; width: 1em;" in page
+    assert ".changesLog-text { flex: 1 1 auto; min-width: 0; }" in page
     # Links are full-contrast text colour, underlined; no muted grey links.
     assert "a { color: var(--color-text); text-decoration: underline; }" in page
     assert "outline: 2px solid var(--color-text);" in page

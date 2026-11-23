@@ -357,21 +357,27 @@ _STYLESHEET = """
     text-decoration: underline;
   }
 
-  .dealsTable-badges, .freeTable-badges, .modelsTable-badges {
+  .badges {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-s);
     white-space: normal;
   }
 
-  .dealsTable-trend, .freeTable-trend, .modelsTable-trend {
+  .badges-item {
+    padding: 0.125rem var(--space-s);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-s);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+
+  .trend {
     color: var(--color-up);
     font-weight: 700;
   }
 
-  .dealsTable-trend--down, .freeTable-trend--down, .modelsTable-trend--down {
-    color: var(--color-down);
-  }
+  .trend--down { color: var(--color-down); }
 
   .linkIcon {
     display: inline-block;
@@ -403,7 +409,7 @@ _STYLESHEET = """
     white-space: nowrap;
   }
 
-  .changesLog-marker { color: var(--color-up); }
+  .changesLog-marker { flex: none; width: 1em; color: var(--color-up); }
 
   .changesLog-marker--down { color: var(--color-down); }
 
@@ -421,33 +427,15 @@ _STYLESHEET = """
     border: 0;
   }
 
-  .dealsTable-row--tier1, .freeTable-row--tier1, .modelsTable-row--tier1 {
-    background: var(--color-tier1-bg);
-  }
-  .dealsTable-row--tier2, .freeTable-row--tier2, .modelsTable-row--tier2 {
-    background: var(--color-tier2-bg);
-  }
-  .dealsTable-row--tier3, .freeTable-row--tier3, .modelsTable-row--tier3 {
-    background: var(--color-tier3-bg);
-  }
-  .dealsTable-row--tier4, .freeTable-row--tier4, .modelsTable-row--tier4 {
-    background: var(--color-tier4-bg);
-  }
-  .dealsTable-row--tier5, .freeTable-row--tier5, .modelsTable-row--tier5 {
-    background: var(--color-tier5-bg);
-  }
+  .tableRow--tier1 { background: var(--color-tier1-bg); }
+  .tableRow--tier2 { background: var(--color-tier2-bg); }
+  .tableRow--tier3 { background: var(--color-tier3-bg); }
+  .tableRow--tier4 { background: var(--color-tier4-bg); }
+  .tableRow--tier5 { background: var(--color-tier5-bg); }
 
   /* Recency marks override tier tints when both apply. */
-  .modelsTable-row--new { background: var(--color-new-bg); }
-  .modelsTable-row--changed { background: var(--color-changed-bg); }
-
-  .dealsTable-badge, .freeTable-badge, .modelsTable-badge {
-    padding: 0.125rem var(--space-s);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-s);
-    font-size: 0.8125rem;
-    white-space: nowrap;
-  }
+  .tableRow--new { background: var(--color-new-bg); }
+  .tableRow--changed { background: var(--color-changed-bg); }
 
   .emptyState {
     padding: var(--space-m);
@@ -493,11 +481,15 @@ _STYLESHEET = """
   .changesLog-items { margin-top: var(--space-xs); }
   .changesLog-items li + li { margin-top: var(--space-xs); }
 
-  /* Hanging indent: wrapped lines align under the text, not the marker. */
+  /* Two-column rows: the marker column is fixed, so wrapped lines always
+     align under the text. */
   .changesLog-items li {
-    padding-left: 1.4em;
-    text-indent: -1.4em;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-s);
   }
+
+  .changesLog-text { flex: 1 1 auto; min-width: 0; }
 
   .changesLog-note { color: var(--color-text-muted); }
 
@@ -508,7 +500,6 @@ _STYLESHEET = """
     font-size: 0.875rem;
   }
 
-  .pageFooter-links { margin-top: var(--space-s); }
 }
 """
 
@@ -638,9 +629,9 @@ def _allowance_tier(entry: ModelEntry) -> int:
     return 0
 
 
-def _tier_class(entry: ModelEntry, module: str) -> str:
+def _tier_class(entry: ModelEntry) -> str:
     tier = _allowance_tier(entry)
-    return f" {module}-row--tier{tier}" if tier else ""
+    return f" tableRow--tier{tier}" if tier else ""
 
 
 def _days_before(today: str, date_str: str | None) -> int | None:
@@ -689,16 +680,16 @@ def _date_sort_value(value: str | None) -> str:
     return value or ""
 
 
-def _badges(entry: ModelEntry, module: str) -> str:
+def _badges(entry: ModelEntry) -> str:
     badges = list(entry["badges"])
     if entry["is_free"] and "Free" not in badges:
         badges.append("Free")
     if not badges:
         return "—"
     spans = "".join(
-        f'<span class="{module}-badge">{_esc(badge)}</span>' for badge in badges
+        f'<span class="badges-item">{_esc(badge)}</span>' for badge in badges
     )
-    return f'<span class="{module}-badges">{spans}</span>'
+    return f'<span class="badges">{spans}</span>'
 
 
 def _th(label: str, module: str, sort_type: str, *, default: str = "none") -> str:
@@ -761,17 +752,17 @@ def _links_cell(entry: ModelEntry) -> str:
     return f'<td class="linksCell">{links}</td>'
 
 
-def _trend_cell(entry: ModelEntry, module: str) -> str:
+def _trend_cell(entry: ModelEntry) -> str:
     trend = entry.get("last_trend")
     if trend == "up":
         content = (
-            f'<span class="{module}-trend" aria-hidden="true">▲</span>'
+            '<span class="trend" aria-hidden="true">▲</span>'
             '<span class="visuallyHidden">better</span>'
         )
     elif trend == "down":
         content = (
-            f'<span class="{module}-trend {module}-trend--down" '
-            'aria-hidden="true">▼</span><span class="visuallyHidden">worse</span>'
+            '<span class="trend trend--down" aria-hidden="true">▼</span>'
+            '<span class="visuallyHidden">worse</span>'
         )
     else:
         content = "—"
@@ -782,15 +773,15 @@ def _change_marker(direction: int) -> str:
     if direction > 0:
         return (
             '<span class="visuallyHidden">Better: </span>'
-            '<span class="changesLog-marker" aria-hidden="true">▲</span> '
+            '<span class="changesLog-marker" aria-hidden="true">▲</span>'
         )
     if direction < 0:
         return (
             '<span class="visuallyHidden">Worse: </span>'
             '<span class="changesLog-marker changesLog-marker--down" '
-            'aria-hidden="true">▼</span> '
+            'aria-hidden="true">▼</span>'
         )
-    return ""
+    return '<span class="changesLog-marker" aria-hidden="true"></span>'
 
 
 def _is_promo(entry: ModelEntry) -> bool:
@@ -809,15 +800,15 @@ def _deal_row(entry: ModelEntry, module: str) -> str:
     out_value = _cost_sort_value(entry["output_cost_per_m"])
     since = _fmt_date(entry["allowance_since"])
     since_value = _date_sort_value(entry["allowance_since"])
-    row_classes = f"{module}-row" + _tier_class(entry, module)
+    row_classes = "tableRow" + _tier_class(entry)
     return (
         f'<tr class="{row_classes}">'
-        f"{_trend_cell(entry, module)}"
+        f"{_trend_cell(entry)}"
         f"{_model_heading_cell(entry)}"
         f"{_links_cell(entry)}"
         f"{_td(go, value=go_value)}"
         f"{_td(go_plus, value=go_plus_value)}"
-        f"{_td(_badges(entry, module), value=badges)}"
+        f"{_td(_badges(entry), value=badges)}"
         f"{_td(in_cost, value=in_value)}"
         f"{_td(out_cost, value=out_value)}"
         f"{_td(since, value=since_value)}"
@@ -849,22 +840,22 @@ def _model_row(
         badges.append("Free")
     badges = list(dict.fromkeys(badges))  # dedupe, preserve order
     row_classes = (
-        "modelsTable-row"
-        + _tier_class(entry, "modelsTable")
-        + (" modelsTable-row--new" if "New" in flags else "")
-        + (" modelsTable-row--changed" if "Recently changed" in flags else "")
+        "tableRow"
+        + _tier_class(entry)
+        + (" tableRow--new" if "New" in flags else "")
+        + (" tableRow--changed" if "Recently changed" in flags else "")
     )
     badge_spans = "".join(
-        f'<span class="modelsTable-badge">{_esc(badge)}</span>' for badge in badges
+        f'<span class="badges-item">{_esc(badge)}</span>' for badge in badges
     ) or "—"
     badge_block = (
-        f'<span class="modelsTable-badges">{badge_spans}</span>'
+        f'<span class="badges">{badge_spans}</span>'
         if badge_spans != "—"
         else badge_spans
     )
     return (
         f'<tr class="{row_classes}">'
-        f"{_trend_cell(entry, 'modelsTable')}"
+        f"{_trend_cell(entry)}"
         f"{_model_heading_cell(entry)}"
         f"{_links_cell(entry)}"
         f"{_td(go, value=go_value)}"
@@ -943,9 +934,8 @@ def _all_models_table(
         f'<table class="modelsTable">'
         f"<caption>All tracked models from models.dev and the Go console. "
         f"Trend shows the direction of the latest change: "
-        f"<span class=\"modelsTable-trend\" aria-hidden=\"true\">▲</span> better, "
-        f"<span class=\"modelsTable-trend modelsTable-trend--down\" "
-        f'aria-hidden="true">▼</span> worse. '
+        f'<span class="trend" aria-hidden="true">▲</span> better, '
+        f'<span class="trend trend--down" aria-hidden="true">▼</span> worse. '
         f"Rows are tinted in five tiers by Go monthly allowance: unlimited, "
         f"$100 and up, $50 and up, $20 and up, then lower paid tiers; models "
         f"with no Go listing are untinted. New and Recently changed mark "
@@ -1007,7 +997,8 @@ def _changes_log(
             details.append(f'<p class="changesLog-note">{_esc(entry["note"])}</p>')
         if entry["added"]:
             starting = "".join(
-                f"<li>{_change_marker(1)}{_esc(label(key))}</li>"
+                f'<li>{_change_marker(1)}'
+                f'<span class="changesLog-text">{_esc(label(key))}</span></li>'
                 for key in entry["added"]
             )
             details.append(
@@ -1021,11 +1012,13 @@ def _changes_log(
                     change["field"], change["old"], change["new"]
                 )
                 changed_items += (
-                    f"<li>{_change_marker(direction)}"
+                    f'<li>{_change_marker(direction)}'
+                    f'<span class="changesLog-text">'
                     f"<strong>{_esc(label(change['key']))}</strong>: "
                     f"{_esc(field_label(change['field']))} from "
                     f"{_esc(format_value(change['field'], change['old']))} to "
-                    f"{_esc(format_value(change['field'], change['new']))}</li>"
+                    f"{_esc(format_value(change['field'], change['new']))}"
+                    f"</span></li>"
                 )
             details.append(
                 f'<p class="changesLog-label">Changed</p>'
@@ -1033,7 +1026,8 @@ def _changes_log(
             )
         if entry["removed"]:
             ended = "".join(
-                f"<li>{_change_marker(-1)}{_esc(label(key))}</li>"
+                f'<li>{_change_marker(-1)}'
+                f'<span class="changesLog-text">{_esc(label(key))}</span></li>'
                 for key in entry["removed"]
             )
             details.append(
