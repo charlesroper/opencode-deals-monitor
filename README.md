@@ -27,6 +27,17 @@ Each publishing run writes three files and deploys them to GitHub Pages:
 
 Quiet days write nothing and exit `0`, so the live site stays untouched.
 
+## How it works
+
+One run follows six steps:
+
+1. **Fetch.** Get `models.dev/api.json` and the Go console page. Both requests retry transient failures twice.
+2. **Parse.** Read the JSON directly. Read the console table with BeautifulSoup; the table ships complete in the HTML.
+3. **Merge.** Join on a normalised key, keep models found in one source only, and carry forward allowances and badges when the console scrape degrades.
+4. **Diff.** Compare with the last snapshot. Sort the result into models that started, changed or ended, and stamp each change with its date and trend.
+5. **Publish.** Stop on a quiet day and write nothing. Otherwise write state and history, verify model links, then write the Atom feed, the status page and the JSON snapshot.
+6. **Deploy.** The workflow commits state changes, uploads the site, and deploys it from a second job. A failure sends the GitHub email.
+
 ## The status page
 
 The page uses a monospace design and system fonts. It loads no external
