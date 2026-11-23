@@ -29,11 +29,10 @@ Quiet days write nothing and exit `0`, so the live site stays untouched.
 
 ## How it works
 
-The run happens on GitHub Actions, on a GitHub-hosted Ubuntu runner, inside
-this public repository. A cron schedule starts it at 08:23 UTC each day. The
-**Actions** tab, then **Monitor**, then **Run workflow** starts it by hand,
-with an optional `force` input that rebuilds the site even when nothing
-changed.
+The run happens on GitHub Actions, inside this public repository. A cron
+schedule starts it at 08:23 UTC each day. The **Actions** tab, then
+**Monitor**, then **Run workflow** starts it by hand, with an optional
+`force` input that rebuilds the site even when nothing changed.
 
 The runner installs Python 3.14 with `uv` and runs the `opencode-monitor`
 command. One run follows six steps:
@@ -44,6 +43,27 @@ command. One run follows six steps:
 4. **Diff.** Compare with the last snapshot. Sort the result into models that started, changed or ended, and stamp each change with its date and trend.
 5. **Publish.** Stop on a quiet day and write nothing. Otherwise write state and history, verify model links, then write the Atom feed, the status page and the JSON snapshot.
 6. **Deploy.** The workflow commits state changes, uploads the site, and deploys it from a second job. A failure sends the GitHub email.
+
+## Infrastructure
+
+The monitor runs on GitHub's infrastructure and needs no server, database or
+secrets. These pieces do the work:
+
+| Piece | Role |
+| :--- | :--- |
+| GitHub Actions | Runs the monitor on a GitHub-hosted Ubuntu runner. The workflow installs Python 3.14 with `uv`, runs the CLI and builds the site. |
+| Cron schedule | Starts a run at 08:23 UTC each day. GitHub can delay scheduled runs when runners are busy. |
+| `workflow_dispatch` | Starts a run by hand from the Actions tab. The `force` input rebuilds the site when nothing changed. |
+| `main` branch | Holds the code and the committed state files. `data/state.json` and `data/history.json` give each run its memory of the last snapshot and the changelog. |
+| Actions artifact | Carries the `public/` files from the build job to the deploy job. The deploy job runs only when the build produced a site. |
+| GitHub Pages | Hosts the site behind Fastly's CDN. Pages caches a page for about 10 minutes, so a fresh deploy can lag. |
+| Concurrency group | Runs one monitor at a time, so two jobs never race on state commits or deployments. |
+| Keepalive commit | Pushes an empty commit when `main` has been idle for 45 days. GitHub disables schedules after 60 days without activity. |
+| Failure email | GitHub sends it when the workflow fails, if account notifications allow it. Exit 1, exit 2 and deploy failures all end the run as failed. |
+
+The workflow asks for narrow permissions: `contents: write` for state
+commits, `actions: read` for the artifact poll, and `pages: write` with
+`id-token: write` for the deployment.
 
 ## The status page
 
