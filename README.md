@@ -4,7 +4,7 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/charlesroper/opencode-deals-monitor/ci.yml?label=ci)](https://github.com/charlesroper/opencode-deals-monitor/actions/workflows/ci.yml)
 [![Site](https://img.shields.io/website?url=https%3A%2F%2Fcharlesroper.github.io%2Fopencode-deals-monitor%2F&label=site)](https://charlesroper.github.io/opencode-deals-monitor/)
 [![Python](https://img.shields.io/badge/python-3.14-blue)](https://www.python.org/)
-[![Licence](https://img.shields.io/github/license/charlesroper/opencode-deals-monitor)](https://github.com/charlesroper/opencode-deals-monitor/blob/main/LICENSE)
+[![Licence](https://img.shields.io/github/license/charlesroper/opencode-deals-monitor?label=licence)](https://github.com/charlesroper/opencode-deals-monitor/blob/main/LICENSE)
 [![Feed](https://img.shields.io/badge/feed-Atom-orange)](https://charlesroper.github.io/opencode-deals-monitor/feed.xml)
 [![Runtime deps](https://img.shields.io/badge/runtime_deps-2-brightgreen)](https://github.com/charlesroper/opencode-deals-monitor/blob/main/pyproject.toml)
 
@@ -29,20 +29,20 @@ Quiet days write nothing and exit `0`, so the live site stays untouched.
 
 ## How it works
 
-The run happens on GitHub Actions, inside this public repository. A cron
-schedule starts it at 08:23 UTC each day. The **Actions** tab, then
-**Monitor**, then **Run workflow** starts it by hand, with an optional
-`force` input that rebuilds the site even when nothing changed.
+The run happens on GitHub Actions, in this public repository. A cron
+schedule starts it at 08:23 UTC each day. To start it by hand, open
+**Actions**, pick **Monitor**, then **Run workflow**. The optional `force`
+input rebuilds the site even when nothing changed.
 
 The runner installs Python 3.14 with `uv` and runs the `opencode-monitor`
 command. One run follows six steps:
 
 1. **Fetch.** Get `models.dev/api.json` and the Go console page. Both requests retry transient failures twice.
 2. **Parse.** Read the JSON directly. Read the console table with BeautifulSoup; the table ships complete in the HTML.
-3. **Merge.** Join on a normalised key, keep models found in one source only, and carry forward allowances and badges when the console scrape degrades.
+3. **Merge.** Join on a normalised key, keep models found in only one source, and carry forward allowances and badges when the console scrape degrades.
 4. **Diff.** Compare with the last snapshot. Sort the result into models that started, changed or ended, and stamp each change with its date and trend.
-5. **Publish.** Stop on a quiet day and write nothing. Otherwise write state and history, verify model links, then write the Atom feed, the status page and the JSON snapshot.
-6. **Deploy.** The workflow commits state changes, uploads the site, and deploys it from a second job. A failure sends the GitHub email.
+5. **Publish.** Stop on a quiet day and write nothing. Otherwise write state and history, run the link check, then write the Atom feed, the status page and the JSON snapshot.
+6. **Deploy.** The workflow commits state changes, uploads the site and deploys it from a second job. GitHub sends a failure email.
 
 ## The status page
 
@@ -54,17 +54,17 @@ assets and needs a few lines of inline JavaScript for sorting.
   any column to re-sort; ties fall back to Go order.
 - **Trend.** `▲` marks a change in your favour and `▼` one against. The Trend
   column and each changelog item carry the same marker.
-- **Links.** Each model name is followed by a Links column: DuckDuckGo AI
+- **Links.** A Links column follows each model name: DuckDuckGo AI
   search first, then the OpenCode model page, Artificial Analysis and Epoch
   AI pages where they exist. Model names link to the OpenCode page when
   there is one.
 - **Heat tiers.** Rows are tinted in five tiers by Go allowance: unlimited,
   $100 and up, $50 and up, $20 and up, then lower paid tiers.
 - **New and Recently changed.** Models that arrived after monitoring began,
-  or changed in the last 7 days, are flagged. The starting inventory is
+  or that changed in the last 7 days, are flagged. The starting inventory is
   never flagged New.
-- **Recent changes.** Every deal event, newest first, each with a permalink.
-  Atom entries link straight to their changelog entry.
+- **Recent changes.** Lists every deal event, newest first. Each entry has a
+  permalink, and Atom entries link straight to their changelog entry.
 
 ## Data sources
 
@@ -73,8 +73,8 @@ assets and needs a few lines of inline JavaScript for sorting.
 - **`opencode.ai/console/go`**: monthly Go and Go Plus allowances, plus
   badges such as `New` or `Limited time`.
 
-Entries join on a normalised key: the name or ID lowercased, with punctuation
-and spaces removed. `GLM-5.3-Flash` and `glm-5.3-flash` both become
+Entries join on a normalised key: the name or ID is lowercased, with
+punctuation and spaces removed. `GLM-5.3-Flash` and `glm-5.3-flash` both become
 `glm53flash`. A model found in only one source is kept.
 
 The console page is server-rendered, so the parser reads the static DOM:
@@ -91,32 +91,32 @@ Fault tolerance differs by source:
 
 - If `models.dev` fails after two retries, the run stops with exit `1` and
   writes nothing.
-- If the console scrape fails, parses zero models, or drops by more than
+- If the console scrape fails, parses zero models or drops by more than
   half, the run carries forward the previous allowances and badges. It shows
-  a stale-data notice, publishes what it has, and exits `2`.
+  a stale-data notice, publishes what it has and exits `2`.
 
 ## Exit codes
 
 | Code | Meaning |
 | :--- | :--- |
-| `0` | Clean run: quiet day, update published, or first run. |
+| `0` | Clean run: quiet day, update published or first run. |
 | `1` | Fatal: `models.dev/api.json` could not be fetched or parsed. Nothing written. |
 | `2` | Partial degradation: the console scrape failed or dropped by more than half. Previous allowances carried forward; run still published. |
 
 ## Set up the repository
 
 1. Create a public GitHub repository and push this code to `main`.
-2. In **Settings**, then **Pages**, set **Source** to **GitHub Actions**.
-3. In your account's **Settings**, then **Notifications**, then **Actions**,
-   turn on email alerts for failed workflow runs.
-4. In **Actions**, pick **Monitor**, then **Run workflow** for the first run.
+2. Open **Settings**, then **Pages**, and set **Source** to **GitHub Actions**.
+3. Open your account's **Settings**, then **Notifications**, then **Actions**,
+   and turn on email alerts for failed workflow runs.
+4. Open **Actions**, pick **Monitor**, then **Run workflow** for the first run.
    It seeds `data/state.json` and `data/history.json` and deploys the site.
 5. Add `https://<owner>.github.io/<repo>/feed.xml` to your feed reader, or
    read `https://<owner>.github.io/<repo>/deals.json` from your scripts.
 
 The schedule runs daily at 08:23 UTC, off the hour to reduce cron jitter.
 GitHub disables schedules after 60 days without repository activity, so the
-workflow pushes a keepalive commit once `main` is 45 days idle.
+workflow pushes a keepalive commit when `main` has been idle for 45 days.
 
 ## Run it yourself
 
@@ -175,7 +175,7 @@ Python standard library. Exact versions are pinned in `uv.lock`.
 
 | Package | Role |
 | :--- | :--- |
-| `httpx` | HTTP client for both source fetches and the link checks |
+| `httpx` | HTTP client for both source fetches and the link check |
 | `beautifulsoup4` | HTML parser for the Go console table |
 
 `httpx` was chosen over `requests` for three reasons:
@@ -185,8 +185,8 @@ Python standard library. Exact versions are pinned in `uv.lock`.
 - One client type for sync and async code, though the monitor uses only sync.
 
 The link check reuses one client for all HEAD requests, so connections stay
-open. The first full sweep takes about 30 seconds this way. A new connection
-for each request took over three minutes.
+open. The first full check takes about 30 seconds. A new connection for each
+request took over three minutes.
 
 Those two packages bring their own short chain: `httpcore` and `h11` for
 transport, `anyio` for the async backend, `certifi` for CA certificates,
@@ -198,7 +198,7 @@ Development tools:
 | :--- | :--- |
 | `pytest` | Test runner |
 | `ruff` | Linter and formatter |
-| `hatchling` | Build backend. Creates the package and the `opencode-monitor` command |
+| `hatchling` | Build backend that creates the package and the `opencode-monitor` command |
 
 The standard library covers the rest:
 
@@ -218,7 +218,7 @@ or a test double library. The tests use `httpx.MockTransport` instead.
   or invalid. Check the URL, then rerun the workflow.
 - **The job fails with exit code 2.** The console scrape degraded. Open
   `https://opencode.ai/console/go` in a browser to check the page structure.
-  The previous allowances stay live until a healthy scrape.
+  The previous allowances stay live until a healthy scrape arrives.
 - **The feed shows nothing new.** The day was quiet: no diff, no writes. Run
   the workflow manually with the `force` input to rebuild the page.
 - **GitHub Pages does not update.** Check whether the failing run built
