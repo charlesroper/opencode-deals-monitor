@@ -12,6 +12,12 @@ dependencies = [
 [project.scripts]
 opencode-monitor = "opencode_monitor.cli:main"
 
+[project.urls]
+Homepage = "https://charlesroper.github.io/opencode-deals-monitor/"
+Repository = "https://github.com/charlesroper/opencode-deals-monitor"
+Issues = "https://github.com/charlesroper/opencode-deals-monitor/issues"
+Feed = "https://charlesroper.github.io/opencode-deals-monitor/feed.xml"
+
 [dependency-groups]
 dev = [
     "pytest>=8.3",

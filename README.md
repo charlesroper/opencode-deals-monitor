@@ -8,6 +8,8 @@
 [![Feed](https://img.shields.io/badge/feed-Atom-orange)](https://charlesroper.github.io/opencode-deals-monitor/feed.xml)
 [![Runtime deps](https://img.shields.io/badge/runtime_deps-2-brightgreen)](https://github.com/charlesroper/opencode-deals-monitor/blob/main/pyproject.toml)
 
+**Live site:** https://charlesroper.github.io/opencode-deals-monitor/
+
 A daily Python CLI that checks OpenCode Go model deals and publishes what
 changed. It runs on GitHub Actions in a public repository, needs no secrets,
 and costs nothing to run.
