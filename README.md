@@ -60,6 +60,8 @@ assets and needs a few lines of inline JavaScript for sorting.
   there is one.
 - **Heat tiers.** Rows are tinted in five tiers by Go allowance: unlimited,
   $100 and up, $50 and up, $20 and up, then lower paid tiers.
+- **Unlisted models.** Rows for models with no Go or Go Plus allowance and no
+  badge are faded. They come from the opencode price list, not the Go console.
 - **New and Recently changed.** Models that arrived after monitoring began,
   or that changed in the last 7 days, are flagged. The starting inventory is
   never flagged New.

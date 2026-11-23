@@ -1067,6 +1067,42 @@ def test_model_name_prefers_opencode_page() -> None:
     assert "linkIcon--aa" in fallback_link.find_previous_sibling("span").get("class", [])
 
 
+def test_models_outside_the_go_sets_are_faded() -> None:
+    from bs4 import BeautifulSoup
+
+    settings = _settings(Path("/tmp/opencode/test-tmp32"))
+    snapshot = _snapshot(
+        listed=_entry(key="listed", id="listed", name="Listed"),
+        unlisted=_entry(
+            key="unlisted", id="unlisted", name="Unlisted",
+            go_allowance=None, go_plus_allowance=None, badges=[],
+        ),
+        badged=_entry(
+            key="badged", id="badged", name="Badged",
+            go_allowance=None, go_plus_allowance=None, badges=["New"],
+        ),
+        freeonly=_entry(
+            key="freeonly", id="freeonly", name="Free Only", is_free=True,
+            go_allowance=None, go_plus_allowance=None, badges=[],
+        ),
+    )
+    page = build_page(snapshot, [], settings)
+    soup = BeautifulSoup(page, "html.parser")
+    by_name = {
+        th.get_text(): th.find_parent("tr") for th in soup.select(".modelsTable tbody th")
+    }
+    assert "tableRow--unavailable" in by_name["Unlisted"].get("class", [])
+    assert "tableRow--unavailable" not in by_name["Listed"].get("class", [])
+    # A badge keeps a model inside the curated set, even with no allowance.
+    assert "tableRow--unavailable" not in by_name["Badged"].get("class", [])
+    # Free-only models without an allowance are outside the set too.
+    free_row = next(
+        row for row in soup.select(".freeTable tbody tr") if "Free Only" in row.get_text()
+    )
+    assert "tableRow--unavailable" in free_row.get("class", [])
+    assert ".tableRow--unavailable { opacity: 0.72; }" in page
+
+
 def test_step_summary_written(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

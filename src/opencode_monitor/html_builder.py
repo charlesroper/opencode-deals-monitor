@@ -434,6 +434,10 @@ _STYLESHEET = """
   .tableRow--tier5 { background: var(--color-tier5-bg); }
 
   /* Recency marks override tier tints when both apply. */
+  /* Models with no Go or Go Plus allowance and no badge are outside the
+     curated sets. 0.72 keeps text above WCAG AA on both backgrounds. */
+  .tableRow--unavailable { opacity: 0.72; }
+
   .tableRow--new { background: var(--color-new-bg); }
   .tableRow--changed { background: var(--color-changed-bg); }
 
@@ -788,6 +792,15 @@ def _is_promo(entry: ModelEntry) -> bool:
     return bool(entry["badges"]) and not entry["is_free"]
 
 
+def _in_curated_set(entry: ModelEntry) -> bool:
+    """True when the Go console lists the model: an allowance or a badge."""
+    return bool(
+        entry["badges"]
+        or entry["go_allowance"] is not None
+        or entry["go_plus_allowance"] is not None
+    )
+
+
 def _deal_row(entry: ModelEntry, module: str) -> str:
     go = _esc(entry["go_allowance"] or "—")
     go_plus = _esc(entry["go_plus_allowance"] or "—")
@@ -801,6 +814,8 @@ def _deal_row(entry: ModelEntry, module: str) -> str:
     since = _fmt_date(entry["allowance_since"])
     since_value = _date_sort_value(entry["allowance_since"])
     row_classes = "tableRow" + _tier_class(entry)
+    if not _in_curated_set(entry):
+        row_classes += " tableRow--unavailable"
     return (
         f'<tr class="{row_classes}">'
         f"{_trend_cell(entry)}"
@@ -844,6 +859,7 @@ def _model_row(
         + _tier_class(entry)
         + (" tableRow--new" if "New" in flags else "")
         + (" tableRow--changed" if "Recently changed" in flags else "")
+        + ("" if _in_curated_set(entry) else " tableRow--unavailable")
     )
     badge_spans = "".join(
         f'<span class="badges-item">{_esc(badge)}</span>' for badge in badges
