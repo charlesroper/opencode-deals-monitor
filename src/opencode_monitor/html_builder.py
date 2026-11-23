@@ -372,6 +372,11 @@ _STYLESHEET = """
     white-space: nowrap;
   }
 
+  .badges-item--muted {
+    border-style: dashed;
+    color: var(--color-text-muted);
+  }
+
   .trend {
     color: var(--color-up);
     font-weight: 700;
@@ -684,16 +689,28 @@ def _date_sort_value(value: str | None) -> str:
     return value or ""
 
 
+def _badge_span(badge: str) -> str:
+    cls = "badges-item"
+    if badge == "Not in Go":
+        cls += " badges-item--muted"
+    return f'<span class="{cls}">{_esc(badge)}</span>'
+
+
+def _badge_list(badges: list[str]) -> str:
+    spans = "".join(_badge_span(badge) for badge in badges)
+    return f'<span class="badges">{spans}</span>'
+
+
 def _badges(entry: ModelEntry) -> str:
     badges = list(entry["badges"])
     if entry["is_free"] and "Free" not in badges:
         badges.append("Free")
+    if not _in_curated_set(entry):
+        badges.append("Not in Go")
+    badges = list(dict.fromkeys(badges))
     if not badges:
         return "—"
-    spans = "".join(
-        f'<span class="badges-item">{_esc(badge)}</span>' for badge in badges
-    )
-    return f'<span class="badges">{spans}</span>'
+    return _badge_list(badges)
 
 
 def _th(label: str, module: str, sort_type: str, *, default: str = "none") -> str:
@@ -853,6 +870,8 @@ def _model_row(
     badges = [*entry["badges"], *flags]
     if entry["is_free"]:
         badges.append("Free")
+    if not _in_curated_set(entry):
+        badges.append("Not in Go")
     badges = list(dict.fromkeys(badges))  # dedupe, preserve order
     row_classes = (
         "tableRow"
@@ -861,14 +880,7 @@ def _model_row(
         + (" tableRow--changed" if "Recently changed" in flags else "")
         + ("" if _in_curated_set(entry) else " tableRow--unavailable")
     )
-    badge_spans = "".join(
-        f'<span class="badges-item">{_esc(badge)}</span>' for badge in badges
-    ) or "—"
-    badge_block = (
-        f'<span class="badges">{badge_spans}</span>'
-        if badge_spans != "—"
-        else badge_spans
-    )
+    badge_block = _badge_list(badges) if badges else "—"
     return (
         f'<tr class="{row_classes}">'
         f"{_trend_cell(entry)}"

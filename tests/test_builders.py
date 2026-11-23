@@ -1092,15 +1092,22 @@ def test_models_outside_the_go_sets_are_faded() -> None:
         th.get_text(): th.find_parent("tr") for th in soup.select(".modelsTable tbody th")
     }
     assert "tableRow--unavailable" in by_name["Unlisted"].get("class", [])
+    assert "Not in Go" in by_name["Unlisted"].get_text()
+    muted = by_name["Unlisted"].select_one(".badges-item--muted")
+    assert muted is not None and muted.get_text() == "Not in Go"
     assert "tableRow--unavailable" not in by_name["Listed"].get("class", [])
+    assert "Not in Go" not in by_name["Listed"].get_text()
     # A badge keeps a model inside the curated set, even with no allowance.
     assert "tableRow--unavailable" not in by_name["Badged"].get("class", [])
+    assert "Not in Go" not in by_name["Badged"].get_text()
     # Free-only models without an allowance are outside the set too.
     free_row = next(
         row for row in soup.select(".freeTable tbody tr") if "Free Only" in row.get_text()
     )
     assert "tableRow--unavailable" in free_row.get("class", [])
+    assert "Not in Go" in free_row.get_text()
     assert ".tableRow--unavailable { opacity: 0.72; }" in page
+    assert ".badges-item--muted {" in page
 
 
 def test_step_summary_written(
