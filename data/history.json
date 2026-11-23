@@ -107,5 +107,20 @@
     "removed": [],
     "degraded": false,
     "note": ""
+  },
+  {
+    "id": "urn:opencode-deals:2026-11-23:5869ea82b7",
+    "timestamp": "2026-11-23T20:19:11Z",
+    "title": "1 model started",
+    "added": [
+      "qwen4maxfree"
+    ],
+    "changed": [],
+    "removed": [],
+    "degraded": false,
+    "note": "",
+    "names": {
+      "qwen4maxfree": "Qwen4 Max Free"
+    }
   }
 ]

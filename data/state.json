@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22T21:59:35Z",
-  "console_html_verified_at": "2026-11-22T21:59:35Z",
+  "updated_at": "2026-11-23T20:19:11Z",
+  "console_html_verified_at": "2026-11-23T20:19:11Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -4229,6 +4229,33 @@
       "epoch_checked": "2026-11-22",
       "opencode_url": "https://opencode.ai/data/alibaba/qwen4-max",
       "opencode_checked": "2026-11-22"
+    },
+    "qwen4maxfree": {
+      "key": "qwen4maxfree",
+      "id": "qwen4-max-free",
+      "name": "Qwen4 Max Free",
+      "canonical_model_id": "alibaba/qwen4-max",
+      "providers": [
+        "opencode"
+      ],
+      "context_limit": 1000000,
+      "output_limit": 262144,
+      "input_cost_per_m": 0,
+      "output_cost_per_m": 0,
+      "go_allowance": null,
+      "go_plus_allowance": null,
+      "badges": [],
+      "is_free": true,
+      "first_seen": "2026-11-23",
+      "allowance_since": null,
+      "last_changed": "2026-11-23",
+      "last_trend": "up",
+      "info_url": null,
+      "info_checked": "2026-11-23",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-23",
+      "opencode_url": "https://opencode.ai/data/alibaba/qwen4-max",
+      "opencode_checked": "2026-11-23"
     },
     "ring261tfree": {
       "key": "ring261tfree",
