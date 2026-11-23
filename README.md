@@ -1,5 +1,13 @@
 # OpenCode Go Deals Monitor
 
+[![Monitor](https://img.shields.io/github/actions/workflow/status/charlesroper/opencode-deals-monitor/monitor.yml?label=monitor)](https://github.com/charlesroper/opencode-deals-monitor/actions/workflows/monitor.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/charlesroper/opencode-deals-monitor/ci.yml?label=ci)](https://github.com/charlesroper/opencode-deals-monitor/actions/workflows/ci.yml)
+[![Site](https://img.shields.io/website?url=https%3A%2F%2Fcharlesroper.github.io%2Fopencode-deals-monitor%2F&label=site)](https://charlesroper.github.io/opencode-deals-monitor/)
+[![Python](https://img.shields.io/badge/python-3.14-blue)](https://www.python.org/)
+[![Licence](https://img.shields.io/github/license/charlesroper/opencode-deals-monitor)](https://github.com/charlesroper/opencode-deals-monitor/blob/main/LICENSE)
+[![Feed](https://img.shields.io/badge/feed-Atom-orange)](https://charlesroper.github.io/opencode-deals-monitor/feed.xml)
+[![Runtime deps](https://img.shields.io/badge/runtime_deps-2-brightgreen)](https://github.com/charlesroper/opencode-deals-monitor/blob/main/pyproject.toml)
+
 A daily Python CLI that checks OpenCode Go model deals and publishes what
 changed. It runs on GitHub Actions in a public repository, needs no secrets,
 and costs nothing to run.
@@ -141,6 +149,50 @@ All settings have defaults and can be overridden with environment variables:
 | `DATA_DIR` | `data` | Directory for `state.json` and `history.json` |
 | `PUBLIC_DIR` | `public` | Directory for the published files |
 
+## Dependencies
+
+The monitor has two runtime dependencies. Everything else comes from the
+Python standard library. Exact versions are pinned in `uv.lock`.
+
+| Package | Role |
+| :--- | :--- |
+| `httpx` | HTTP client for both source fetches and the link checks |
+| `beautifulsoup4` | HTML parser for the Go console table |
+
+`httpx` was chosen over `requests` for three reasons:
+
+- Separate connect and total timeouts, so a slow server cannot hang a run.
+- `httpx.MockTransport`, which lets the tests run with no network.
+- One client type for sync and async code, though the monitor uses only sync.
+
+The link check reuses one client for all HEAD requests, so connections stay
+open. The first full sweep takes about 30 seconds this way. A new connection
+for each request took over three minutes.
+
+Those two packages bring their own short chain: `httpcore` and `h11` for
+transport, `anyio` for the async backend, `certifi` for CA certificates,
+`idna` for hostnames, `soupsieve` for CSS selectors and `typing-extensions`.
+
+Development tools:
+
+| Package | Role |
+| :--- | :--- |
+| `pytest` | Test runner |
+| `ruff` | Linter and formatter |
+| `hatchling` | Build backend. Creates the package and the `opencode-monitor` command |
+
+The standard library covers the rest:
+
+- **Atom feed:** `xml.etree.ElementTree`.
+- **JSON and atomic writes:** `json`, `os.replace` and `pathlib`.
+- **Changelog ids:** `hashlib`.
+- **HTML escaping:** `html`.
+- **Search prompts:** `urllib.parse`.
+- **CLI:** `argparse`.
+
+The project does not use a web framework, a template engine, a feed library
+or a test double library. The tests use `httpx.MockTransport` instead.
+
 ## Troubleshooting
 
 - **The job fails with exit code 1.** `models.dev/api.json` was unreachable
@@ -152,3 +204,9 @@ All settings have defaults and can be overridden with environment variables:
   the workflow manually with the `force` input to rebuild the page.
 - **GitHub Pages does not update.** Check whether the failing run built
   `public/index.html`. The deploy job only runs when that file exists.
+
+## Licence
+
+The code is released under the MIT licence. The destination icons for
+OpenCode, DuckDuckGo, Artificial Analysis and Epoch AI remain the trademarks
+of their owners. They appear only as link markers.
