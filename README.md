@@ -29,7 +29,14 @@ Quiet days write nothing and exit `0`, so the live site stays untouched.
 
 ## How it works
 
-One run follows six steps:
+The run happens on GitHub Actions, on a GitHub-hosted Ubuntu runner, inside
+this public repository. A cron schedule starts it at 08:23 UTC each day. The
+**Actions** tab, then **Monitor**, then **Run workflow** starts it by hand,
+with an optional `force` input that rebuilds the site even when nothing
+changed.
+
+The runner installs Python 3.14 with `uv` and runs the `opencode-monitor`
+command. One run follows six steps:
 
 1. **Fetch.** Get `models.dev/api.json` and the Go console page. Both requests retry transient failures twice.
 2. **Parse.** Read the JSON directly. Read the console table with BeautifulSoup; the table ships complete in the HTML.
