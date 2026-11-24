@@ -122,5 +122,20 @@
     "names": {
       "qwen4maxfree": "Qwen4 Max Free"
     }
+  },
+  {
+    "id": "urn:opencode-deals:2026-11-24:3869612eda",
+    "timestamp": "2026-11-24T19:33:29Z",
+    "title": "1 model started",
+    "added": [
+      "hungergfree"
+    ],
+    "changed": [],
+    "removed": [],
+    "degraded": false,
+    "note": "",
+    "names": {
+      "hungergfree": "HungerG Free"
+    }
   }
 ]

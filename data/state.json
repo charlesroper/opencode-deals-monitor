@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T20:19:11Z",
-  "console_html_verified_at": "2026-11-23T20:19:11Z",
+  "updated_at": "2026-11-24T19:33:29Z",
+  "console_html_verified_at": "2026-11-24T19:33:29Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -504,7 +504,7 @@
         "opencode"
       ],
       "context_limit": 1000000,
-      "output_limit": 64000,
+      "output_limit": 128000,
       "input_cost_per_m": 3,
       "output_cost_per_m": 15,
       "go_allowance": null,
@@ -2314,6 +2314,36 @@
       "opencode_url": "https://opencode.ai/data/xai/grok-code-fast-1",
       "opencode_checked": "2026-11-22"
     },
+    "hungergfree": {
+      "key": "hungergfree",
+      "id": "hungerg-free",
+      "name": "HungerG Free",
+      "canonical_model_id": null,
+      "providers": [
+        "opencode-go"
+      ],
+      "context_limit": 1000000,
+      "output_limit": 65536,
+      "input_cost_per_m": 0,
+      "output_cost_per_m": 0,
+      "go_allowance": "∞",
+      "go_plus_allowance": "∞",
+      "badges": [
+        "New",
+        "Limited time"
+      ],
+      "is_free": true,
+      "first_seen": "2026-11-24",
+      "allowance_since": "2026-11-24",
+      "last_changed": "2026-11-24",
+      "last_trend": "up",
+      "info_url": null,
+      "info_checked": "2026-11-24",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-24",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-24"
+    },
     "hy3": {
       "key": "hy3",
       "id": "hy3",
@@ -2463,8 +2493,8 @@
       "providers": [
         "opencode-go"
       ],
-      "context_limit": 1024000,
-      "output_limit": 64000,
+      "context_limit": 1048576,
+      "output_limit": 65536,
       "input_cost_per_m": 0.834,
       "output_cost_per_m": 2.501,
       "go_allowance": "$30",
@@ -2762,7 +2792,8 @@
       "name": "Kimi K3.1 Pro",
       "canonical_model_id": "moonshotai/kimi-k3.1-pro",
       "providers": [
-        "opencode-go"
+        "opencode-go",
+        "opencode"
       ],
       "context_limit": 1048576,
       "output_limit": 1048576,
