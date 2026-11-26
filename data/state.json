@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-24T19:33:29Z",
-  "console_html_verified_at": "2026-11-24T19:33:29Z",
+  "updated_at": "2026-11-26T18:28:52Z",
+  "console_html_verified_at": "2026-11-26T18:28:52Z",
   "console_html_degraded": false,
   "models": {
     "beamfree": {
@@ -4314,6 +4314,33 @@
       "epoch_checked": "2026-11-22",
       "opencode_url": null,
       "opencode_checked": "2026-11-22"
+    },
+    "seaglassalphafree": {
+      "key": "seaglassalphafree",
+      "id": "seaglass-alpha-free",
+      "name": "Seaglass Alpha Free",
+      "canonical_model_id": null,
+      "providers": [
+        "opencode"
+      ],
+      "context_limit": 1048576,
+      "output_limit": 131072,
+      "input_cost_per_m": 0,
+      "output_cost_per_m": 0,
+      "go_allowance": null,
+      "go_plus_allowance": null,
+      "badges": [],
+      "is_free": true,
+      "first_seen": "2026-11-26",
+      "allowance_since": null,
+      "last_changed": "2026-11-26",
+      "last_trend": "up",
+      "info_url": null,
+      "info_checked": "2026-11-26",
+      "epoch_url": null,
+      "epoch_checked": "2026-11-26",
+      "opencode_url": null,
+      "opencode_checked": "2026-11-26"
     },
     "spacebunny": {
       "key": "spacebunny",

@@ -137,5 +137,20 @@
     "names": {
       "hungergfree": "HungerG Free"
     }
+  },
+  {
+    "id": "urn:opencode-deals:2026-11-26:bd4db53951",
+    "timestamp": "2026-11-26T18:28:52Z",
+    "title": "1 model started",
+    "added": [
+      "seaglassalphafree"
+    ],
+    "changed": [],
+    "removed": [],
+    "degraded": false,
+    "note": "",
+    "names": {
+      "seaglassalphafree": "Seaglass Alpha Free"
+    }
   }
 ]
